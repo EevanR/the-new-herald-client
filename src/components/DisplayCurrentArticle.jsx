@@ -42,9 +42,11 @@ const DisplayCurrentArticle = props => {
       }
       case showSubscriptionForm: {
         return (
-          <Elements>
-            <StripeForm />
-          </Elements>
+          <div id="stripe-form">
+            <Elements>
+              <StripeForm />
+            </Elements>
+          </div>
         );
       }
     }

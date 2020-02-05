@@ -96,3 +96,8 @@ img {
   font-weight: normal;
   font-style: normal;
 }
+
+#stripe-form {
+  margin-top: 150px;
+  border: 1px solid grey;
+}
