@@ -27,7 +27,15 @@ const DisplayCurrentArticle = props => {
   const limitedDisplayUI = () => {
     switch (true) {
       case !props.authenticated: {
-        return null;
+        return (
+          <Button
+            onClick={() => {
+              setShowSubscriptionForm(true);
+            }}
+          >
+            {t('dp.subscribe')}
+          </Button>
+        );
       }
       case props.userAttrs && props.userAttrs.role === null && !showSubscriptionForm: {
         return (

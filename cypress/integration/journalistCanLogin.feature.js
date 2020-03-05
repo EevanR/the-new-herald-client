@@ -12,7 +12,7 @@ describe("Journalist can log in", () => {
       }
     });
     cy.login();
-    cy.get("#login").should(
+    cy.get("span").should(
       "contain",
       "Invalid login credentials. Please try again."
     );
@@ -20,7 +20,7 @@ describe("Journalist can log in", () => {
 
   it("successfully with valid credentials", () => {
     cy.journalistLogin();
-    cy.get("#login").should("contain", "Logged in as: user@mail.com");
+    cy.get("span").should("contain", "Logged in as: user@mail.com");
   });
 });
 
