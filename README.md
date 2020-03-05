@@ -58,8 +58,8 @@ email: sub@mail.com
 pass: password
 
 #### To write articles as journalist
-Journalist: 
-email: journo@mail.com 
+Journalist:   
+email: journo@mail.com  
 pass: password 
 
 Or create your own account.

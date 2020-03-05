@@ -50,8 +50,6 @@ const Navbar = props => {
   return (
     <>
       <Menu secondary pointing>
-        <Menu.Item name={t("nav.global")} />
-        <Menu.Item name={t("nav.local")} />
         <Menu.Item name={t("nav.english")} id="en" className="lng-button" onClick={changeLanguage} />
         <Menu.Item name={t("nav.swedish")} id="sv" className="lng-button" onClick={changeLanguage} />
       </Menu>

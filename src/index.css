@@ -1,13 +1,3 @@
-#root {
-  background-color: brown;
-  height: auto vh;
-}
-
-html {
-  background-color: brown;
-  height: auto;
-}
-
 body {
   margin: 0;
   font-family: "Courier", -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -15,7 +5,7 @@ body {
     "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #fbfbf8;
+  background-color: brown;
 }
 
 code {
@@ -27,28 +17,24 @@ code {
   padding: 10px;
 }
 
-h1,
-h2,
-.ui.header.aligned.center,
-.ui {
+h1, h2, .ui.header.aligned.center, .ui {
   font-family: "Courier";
 }
 
 .footer {
   border-top: 4px solid rgba(113, 114, 116, 0.15);
   padding-top: 10px;
-  position: relative;
+  padding-bottom: 10px;
+  position: absolute;
   bottom: 0;
-  right: 0;
-  display: relative;
+  width: 100%;
 }
 
 .weather-main {
-  width: 150px;
   max-height: 50px;
   font-size: 15px;
-  float: right;
   font-family: "Courier";
+  margin-left: auto;
 }
 
 #selector {
@@ -67,7 +53,6 @@ img {
   font-style: normal;
   text-align: center;
   font-size: 55px;
-  margin-left: 12%;
   margin-top: 5px;
 }
 
@@ -75,8 +60,10 @@ img {
   background-image: url(http://www.circozoe.com/suitenew/wp-content/uploads/2017/01/simple-old-paper-3-bw-w-1024x675.jpg);
   background-size: 100%;
   background-position: center;
-  height: 100%;
   padding: 2%;
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 200px;
 }
 
 #main-article-div {
@@ -100,4 +87,53 @@ img {
 #stripe-form {
   margin-top: 150px;
   border: 1px solid grey;
+}
+
+.login {
+  display: inline-flex;
+  width: 100%;
+}
+
+a#login-button {
+  float: left;
+  margin-right: 2%;
+}
+
+a#admin-button {
+  margin-right: 2%;
+}
+
+a#signup-button {
+  width: fit-content;
+}
+
+div#signup {
+  margin-right: 2%;
+  min-width: 85px;
+}
+
+a#logout-link {
+  margin-right: 2%;
+}
+
+a#profile-link {
+  margin-right: 1%;
+}
+
+#login-form {
+  margin-top: -2px;
+  margin-left: 20px;
+}
+
+#signup-form {
+  margin-bottom: 15px;
+}
+
+#back-button {
+  margin-top: -1px;
+  margin-left: 5px;
+}
+
+a#back-button.signup-back {
+  margin-left: -4px;
 }
