@@ -85,8 +85,15 @@ img {
 }
 
 #stripe-form {
-  margin-top: 150px;
   border: 1px solid grey;
+  width: 300px;
+  padding: 3%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  background-color: rgba(211, 211, 211);
 }
 
 .login {
@@ -136,4 +143,11 @@ a#profile-link {
 
 a#back-button.signup-back {
   margin-left: -4px;
+}
+
+.stripe-input {
+  border: 1px solid grey;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: rgb(249, 248, 248);
 }

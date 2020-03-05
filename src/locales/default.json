@@ -61,7 +61,8 @@
       "cardNumber": "Card number",
       "cardExpDate": "Expiration date",
       "submit": "Submit",
-      "paySuccessMess": "Thank you for subscribing to The Reactive Herald!"
+      "paySuccessMess": "Thank you for subscribing to The Reactive Herald!",
+      "cancel": "Cancel"
     }
   }
 }

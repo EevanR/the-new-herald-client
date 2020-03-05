@@ -26,7 +26,7 @@ const DisplayCurrentArticle = props => {
 
   const limitedDisplayUI = () => {
     switch (true) {
-      case !props.authenticated: {
+      case !props.authenticated && !showSubscriptionForm: {
         return (
           <Button
             onClick={() => {
@@ -54,6 +54,12 @@ const DisplayCurrentArticle = props => {
             <Elements>
               <StripeForm />
             </Elements>
+            <Button onClick={() => {
+              setShowSubscriptionForm(false);
+              props.changePaymentMessage(null)
+            }}>
+              {t("stripe.cancel")}
+            </Button>
           </div>
         );
       }
@@ -66,14 +72,14 @@ const DisplayCurrentArticle = props => {
         <div id="main-article-div" key={props.currentArticle.id}>
           <h2 id="article-title">{props.currentArticle.title}</h2>
           {props.currentArticle.image &&
-          <img src={props.currentArticle.image} />
+            <img src={props.currentArticle.image} />
           }
           <p id="article-body">{props.currentArticle.body}</p>
           {limitedDisplayUI()}
         </div>
       ) : (
-        <p id="message">{props.message}</p>
-      )}
+          <p id="message">{props.message}</p>
+        )}
     </>
   );
 };
@@ -85,7 +91,8 @@ const mapStateToProps = state => {
     message: state.message,
     authenticated: state.authenticated,
     userAttrs: state.userAttrs,
-    language: state.language
+    language: state.language,
+    paymentMessage: state.paymentMessage
   };
 };
 
@@ -96,6 +103,9 @@ const mapDispatchToProps = dispatch => {
     },
     changeCurrentArticle: article => {
       dispatch({ type: "CHANGE_ARTICLE", payload: article });
+    },
+    changePaymentMessage: message => {
+      dispatch({ type: "CHANGE_PAYMENTMESSAGE", payload: message });
     }
   };
 };

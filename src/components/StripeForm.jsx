@@ -5,7 +5,7 @@ import {
   CardCVCElement,
   injectStripe
 } from "react-stripe-elements";
-import { Button } from "semantic-ui-react";
+import { Button, Form } from "semantic-ui-react";
 import axios from "axios";
 import { connect } from "react-redux";
 import { useTranslation } from "react-i18next";
@@ -33,15 +33,28 @@ const StripeForm = props => {
   };
   return (
     <>
-      <form id="payment" onSubmit={event => payWithStripe(event, props)}>
-        <label>{t("stripe.cardNumber")}</label>
-        <CardNumberElement />
-        <label>{t("stripe.cardExpDate")}</label>
-        <CardExpiryElement />
-        <label>CVC</label>
-        <CardCVCElement />
+      <h3>Buy Subscription</h3>
+      <Form id="payment" onSubmit={event => payWithStripe(event, props)}>
+        <div class="error field">
+          <label>{t("stripe.cardNumber")}</label>
+          <div className="stripe-input">
+            <CardNumberElement />
+          </div>
+        </div>
+        <div class="error field">
+          <label>{t("stripe.cardExpDate")}</label>
+          <div className="stripe-input">
+            <CardExpiryElement />
+          </div>
+        </div>
+        <div class="error field">
+          <label>CVC</label>
+          <div className="stripe-input">
+            <CardCVCElement />
+          </div>
+        </div>
         <Button>{t("stripe.submit")}</Button>
-      </form>
+      </Form>
       <p id="message">{props.paymentMessage}</p>
     </>
   );
