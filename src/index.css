@@ -151,3 +151,12 @@ a#back-button.signup-back {
   border-radius: 5px;
   background-color: rgb(249, 248, 248);
 }
+
+.nav-home {
+  font-size: 35px;
+  font-weight: normal;
+  text-align: center;
+  font-family: ChomskyRegular;
+  color: rgba(0, 0, 0, 0.557);
+  margin-right: 2%;
+}

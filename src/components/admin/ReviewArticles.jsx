@@ -15,6 +15,7 @@ const ReviewArticles = () => {
   let [publishMessage, setPublishMessage] = useState("");
   let [lastPublishedArticle, setLastPublishedArticle] = useState("");
   let [deleteMessage, setDeleteMessage] = useState("");
+  
   let articlesList;
   let publishedArticlesList;
   const { t } = useTranslation();
@@ -86,6 +87,7 @@ const ReviewArticles = () => {
   }
 
   if (publishedArticles.length > 0) {
+    debugger
     publishedArticlesList = publishedArticles.map(article => {
       return (
         <ArticleRow

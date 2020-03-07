@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import auth from "../modules/auth";
-import { Link, Button } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import Signup from './Signup';
 import Weather from "./Weather";
@@ -82,13 +82,13 @@ const Login = props => {
       loginFunction = (
         <>
           <Link id="profile-link" to="/profile">
-          {t('login.profile')}
+            {t('login.profile')}
           </Link>&nbsp;
           <Link id="logout-link" to="/" onClick={onLogout}>
-          {t('login.logout')}
+            {t('login.logout')}
           </Link>
-          <Link 
-            id="admin-button" 
+          <Link
+            id="admin-button"
             to="/admin"
           >
             Admin
@@ -103,6 +103,11 @@ const Login = props => {
   return (
     <>
       <div className="login" id="login">
+        <Link className="nav-home"
+          to="/"
+        >
+          H
+        </Link>
         {loginFunction}
         <Weather />
       </div>

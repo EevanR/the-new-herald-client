@@ -19,12 +19,12 @@ const Navbar = props => {
   useEffect(() => {
     const browserLanguages = navigator.languages;
     for (let i = 0; i < browserLanguages.length; i++) {
-      if (browserLanguages[i].substring(0, 2) == "sv") {
+      if (browserLanguages[i].substring(0, 2) === "sv") {
         i18n.changeLanguage("sv");
         props.changeLanguage("sv");
         document.getElementById("sv").style.fontWeight = "900";
         break;
-      } else if (browserLanguages[i].substring(0, 2) == "en") {
+      } else if (browserLanguages[i].substring(0, 2) === "en") {
         i18n.changeLanguage("en");
         props.changeLanguage("en");
         document.getElementById("en").style.fontWeight = "900";
@@ -34,7 +34,7 @@ const Navbar = props => {
   }, []);
 
   const toggleCategory = event => {
-    if (event.target.id == "return") {
+    if (event.target.id === "return") {
       props.changeCategory(null);
     } else {
       let itemButtons = document.getElementsByClassName("item-button");
