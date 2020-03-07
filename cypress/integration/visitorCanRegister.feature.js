@@ -12,7 +12,7 @@ describe("Visitor can register", () => {
     });
 
     cy.signup();
-    cy.get("#login").should("contain", "Welcome! user@mail.com");
+    cy.get("span").should("contain", "Welcome! user@mail.com");
   });
 
   it("unsuccessfully with already taken credentials", () => {

@@ -61,7 +61,8 @@
       "cardNumber": "Kortnummer",
       "cardExpDate": "Giltighetstid",
       "submit": "Skicka",
-      "paySuccessMess": "Tack för att du prenumererar på The Reactive Herald!"
+      "paySuccessMess": "Tack för att du prenumererar på The Reactive Herald!",
+      "cancel": "Annullera"
     }
   }
 }

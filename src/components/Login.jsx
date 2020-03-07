@@ -2,7 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import auth from "../modules/auth";
 import { Link } from "react-router-dom";
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next';
+import Signup from './Signup';
+import Weather from "./Weather";
 
 const Login = props => {
 
@@ -29,6 +31,7 @@ const Login = props => {
         props.changeAuth(false);
         props.changeLoginButton(true);
         props.changeSignupButton(true);
+        props.changeAuthMessage("");
       })
       .catch(error => {
         props.changeAuthMessage(error);
@@ -39,15 +42,17 @@ const Login = props => {
 
   switch (true) {
     case props.displayLoginButton &&
-      !props.authenticated &&
-      props.displaySignupButton:
+      !props.authenticated:
       loginFunction = (
-        <Link
-          id="login-button"
-          onClick={() => props.changeLoginButton(false)}
-        >
-          {t('login.login')}
-        </Link>
+        <>
+          <Link
+            id="login-button"
+            onClick={() => props.changeLoginButton(false)}
+          >
+            {t('login.login')}
+          </Link>
+          <Signup />
+        </>
       );
       break;
     case !props.displayLoginButton && !props.authenticated:
@@ -66,22 +71,27 @@ const Login = props => {
             id="back-button"
             onClick={() => props.changeLoginButton(true)}
           >
-            {t('login.cancel')}
+            <button>
+              {t('login.cancel')}
+            </button>
           </Link>
-          {props.authMessage}
         </>
       );
       break;
     case props.authenticated:
       loginFunction = (
         <>
-          <span>{props.authMessage}</span>&nbsp;
-          <br/>
           <Link id="profile-link" to="/profile">
-          {t('login.profile')}
+            {t('login.profile')}
           </Link>&nbsp;
           <Link id="logout-link" to="/" onClick={onLogout}>
-          {t('login.logout')}
+            {t('login.logout')}
+          </Link>
+          <Link
+            id="admin-button"
+            to="/admin"
+          >
+            Admin
           </Link>
         </>
       );
@@ -90,7 +100,20 @@ const Login = props => {
       loginFunction = null;
   }
 
-  return <div id="login">{loginFunction}</div>;
+  return (
+    <>
+      <div className="login" id="login">
+        <Link className="nav-home"
+          to="/"
+        >
+          H
+        </Link>
+        {loginFunction}
+        <Weather />
+      </div>
+      <span>{props.authMessage}</span>&nbsp;
+    </>
+  );
 };
 
 const mapStateToProps = state => ({

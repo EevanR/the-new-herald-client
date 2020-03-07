@@ -12,9 +12,9 @@ describe('Registered user can purchase a subscription', () => {
       response: "fixture:login_user.json"
     });
     cy.login();
-    cy.get('#main-article-div').should('contain', 'Subscribe!')
+    cy.get('#main-article-div').should('contain', 'Subscribe to read!')
     cy.get("button")
-      .contains("Subscribe!")
+      .contains("Subscribe to read!")
       .click();
     cy.wait(1000);
 

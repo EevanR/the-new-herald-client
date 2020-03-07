@@ -52,7 +52,7 @@ const CreateArticle = () => {
         Your article was successfully submitted for review.
       </div>
     );
-  } else if (submitSuccess == false) {
+  } else if (submitSuccess === false) {
     submitMessage = (
       <div id="create-article-message" style={{ color: "red" }}>
         Your article must have title, content, category and image.
@@ -79,13 +79,13 @@ const CreateArticle = () => {
   ];
 
   useEffect(() => {
-    titleEn != "" && bodyEn != ""
+    titleEn !== "" && bodyEn !== ""
       ? setEngFormFilled(true)
       : setEngFormFilled(false);
   }, [titleEn, bodyEn]);
 
   useEffect(() => {
-    titleSv != "" && bodySv != ""
+    titleSv !== "" && bodySv !== ""
       ? setSweFormFilled(true)
       : setSweFormFilled(false);
   }, [titleSv, bodySv]);

@@ -53,10 +53,11 @@ const Signup = props => {
             <button id="submit">{t('login.signup')}</button>
           </form>
           <Link
+            className="signup-back"
             id="back-button"
             onClick={() => props.changeSignupButton(true)}
           >
-            {t('login.cancel')}
+            <button>{t('login.cancel')}</button>
           </Link>
           {props.authMessage}
         </>
