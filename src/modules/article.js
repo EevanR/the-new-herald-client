@@ -53,17 +53,14 @@ const createArticle = async (title_en, body_en, title_sv, body_sv, category, ima
 };
 
 const getAdminArticles = async (publishStatus) => {
-  debugger
   let headers = JSON.parse(localStorage.getItem("J-tockAuth-Storage"));
   try {
     let response = await axios.get(`/admin/articles`, {
       params: { published: publishStatus },
       headers: headers
     });
-    debugger
     return response.data.articles;
   } catch (error) {
-    debugger
     return error.message;
   }
 };

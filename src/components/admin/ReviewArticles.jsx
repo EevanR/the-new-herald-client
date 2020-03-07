@@ -87,7 +87,6 @@ const ReviewArticles = () => {
   }
 
   if (publishedArticles.length > 0) {
-    debugger
     publishedArticlesList = publishedArticles.map(article => {
       return (
         <ArticleRow
