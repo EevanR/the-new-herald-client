@@ -14,6 +14,8 @@ axios.defaults.baseURL = process.env.REACT_APP_BASEURL
 
 const store = configureStore()
 
+window.store = store
+
 ReactDOM.render(
   <Provider store={store}>
     <StripeProvider apiKey={process.env.REACT_APP_STRIPE_KEY}>

@@ -34,7 +34,7 @@ const Footer = () => {
   }, []);
 
   return (
-    <div class="footer">
+    <div className="footer">
       <Grid celled="internally">
         <Grid.Column width={5}>
           <div id="footer-info">
