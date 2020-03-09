@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
 import {
   getAdminArticles,
   publishArticle,
@@ -9,7 +10,7 @@ import { Header, Table } from "semantic-ui-react";
 import { useTranslation } from "react-i18next";
 import ArticleRow from "./ArticleRow";
 
-const ReviewArticles = () => {
+const ReviewArticles = props => {
   let [articles, setArticles] = useState([]);
   let [publishedArticles, setPublishedArticles] = useState([]);
   let [publishMessage, setPublishMessage] = useState("");
@@ -71,8 +72,14 @@ const ReviewArticles = () => {
     loadArticles();
     loadPublishedArticles();
   }, [publishMessage, deleteMessage]);
-
-  if (articles.length > 0) {
+  
+  if (articles === "Request failed with status code 401") {
+    props.changeAuth(false);
+    props.changeLoginButton(true);
+    props.changeSignupButton(true);
+    props.changeAuthMessage("Inactivity timeout has occured, please log in again.");
+    return "Inactivity timeout has occured, please log in again."
+  } else if (articles.length > 0) {
     articlesList = articles.map(article => {
       return (
         <ArticleRow
@@ -86,8 +93,9 @@ const ReviewArticles = () => {
     });
   }
 
-  if (publishedArticles.length > 0) {
-    debugger
+  if (publishedArticles === "Request failed with status code 401") {
+    return "Inactivity timeout has occured, please log in again."
+  } else if (publishedArticles.length > 0) {
     publishedArticlesList = publishedArticles.map(article => {
       return (
         <ArticleRow
@@ -154,4 +162,28 @@ const ReviewArticles = () => {
   );
 };
 
-export default ReviewArticles;
+const mapStateToProps = state => ({
+  authMessage: state.authMessage,
+  authenticated: state.authenticated,
+  displaySignupButton: state.displaySignupButton,
+  displayLoginButton: state.displayLoginButton
+});
+
+const mapDispatchToProps = dispatch => {
+  return {
+    changeAuth: auth => {
+      dispatch({ type: "CHANGE_AUTHENTICATED", payload: auth });
+    },
+    changeAuthMessage: message => {
+      dispatch({ type: "CHANGE_AUTHMESSAGE", payload: message });
+    },
+    changeLoginButton: value => {
+      dispatch({ type: "CHANGE_LOGINBUTTON", payload: value });
+    },
+    changeSignupButton: value => {
+      dispatch({ type: "CHANGE_SIGNUPBUTTON", payload: value });
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ReviewArticles);

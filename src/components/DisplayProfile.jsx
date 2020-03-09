@@ -62,21 +62,16 @@ const DisplayProfile = props => {
             <h4>{t("dp.email")}:</h4> <p>{props.userShowData.email}</p>
             <h4>{t("dp.role")}:</h4> <p>{props.userShowData.role}</p>
             <h4>{t("dp.subscription")}:</h4> <div>{renderSubscription()}</div>
-            <Link to="/">{t("dp.backToHerald")}</Link>
           </>
         ) : (
           <>
             <h1>{t("dp.yourProfile")}:</h1>
             <h4>{props.userShowData}</h4>
-
-            <Link to="/">{t("dp.backToHerald")}</Link>
           </>
         )
       ) : (
         <>
           <p>{t("dp.loginProfile")}</p>
-
-          <Link to="/">{t("dp.backToHerald")}</Link>
         </>
       )}
     </div>
