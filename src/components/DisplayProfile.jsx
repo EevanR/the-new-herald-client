@@ -12,7 +12,15 @@ const DisplayProfile = props => {
 
   const userDataGrab = async () => {
     if (props.userAttrs) {
-      props.changeUserShowData(await getUserData(props.userAttrs.id));
+      let response = await getUserData(props.userAttrs.id)
+      if (response === "Request failed with status code 401") {
+        props.changeAuth(false);
+        props.changeLoginButton(true);
+        props.changeSignupButton(true);
+        props.changeAuthMessage("Inactivity timeout has occured, please log in again.");
+      } else {
+      props.changeUserShowData(response);
+      }
     }
   };
 
@@ -80,13 +88,29 @@ const DisplayProfile = props => {
 
 const mapStateToProps = state => ({
   userAttrs: state.userAttrs,
-  userShowData: state.userShowData
+  userShowData: state.userShowData,
+  authMessage: state.authMessage,
+  authenticated: state.authenticated,
+  displaySignupButton: state.displaySignupButton,
+  displayLoginButton: state.displayLoginButton
 });
 
 const mapDispatchToProps = dispatch => {
   return {
     changeUserShowData: data => {
       dispatch({ type: "SET_SHOWDATA", payload: data });
+    },
+    changeAuth: auth => {
+      dispatch({ type: "CHANGE_AUTHENTICATED", payload: auth });
+    },
+    changeAuthMessage: message => {
+      dispatch({ type: "CHANGE_AUTHMESSAGE", payload: message });
+    },
+    changeLoginButton: value => {
+      dispatch({ type: "CHANGE_LOGINBUTTON", payload: value });
+    },
+    changeSignupButton: value => {
+      dispatch({ type: "CHANGE_SIGNUPBUTTON", payload: value });
     }
   };
 };

@@ -78,7 +78,6 @@ const ReviewArticles = props => {
     props.changeLoginButton(true);
     props.changeSignupButton(true);
     props.changeAuthMessage("Inactivity timeout has occured, please log in again.");
-    return "Inactivity timeout has occured, please log in again."
   } else if (articles.length > 0) {
     articlesList = articles.map(article => {
       return (
