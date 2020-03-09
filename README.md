@@ -66,6 +66,7 @@ Or create your own account.
 
 ## Updates/Improvement plans
 Further styling and functionality.
+Fix Backend Devise authentication timeout bug.
 
 ## License
 Created under the <a href="https://en.wikipedia.org/wiki/MIT_License">MIT License</a>.
