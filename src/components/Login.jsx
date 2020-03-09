@@ -106,7 +106,7 @@ const Login = props => {
         <Link className="nav-home"
           to="/"
         >
-          H
+          R
         </Link>
         {loginFunction}
         <Weather />
