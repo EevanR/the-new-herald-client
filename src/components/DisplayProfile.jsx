@@ -41,6 +41,7 @@ const DisplayProfile = props => {
             <div>{t("dp.nosub")}</div>
             <div>
               <Button
+                id="subscribe"
                 onClick={() => {
                   setShowSubscriptionForm(true);
                 }}

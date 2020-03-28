@@ -51,15 +51,16 @@ const DisplaySideArticles = props => {
 
   if (props.sideArticles && props.sideArticles.articles.length > 0) {
     articlesList = props.sideArticles.articles.map(article => {
+      debugger
       if (article.id !== props.currentArticleId) {
         return (
-          <div id={`side-article-${article.id}`} key={article.id}>
-            <a
+          <div className="side-article" id={`side-article-${article.id}`} key={article.id}>
+            <h3 id="side-article-title"
               onClick={() => props.changeCurrentArticleId(article.id)}
               style={{ color: "blue", cursor: "pointer" }}
             >
               {article.title}
-            </a>
+            </h3>
             <p>{article.body}</p>
           </div>
         );
@@ -69,7 +70,8 @@ const DisplaySideArticles = props => {
 
   return (
     <>
-      <div id="side-articles">
+      <div className="side-articles">
+        <h2>LATEST</h2>
         {!props.sideArticles ? (
           <p id="message">{t("dsa.loading")}</p>
         ) : props.sideArticles.articles.length > 0 ? (
@@ -77,26 +79,26 @@ const DisplaySideArticles = props => {
         ) : (
           <p id="error-message">{props.sideMessage}</p>
         )}
-      </div>
-      <div>
-        {(props.sideArticles && props.sideArticles.meta.prev_page != null) ? (
+        <div>
+          {(props.sideArticles && props.sideArticles.meta.prev_page != null) ? (
+            <Button basic color="black"
+            id="prev-button"
+            onClick={() => pageButtonHandler(props.currentPage - 1)}
+          >
+            <i aria-hidden="true" class="left chevron icon"></i>
+            {t("dsa.prevPageButton")}
+          </Button>
+          ) : null}
+          {(props.sideArticles && props.sideArticles.meta.next_page != null) ? (
           <Button basic color="black"
-          id="prev-button"
-          onClick={() => pageButtonHandler(props.currentPage - 1)}
-        >
-          <i aria-hidden="true" class="left chevron icon"></i>
-          {t("dsa.prevPageButton")}
-        </Button>
-        ) : null}
-        {(props.sideArticles && props.sideArticles.meta.next_page != null) ? (
-        <Button basic color="black"
-          id="next-button"
-          onClick={() => pageButtonHandler(props.currentPage + 1)}
-        >
-          {t("dsa.nextPageButton")}
-          <i aria-hidden="true" class="right chevron icon"></i>
-        </Button>
-        ) : null }
+            id="next-button"
+            onClick={() => pageButtonHandler(props.currentPage + 1)}
+          >
+            {t("dsa.nextPageButton")}
+            <i aria-hidden="true" class="right chevron icon"></i>
+          </Button>
+          ) : null }
+        </div>
       </div>
     </>
   );

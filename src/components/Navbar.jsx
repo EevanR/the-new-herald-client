@@ -48,51 +48,50 @@ const Navbar = props => {
 
 
   return (
-    <>
-      <Menu secondary pointing>
-        <Menu.Item name={t("nav.english")} id="en" className="lng-button" onClick={changeLanguage} />
-        <Menu.Item name={t("nav.swedish")} id="sv" className="lng-button" onClick={changeLanguage} />
-      </Menu>
-      <Menu secondary pointing fluid widths={7}>
-        <Menu.Item name={t("nav.all")} style={{fontWeight: "900"}} id="return" onClick={toggleCategory} />
-        <Menu.Item
-          name={t("nav.news")}
-          className="item-button"
-          id="news"
-          onClick={toggleCategory}
-        />
-        <Menu.Item
-          name={t("nav.food")}
-          className="item-button"
-          id="food"
-          onClick={toggleCategory}
-        />
-        <Menu.Item
-          name={t("nav.tech")}
-          className="item-button"
-          id="tech"
-          onClick={toggleCategory}
-        />
-        <Menu.Item
-          name={t("nav.culture")}
-          className="item-button"
-          id="culture"
-          onClick={toggleCategory}
-        />
-        <Menu.Item
-          name={t("nav.sports")}
-          className="item-button"
-          id="sports"
-          onClick={toggleCategory}
-        />
-        <Menu.Item
-          name={t("nav.misc")}
-          className="item-button"
-          id="misc"
-          onClick={toggleCategory}
-        />
-      </Menu>
-    </>
+    <div className="nav">
+      <div className="nav-bar">
+        <Menu pointing secondary fluid widths={9} style={{border: "none"}}>
+          <Menu.Item name={t("nav.english")} id="en" className="item-button" onClick={changeLanguage} />
+          <Menu.Item name={t("nav.swedish")} id="sv" className="item-button" onClick={changeLanguage} />
+          <Menu.Item
+            name={t("nav.news")}
+            className="item-button"
+            id="news"
+            onClick={toggleCategory}
+          />
+          <Menu.Item
+            name={t("nav.food")}
+            className="item-button"
+            id="food"
+            onClick={toggleCategory}
+          />
+          <Menu.Item
+            name={t("nav.tech")}
+            className="item-button"
+            id="tech"
+            onClick={toggleCategory}
+          />
+          <Menu.Item
+            name={t("nav.culture")}
+            className="item-button"
+            id="culture"
+            onClick={toggleCategory}
+          />
+          <Menu.Item
+            name={t("nav.sports")}
+            className="item-button"
+            id="sports"
+            onClick={toggleCategory}
+          />
+          <Menu.Item
+            name={t("nav.misc")}
+            className="item-button"
+            id="misc"
+            onClick={toggleCategory}
+          />
+        </Menu>
+      </div>
+    </div>
   );
 };
 

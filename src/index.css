@@ -1,40 +1,7 @@
 body {
-  margin: 0;
-  font-family: "Courier", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-    "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: brown;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-
-[id^="side-article-"] {
-  padding: 10px;
-}
-
-h1, h2, .ui.header.aligned.center, .ui {
-  font-family: "Courier";
-}
-
-.footer {
-  border-top: 4px solid rgba(113, 114, 116, 0.15);
-  padding-top: 10px;
-  padding-bottom: 10px;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-}
-
-.weather-main {
-  max-height: 50px;
-  font-size: 15px;
-  font-family: "Courier";
-  margin-left: auto;
+  font-family: "ChomskyRegular";
 }
 
 #selector {
@@ -42,46 +9,77 @@ h1, h2, .ui.header.aligned.center, .ui {
 }
 
 img {
-  max-width: 400px;
+  max-height: 350px;
   float: left;
   margin-right: 20px;
 }
 
 #header {
   font-family: "ChomskyRegular";
-  font-weight: normal;
+  font-weight: 550;
   font-style: normal;
-  text-align: center;
   font-size: 55px;
-  margin-top: 5px;
+  line-height: 140px;
+  width: 50%;
+  float: left;
+  padding-left: 1rem;
 }
 
-.ui.container {
-  background-image: url(http://www.circozoe.com/suitenew/wp-content/uploads/2017/01/simple-old-paper-3-bw-w-1024x675.jpg);
-  background-size: 100%;
-  background-position: center;
-  padding: 2%;
-  min-height: 100vh;
-  position: relative;
-  padding-bottom: 200px;
+.footer-container {
+  background-color: #2222228c;
 }
 
-#main-article-div {
-  padding-left: 2%;
+.backgroundgrey {
+  background-color: #EDEDED;
+  padding-top: 60px;
+}
+
+.footer {
+  font-family: "Nobel",Helvetica,Arial,sans-serif;
+  color: #fff;
+  line-height: 1.5em;
+  font-size: 12px;
+  text-transform: uppercase;
+  width: 1245px;
+  height: 400px;
+  margin: 0 auto;
+  padding-top: 30px;
+  padding-bottom: 50px;
+}
+
+.login {
+  font-family: "ChomskyRegular";
+  font-weight: 900;
+  margin-left: 90%;
+  line-height: 140px;
+  font-size: 16px;
+}
+
+a {
+  color: grey;
+}
+
+#signup {
+  float: right;
+}
+
+.header {
+  width: 1245px;
+  margin: 0 auto;
+  height: 140px;
+}
+
+.item-button {
+  text-transform: uppercase!important;
+  color: #5B5B5B;
+  font-size: 1em;
+  font-family: "Helvetica Narrow","Arial Narrow",Tahoma,Arial,Helvetica,sans-serif;
 }
 
 #create-article-message {
   font-size: larger;
   font-weight: bold;
   padding-bottom: 14px;
-}
-
-@font-face {
-  font-family: "chomskyregular";
-  src: url("./fonts/chomsky-webfont.woff2") format("woff2"),
-    url("./fonts/chomsky-webfont.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
 }
 
 #stripe-form {
@@ -96,27 +94,12 @@ img {
   background-color: rgba(211, 211, 211);
 }
 
-.login {
-  display: inline-flex;
-  width: 100%;
-}
-
-a#login-button {
-  float: left;
-  margin-right: 2%;
+#subscribe {
+  background-color: rgb(191, 176, 159);
 }
 
 a#admin-button {
   margin-right: 2%;
-}
-
-a#signup-button {
-  width: fit-content;
-}
-
-div#signup {
-  margin-right: 2%;
-  min-width: 85px;
 }
 
 a#logout-link {
@@ -152,11 +135,158 @@ a#back-button.signup-back {
   background-color: rgb(249, 248, 248);
 }
 
-.nav-home {
-  font-size: 35px;
-  font-weight: normal;
-  text-align: center;
-  font-family: ChomskyRegular;
-  color: rgba(0, 0, 0, 0.557);
-  margin-right: 2%;
+.nav {
+  background-color: rgba(249, 249, 249, 0.715);
+}
+
+.nav-bar {
+  width: 1245px;
+  margin: 0 auto;
+}
+
+.main {
+  width: 1245px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 400px 400px 300px;
+  grid-row-gap: 15px;
+}
+
+#seperator {
+  border-right: 1px solid lightgrey;
+  height: 90%;
+  margin-top: 5%;
+}
+
+#border-top {
+  margin-top: -20px;
+  border-top: 5px solid black;
+  padding-top: 20px;
+  position: relative;
+}
+
+.item-a {
+  padding-right: 7px;
+  grid-column-start: 1;
+  grid-column-end: span 3;
+  grid-row-start: 1;
+  grid-row-end: span 2;
+}
+
+.item-b {
+  padding-left: 5%;
+  grid-column-start: 4;
+  grid-column-end: span 1;
+  grid-row-start: 1;
+  grid-row-end: span 2;
+}
+
+.item-c {
+  padding-right: 10px;
+  grid-column-start: 1;
+  grid-column-end: span 1;
+  grid-row-start: 2;
+  grid-row-end: span 1;
+}
+
+.item-d {
+  padding-right: 10px;
+  padding-left: 10px;
+  grid-column-start: 2;
+  grid-column-end: span 1;
+  grid-row-start: 2;
+  grid-row-end: span 1;
+}
+
+.item-e {
+  margin-top: 5%;
+  padding-left: 10px;
+  grid-column-start: 3;
+  grid-column-end: span 1;
+  grid-row-start: 2;
+  grid-row-end: span 1;
+}
+
+.main-article-div {
+  font-family: "ChomskyRegular";
+}
+
+#article-title {
+  font-family: "ChomskyRegular";
+  font-size: 33px;
+  color: #3c3c3b;
+}
+
+#article-body {
+  font-size: 16px;
+  color: #706f6f;
+}
+
+h2#article-title {
+  margin: 0;
+}
+
+.side-articles {
+  color: #3c3c3b;
+  background-color: white;
+  padding: 20px;
+  height: 95%;
+  position: relative;
+}
+
+.side-articles h2 {
+  border-top: 10px double lightgrey;
+  padding-top: 10px;
+  /* font-weight: 100; */
+  font-family: "Helvetica Narrow","Arial Narrow",Tahoma,Arial,Helvetica,sans-serif;
+}
+
+.side-article {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid lightgray;
+}
+
+#side-article-title {
+  color: #3c3c3b!important;
+  font-family: "ChomskyRegular";
+}
+
+#next-button {
+  bottom: 30px;
+  right: 10px;
+  position: absolute;
+}
+
+#prev-button {
+  bottom: 30px;
+  position: absolute;
+}
+
+#border-top h4 {
+  color: #3c3c3b;
+  font-family: "ChomskyRegular";
+  font-size: 22px;
+  height: 50px;
+}
+
+#border-top img {
+  margin-top: 2%;
+  max-width: 100%;
+  height: 170px;
+  margin-bottom: 20px;
+}
+
+#border-top h5 {
+  font-size: 14px;
+  color: #706f6f;
+  font-family: "ChomskyRegular";
+  margin-bottom: 50px;
+}
+
+#border-top p {
+  text-transform: uppercase;
+  color: red;
+  font-family: "Helvetica Narrow","Arial Narrow",Tahoma,Arial,Helvetica,sans-serif;
 }

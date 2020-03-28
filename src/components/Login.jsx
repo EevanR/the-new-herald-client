@@ -4,7 +4,6 @@ import auth from "../modules/auth";
 import { Link } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import Signup from './Signup';
-import Weather from "./Weather";
 
 const Login = props => {
 
@@ -101,18 +100,9 @@ const Login = props => {
   }
 
   return (
-    <>
-      <div className="login" id="login">
-        <Link className="nav-home"
-          to="/"
-        >
-          R
-        </Link>
-        {loginFunction}
-        <Weather />
-      </div>
-      <span>{props.authMessage}</span>&nbsp;
-    </>
+    <div className="login" >
+      {loginFunction}
+    </div>
   );
 };
 

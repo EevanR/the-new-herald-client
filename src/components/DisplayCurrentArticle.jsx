@@ -29,6 +29,7 @@ const DisplayCurrentArticle = props => {
       case !props.authenticated && !showSubscriptionForm: {
         return (
           <Button
+            id="subscribe"
             onClick={() => {
               setShowSubscriptionForm(true);
             }}
@@ -40,6 +41,7 @@ const DisplayCurrentArticle = props => {
       case props.userAttrs && props.userAttrs.role === null && !showSubscriptionForm: {
         return (
           <Button
+            id="subscribe"
             onClick={() => {
               setShowSubscriptionForm(true);
             }}
@@ -69,11 +71,11 @@ const DisplayCurrentArticle = props => {
   return (
     <>
       {props.currentArticle ? (
-        <div id="main-article-div" key={props.currentArticle.id}>
-          <h2 id="article-title">{props.currentArticle.title}</h2>
+        <div className="main-article-div" key={props.currentArticle.id}>
           {props.currentArticle.image &&
             <img src={props.currentArticle.image} />
           }
+          <h2 id="article-title">{props.currentArticle.title}</h2>
           <p id="article-body">{props.currentArticle.body}</p>
           {limitedDisplayUI()}
         </div>

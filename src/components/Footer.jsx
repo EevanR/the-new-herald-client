@@ -28,50 +28,52 @@ const Footer = () => {
     }
   };
 
-  useEffect(() => {
-    loadOnThisDayEvent();
-    loadForexData();
-  }, []);
+  // useEffect(() => {
+  //   loadOnThisDayEvent();
+  //   loadForexData();
+  // }, []);
 
   return (
-    <div className="footer">
-      <Grid celled="internally">
-        <Grid.Column width={5}>
-          <div id="footer-info">
-            <h5>Information: </h5>
-            {t('footer.info1')}
-            <br />
-            {t('footer.info2')}
-            <br />
-            {t('footer.info3')}
-          </div>
-        </Grid.Column>
-        <Grid.Column width={5}>
-          <div id="footer-onthisday">
-            {thisDayEvent ? (
-              <>
-                <h5>On this day in {thisDayEvent.year}:</h5>
-                <div> {thisDayEvent.description}</div>
-              </>
-            ) : (
-              <p>{t('dsa.loading')}</p>
-            )}
-          </div>
-        </Grid.Column>
-        <Grid.Column width={5}>
-          <div id="footer-financials">
-            {forexDisplay ? (
-              <>
-                <h5>{t('footer.financeHeader')}</h5>
-                <p>Dollar / Euro: {forexDisplay[0]}</p>
-                <p>Bitcoin: {forexDisplay[1]} $</p>
-              </>
-            ) : (
-              <p>{t('dsa.loading')}</p>
-            )}
-          </div>
-        </Grid.Column>
-      </Grid>
+    <div className="footer-container">
+      <div className="footer">
+        <Grid celled="internally">
+          <Grid.Column width={5}>
+            <div id="footer-info">
+              <h5>Information: </h5>
+              {t('footer.info1')}
+              <br />
+              {t('footer.info2')}
+              <br />
+              {t('footer.info3')}
+            </div>
+          </Grid.Column>
+          <Grid.Column width={5}>
+            <div id="footer-onthisday">
+              {thisDayEvent ? (
+                <>
+                  <h5>On this day in {thisDayEvent.year}:</h5>
+                  <div> {thisDayEvent.description}</div>
+                </>
+              ) : (
+                <p>{t('dsa.loading')}</p>
+              )}
+            </div>
+          </Grid.Column>
+          <Grid.Column width={5}>
+            <div id="footer-financials">
+              {forexDisplay ? (
+                <>
+                  <h5>{t('footer.financeHeader')}</h5>
+                  <p>Dollar / Euro: {forexDisplay[0]}</p>
+                  <p>Bitcoin: {forexDisplay[1]} $</p>
+                </>
+              ) : (
+                <p>{t('dsa.loading')}</p>
+              )}
+            </div>
+          </Grid.Column>
+        </Grid>
+      </div>
     </div>
   );
 };

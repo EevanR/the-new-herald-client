@@ -1,5 +1,4 @@
 import React from "react";
-import { Container } from "semantic-ui-react";
 import Login from "./components/Login";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import DisplayNews from "./components/DisplayNews";
@@ -8,26 +7,17 @@ import AdminDashboard from "./components/admin/AdminDashboard";
 
 const App = () => {
   return (
-    <Container>
-      <BrowserRouter>
+    <BrowserRouter>
+      <div className="header">
+        <h1 id="header" type="main-header">The Reactive Herald</h1>
         <Login />
-        <h1 id="header"
-          style={{
-            fontSize: "55px",
-            fontWeight: "normal",
-            textAlign: "center",
-          }}
-          type="main-header"
-        >
-          The Reactive Herald
-        </h1>
-        <Switch>
-          <Route exact path="/" component={DisplayNews} />
-          <Route exact path="/admin" component={AdminDashboard} />
-          <Route exact path="/profile" component={DisplayProfile} />
-        </Switch>
-      </BrowserRouter>
-    </Container>
+      </div>
+      <Switch>
+        <Route exact path="/" component={DisplayNews} />
+        <Route exact path="/admin" component={AdminDashboard} />
+        <Route exact path="/profile" component={DisplayProfile} />
+      </Switch>
+    </BrowserRouter>
   );
 };
 
