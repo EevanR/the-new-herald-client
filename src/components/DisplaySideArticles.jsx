@@ -51,7 +51,6 @@ const DisplaySideArticles = props => {
 
   if (props.sideArticles && props.sideArticles.articles.length > 0) {
     articlesList = props.sideArticles.articles.map(article => {
-      debugger
       if (article.id !== props.currentArticleId) {
         return (
           <div className="side-article" id={`side-article-${article.id}`} key={article.id}>

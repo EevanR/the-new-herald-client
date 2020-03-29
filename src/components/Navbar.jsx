@@ -1,19 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Menu } from "semantic-ui-react";
 import { useTranslation } from "react-i18next";
 import { connect } from "react-redux";
 
 const Navbar = props => {
+  const [activeItem, setActiveItem] = useState("")
   const { t, i18n } = useTranslation("common");
 
   const changeLanguage = event => {
-    let languageButtons = document.getElementsByClassName("lng-button");
-    Array.from(languageButtons).forEach(
-      button => (document.getElementById(button.id).style.fontWeight = "300")
-    );
+    setActiveItem(event.target.id)
     i18n.changeLanguage(event.target.id);
     props.changeLanguage(event.target.id);
-    document.getElementById(event.target.id).style.fontWeight = "900";
   };
 
   useEffect(() => {
@@ -22,12 +19,12 @@ const Navbar = props => {
       if (browserLanguages[i].substring(0, 2) === "sv") {
         i18n.changeLanguage("sv");
         props.changeLanguage("sv");
-        document.getElementById("sv").style.fontWeight = "900";
+        setActiveItem("sv")
         break;
       } else if (browserLanguages[i].substring(0, 2) === "en") {
         i18n.changeLanguage("en");
         props.changeLanguage("en");
-        document.getElementById("en").style.fontWeight = "900";
+        setActiveItem("en")
         break;
       }
     }
@@ -46,13 +43,24 @@ const Navbar = props => {
     }
   };
 
-
   return (
     <div className="nav">
       <div className="nav-bar">
         <Menu pointing secondary fluid widths={9} style={{border: "none"}}>
-          <Menu.Item name={t("nav.english")} id="en" className="item-button" onClick={changeLanguage} />
-          <Menu.Item name={t("nav.swedish")} id="sv" className="item-button" onClick={changeLanguage} />
+          <Menu.Item 
+            name={t("nav.english")} 
+            id="en" className="item-button" 
+            onClick={changeLanguage} 
+            active={activeItem === 'en'}
+            />
+          <Menu.Item 
+            style={{color: "goldenrod"}}
+            name={t("nav.swedish")} 
+            id="sv" 
+            className="item-button" 
+            onClick={changeLanguage} 
+            active={activeItem === 'sv'}
+            />
           <Menu.Item
             name={t("nav.news")}
             className="item-button"
