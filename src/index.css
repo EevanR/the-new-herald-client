@@ -209,6 +209,15 @@ a#back-button.signup-back {
   grid-row-end: span 1;
 }
 
+.item-f {
+  padding-left: 5%;
+  padding-bottom: 5%;
+  grid-column-start: 4;
+  grid-column-end: span 1;
+  grid-row-start: 3;
+  grid-row-end: span 1;
+}
+
 .main-article-div {
   font-family: "ChomskyRegular";
 }
@@ -239,7 +248,6 @@ h2#article-title {
 .side-articles h2 {
   border-top: 10px double lightgrey;
   padding-top: 10px;
-  /* font-weight: 100; */
   font-family: "Helvetica Narrow","Arial Narrow",Tahoma,Arial,Helvetica,sans-serif;
 }
 

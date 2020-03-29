@@ -8,6 +8,7 @@ import { StripeProvider } from 'react-stripe-elements'
 import configureStore from './state/store/configureStore'
 import 'semantic-ui-css/semantic.min.css'
 import './index.css';
+import './weather.css';
 import "./i18n"
 
 axios.defaults.baseURL = process.env.REACT_APP_BASEURL

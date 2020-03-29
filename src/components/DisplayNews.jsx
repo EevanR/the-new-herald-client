@@ -3,6 +3,7 @@ import Navbar from "./Navbar"
 import DisplayCurrentArticle from "./DisplayCurrentArticle"
 import DisplaySideArticles from "./DisplaySideArticles"
 import Footer from "./Footer";
+import Weather from "./Weather"
 import { connect } from "react-redux";
 
 const DisplayNews = props => {
@@ -52,6 +53,13 @@ const DisplayNews = props => {
                     <p>{props.sideArticles.articles[2].category}</p>
                   </>
                 )}
+              </div>
+            </div>
+            <div className="item-f">
+              <div id="weather">
+                <>
+                  <Weather />
+                </>
               </div>
             </div>
         </div>
