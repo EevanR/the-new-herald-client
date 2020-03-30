@@ -33,6 +33,11 @@ body {
   padding-top: 60px;
 }
 
+.whitebackground {
+  background-color: white;
+  padding-top: 60px;
+}
+
 .footer {
   font-family: "Nobel",Helvetica,Arial,sans-serif;
   color: #fff;
@@ -150,7 +155,16 @@ a#back-button.signup-back {
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 400px 400px 300px 300px 600px auto;
+  grid-template-rows: 400px 400px 300px 300px;
+  grid-row-gap: 15px;
+}
+
+.main2 {
+  width: 1245px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 600px auto;
   grid-row-gap: 15px;
 }
 
@@ -223,20 +237,20 @@ a#back-button.signup-back {
   grid-column-start: 4;
   grid-column-end: span 1;
   grid-row-start: 4;
-  grid-row-end: span 2;
+  grid-row-end: span 1;
 }
 
 .item-h {
   grid-column-start: 1;
   grid-column-end: span 3;
-  grid-row-start: 5;
+  grid-row-start: 1;
   grid-row-end: span 1;
 }
 
 .item-i {
   grid-column-start: 1;
   grid-column-end: span 3;
-  grid-row-start: 6;
+  grid-row-start: 2;
   font-family: "ChomskyRegular";
   padding-bottom: 5%;
 }
@@ -282,6 +296,7 @@ h2#article-title {
   border-top: 10px double lightgrey;
   padding-top: 10px;
   font-family: "Helvetica Narrow","Arial Narrow",Tahoma,Arial,Helvetica,sans-serif;
+  font-weight: 100;
 }
 
 .side-article {
@@ -338,6 +353,10 @@ h2#article-title {
   height: 540px;
 }
 
+#border-top h2 {
+  font-family: "Helvetica Narrow","Arial Narrow",Tahoma,Arial,Helvetica,sans-serif;
+  font-weight: 100;
+}
 
 .free-read h1 {
   font-family: "ChomskyRegular"
