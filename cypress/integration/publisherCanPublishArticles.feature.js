@@ -25,6 +25,7 @@ describe("Editor can", () => {
     });
     cy.adminLogin();
   });
+
   it("see a list of unpublished articles", () => {
     cy.get("#review-article-1").should("contain", "Test1");
   });
@@ -63,5 +64,15 @@ describe("Editor can", () => {
       "contain",
       "Undid the publishing of article 1"
     );
+  });
+
+  it("can set 1 published article to free", () => {
+    cy.route({
+      method: "PUT",
+      url:
+        "http://localhost:3000/api/v1/admin/articles/1?[article][free]=true",
+      response: "OK"
+    });
+    
   });
 });

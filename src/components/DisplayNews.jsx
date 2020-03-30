@@ -23,7 +23,7 @@ const DisplayNews = props => {
                 {props.sideArticles !== null && (
                   <>
                     <h4>{props.sideArticles.articles[0].title}</h4>
-                    <img src={props.sideArticles.articles[0].image} />
+                    <img id="featured-img" src={props.sideArticles.articles[0].image} />
                     <h5>{props.sideArticles.articles[0].body}</h5>
                     <p>{props.sideArticles.articles[0].category}</p>
                   </>
@@ -36,7 +36,7 @@ const DisplayNews = props => {
                   
                   <>
                     <h4>{props.sideArticles.articles[1].title}</h4>
-                    <img src={props.sideArticles.articles[1].image} />
+                    <img id="featured-img" src={props.sideArticles.articles[1].image} />
                     <h5>{props.sideArticles.articles[1].body}</h5>
                     <p>{props.sideArticles.articles[1].category}</p>
                   </>
@@ -48,7 +48,7 @@ const DisplayNews = props => {
               {props.sideArticles !== null && (
                   <>
                     <h4>{props.sideArticles.articles[2].title}</h4>
-                    <img src={props.sideArticles.articles[2].image} />
+                    <img id="featured-img" src={props.sideArticles.articles[2].image} />
                     <h5>{props.sideArticles.articles[2].body}</h5>
                     <p>{props.sideArticles.articles[2].category}</p>
                   </>
@@ -61,6 +61,30 @@ const DisplayNews = props => {
                   <Weather />
                 </>
               </div>
+            </div>
+            <div className="item-g">
+              <div className="advertising">
+                ADVERTISING
+              </div>
+            </div>
+            <div className="item-h">
+              <div id="border-top">
+                {props.sideArticles !== null && (
+                  <>
+                    <h1>Free Read</h1>
+                    <img className="free-read-img" src={props.sideArticles.articles[3].image} />
+                  </>
+                )}
+              </div>
+            </div>
+            <div className="item-i">
+              {props.sideArticles !== null && (
+                <div className="free-read">
+                  <h1>{props.sideArticles.articles[3].title}</h1>
+                  <p>{props.sideArticles.articles[3].body}</p>
+                  <p id="cat" >{props.sideArticles.articles[3].category}</p>
+                </div>
+              )}
             </div>
         </div>
       </div>
