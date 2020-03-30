@@ -4,7 +4,8 @@ import {
   getAdminArticles,
   publishArticle,
   undoPublishArticle,
-  deleteArticle
+  deleteArticle,
+  setFreeStatus
 } from "../../modules/article";
 import { Header, Table } from "semantic-ui-react";
 import { useTranslation } from "react-i18next";
@@ -63,6 +64,16 @@ const ReviewArticles = props => {
     }
   };
 
+  const onFreeHandler = async (id, status) => {
+    let response = await setFreeStatus(id, status);
+    if (response === "OK") {
+      let message = `Article ${id} free status changed`;
+      setPublishMessage(message);
+    } else {
+      setPublishMessage(response);
+    }
+  }
+
   useEffect(() => {
     loadArticles();
     loadPublishedArticles();
@@ -102,7 +113,9 @@ const ReviewArticles = props => {
           article={article}
           publishHandler={onUndoPublishHandler}
           deleteHandler={onDeleteHandler}
+          freeHandler={onFreeHandler}
           pubStatus={true}
+          freeStatus={article.free}
         />
       );
     });
@@ -150,6 +163,7 @@ const ReviewArticles = props => {
               <Table.HeaderCell>Category</Table.HeaderCell>
               <Table.HeaderCell>Location</Table.HeaderCell>
               <Table.HeaderCell>Author</Table.HeaderCell>
+              <Table.HeaderCell>Free</Table.HeaderCell>
               <Table.HeaderCell>Publish</Table.HeaderCell>
               <Table.HeaderCell>Delete</Table.HeaderCell>
             </Table.Row>

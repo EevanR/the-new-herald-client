@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Table, Checkbox, Icon, Confirm } from "semantic-ui-react";
 
-const ArticleRow = ({ article, publishHandler, deleteHandler, pubStatus }) => {
+const ArticleRow = ({ article, publishHandler, deleteHandler, pubStatus, freeStatus, freeHandler }) => {
   let [showConfirm, setShowConfirm] = useState(false);
   let [showBody, setShowBody] = useState(false);
 
@@ -31,6 +31,15 @@ const ArticleRow = ({ article, publishHandler, deleteHandler, pubStatus }) => {
     showBody == false ? setShowBody(true) : setShowBody(false);
   };
 
+  // const checkFree = async id => {
+  //   let response = await getFreeStatus(id);
+  //   if (response === )  {
+      
+  //   } else {
+      
+  //   } 
+  // }
+
   useEffect(() => {
     renderBody();
   }, [showBody]);
@@ -51,8 +60,18 @@ const ArticleRow = ({ article, publishHandler, deleteHandler, pubStatus }) => {
         </Table.Cell>
         <Table.Cell>{article.journalist}</Table.Cell>
         <Table.Cell
+          id={`${article.id}`}
+          textAlign="left"
+        >
+          <Checkbox
+            toggle
+            checked={freeStatus}
+            onClick={() => freeHandler(article.id, freeStatus)}
+          />
+        </Table.Cell>
+        <Table.Cell
           id={`publish-article-toggle-${article.id}`}
-          textAlign="center"
+          textAlign="left"
         >
           <Checkbox
             toggle
@@ -60,7 +79,7 @@ const ArticleRow = ({ article, publishHandler, deleteHandler, pubStatus }) => {
             onClick={() => publishHandler(article.id)}
           />
         </Table.Cell>
-        <Table.Cell textAlign="center">
+        <Table.Cell textAlign="left">
           <Icon
             name="delete"
             color="red"

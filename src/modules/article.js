@@ -99,6 +99,39 @@ const undoPublishArticle = async id => {
   }
 };
 
+const setFreeStatus = async (id, status) => {
+  let headers = JSON.parse(localStorage.getItem("J-tockAuth-Storage"));
+  if (status === false) {
+    try {
+      let response = await axios({
+        url: `/admin/articles/${id}`,
+        headers: headers,
+        method: "PUT",
+        params: {
+          "[article][free]": true
+        }
+      });
+      return response.statusText;
+    } catch (error) {
+      return error.message;
+    }
+  } else {
+    try {
+      let response = await axios({
+        url: `/admin/articles/${id}`,
+        headers: headers,
+        method: "PUT",
+        params: {
+          "[article][free]": false
+        }
+      });
+      return response.statusText;
+    } catch (error) {
+      return error.message;
+    }
+  }
+}
+
 const deleteArticle = async id => {
   let headers = JSON.parse(localStorage.getItem("J-tockAuth-Storage"));
   try {
@@ -120,5 +153,6 @@ export {
   getAdminArticles,
   publishArticle,
   undoPublishArticle,
-  deleteArticle
+  deleteArticle,
+  setFreeStatus
 };
