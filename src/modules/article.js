@@ -146,6 +146,21 @@ const deleteArticle = async id => {
   }
 };
 
+const getFreeArticle = async () => {
+  try {
+    let response = await axios({
+      url: "/articles",
+      method: "GET",
+      params: {
+        free: true
+      }
+    });
+    return response.data
+  } catch (error) {
+    return error.message;
+  }
+}
+
 export {
   getCurrentArticle,
   getArticles,
@@ -154,5 +169,6 @@ export {
   publishArticle,
   undoPublishArticle,
   deleteArticle,
-  setFreeStatus
+  setFreeStatus,
+  getFreeArticle
 };

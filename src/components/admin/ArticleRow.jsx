@@ -31,15 +31,6 @@ const ArticleRow = ({ article, publishHandler, deleteHandler, pubStatus, freeSta
     showBody == false ? setShowBody(true) : setShowBody(false);
   };
 
-  // const checkFree = async id => {
-  //   let response = await getFreeStatus(id);
-  //   if (response === )  {
-      
-  //   } else {
-      
-  //   } 
-  // }
-
   useEffect(() => {
     renderBody();
   }, [showBody]);

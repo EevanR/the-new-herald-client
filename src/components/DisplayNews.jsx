@@ -1,12 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar"
 import DisplayCurrentArticle from "./DisplayCurrentArticle"
 import DisplaySideArticles from "./DisplaySideArticles"
 import Footer from "./Footer";
 import Weather from "./Weather"
 import { connect } from "react-redux";
+import { getFreeArticle } from "../modules/article";
 
 const DisplayNews = props => {
+  const [freeContent, setFreeContent] = useState(null)
+
+  const loadFreeArticle = async () => {
+    let response = await getFreeArticle();
+    setFreeContent(response)
+  }
+
+  useEffect(() => {
+    loadFreeArticle();
+  }, []);
+  
+
   return (
     <>
       <Navbar />
@@ -72,7 +85,7 @@ const DisplayNews = props => {
                 {props.sideArticles !== null && (
                   <>
                     <h1>Free Read</h1>
-                    <img className="free-read-img" src={props.sideArticles.articles[3].image} />
+                    <img className="free-read-img" src={freeContent[1]} />
                   </>
                 )}
               </div>
@@ -80,9 +93,9 @@ const DisplayNews = props => {
             <div className="item-i">
               {props.sideArticles !== null && (
                 <div className="free-read">
-                  <h1>{props.sideArticles.articles[3].title}</h1>
-                  <p>{props.sideArticles.articles[3].body}</p>
-                  <p id="cat" >{props.sideArticles.articles[3].category}</p>
+                  <h1>{freeContent[0].title}</h1>
+                  <p>{freeContent[0].body}</p>
+                  <p id="cat" >{freeContent[0].category}</p>
                 </div>
               )}
             </div>

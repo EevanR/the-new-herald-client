@@ -66,26 +66,26 @@ const Weather = () => {
     switch (true) {
       case array.includes("clear"): {
         return (
-          <div class="icon sunny">
-            <div class="sun">
-              <div class="rays"></div>
+          <div className="icon sunny">
+            <div className="sun">
+              <div className="rays"></div>
             </div>
           </div>
         )
       }
       case array.includes("rain"): {
         return (
-          <div class="icon rainy">
-            <div class="cloud"></div>
-            <div class="rain"></div>
+          <div className="icon rainy">
+            <div className="cloud"></div>
+            <div className="rain"></div>
           </div>
         )
       }
       default: {
         return (
-          <div class="icon cloudy">
-            <div class="cloud"></div>
-            <div class="cloud"></div>
+          <div className="icon cloudy">
+            <div className="cloud"></div>
+            <div className="cloud"></div>
           </div>
         )
       }
