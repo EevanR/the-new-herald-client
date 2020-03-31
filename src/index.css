@@ -297,7 +297,7 @@ h2#article-title {
   color: #3c3c3b;
   background-color: white;
   padding: 20px;
-  height: 95%;
+  height: 96%;
   position: relative;
 }
 
@@ -309,8 +309,8 @@ h2#article-title {
 }
 
 .side-article {
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   border-bottom: 1px solid lightgray;
 }
 
@@ -418,6 +418,11 @@ h2#article-title {
   min-height: 35%;
   max-height: 30%;
   padding-left: 3%;
+  color: rgb(33, 33, 33);
+}
+
+.underline:hover {
+  text-decoration: underline;
 }
 
 .car-head {

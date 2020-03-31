@@ -26,9 +26,11 @@ const Headlines = () => {
         <>
           <div className="carousel-item">
             <img src={article.urlToImage} alt="Image"/>
-            <div className="overlay">
-              <h3>{article.title}</h3>
-            </div>
+            <a href={article.url} target="_blank">
+              <div className="overlay">
+                <h3 className="underline">{article.title}</h3>
+              </div>
+            </a>
           </div>
         </>
       )
@@ -51,9 +53,7 @@ const Headlines = () => {
               numberOfCards={2.5}
               gutter={5}
               leftChevron={
-                <Button circular icon='angle left'>
-                  {/* <Icon circular name='angle left' /> */}
-                </Button>
+                <Button circular icon='angle left' />
               }
               rightChevron={
                 <Button circular icon='angle right'/>
