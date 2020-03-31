@@ -13,6 +13,7 @@ const DisplaySideArticles = props => {
       props.currentPage,
       props.category
     );
+    debugger
     props.changeSideArticlesData(articlesData);
     props.changeCurrentPage(articlesData.meta.current_page);
   };

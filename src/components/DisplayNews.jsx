@@ -4,6 +4,7 @@ import DisplayCurrentArticle from "./DisplayCurrentArticle"
 import DisplaySideArticles from "./DisplaySideArticles"
 import Footer from "./Footer";
 import Weather from "./Weather"
+import Headlines from "./Headlines"
 import { connect } from "react-redux";
 import { getFreeArticle } from "../modules/article";
 
@@ -18,7 +19,6 @@ const DisplayNews = props => {
   useEffect(() => {
     loadFreeArticle();
   }, []);
-
 
   return (
     <>
@@ -38,7 +38,10 @@ const DisplayNews = props => {
                   <h4>{props.sideArticles.articles[0].title}</h4>
                   <img id="featured-img" src={props.sideArticles.articles[0].image} />
                   <h5>{props.sideArticles.articles[0].body}</h5>
-                  <p>{props.sideArticles.articles[0].category}</p>
+                  <p id="cat-date" >
+                    <span id="red">{props.sideArticles.articles[0].category} </span> 
+                    {props.sideArticles.articles[0].created_at.substring(0, props.sideArticles.articles[0].created_at.lastIndexOf("T"))}
+                  </p>
                 </>
               )}
             </div>
@@ -46,12 +49,14 @@ const DisplayNews = props => {
           <div id="seperator" className="item-d">
             <div id="border-top">
               {props.sideArticles !== null && (
-
                 <>
                   <h4>{props.sideArticles.articles[1].title}</h4>
                   <img id="featured-img" src={props.sideArticles.articles[1].image} />
                   <h5>{props.sideArticles.articles[1].body}</h5>
-                  <p>{props.sideArticles.articles[1].category}</p>
+                  <p id="cat-date" >
+                    <span id="red">{props.sideArticles.articles[1].category} </span> 
+                    {props.sideArticles.articles[1].created_at.substring(0, props.sideArticles.articles[1].created_at.lastIndexOf("T"))}
+                  </p>
                 </>
               )}
             </div>
@@ -63,7 +68,10 @@ const DisplayNews = props => {
                   <h4>{props.sideArticles.articles[2].title}</h4>
                   <img id="featured-img" src={props.sideArticles.articles[2].image} />
                   <h5>{props.sideArticles.articles[2].body}</h5>
-                  <p>{props.sideArticles.articles[2].category}</p>
+                  <p id="cat-date" >
+                    <span id="red">{props.sideArticles.articles[2].category} </span> 
+                    {props.sideArticles.articles[2].created_at.substring(0, props.sideArticles.articles[2].created_at.lastIndexOf("T"))}
+                  </p>
                 </>
               )}
             </div>
@@ -79,6 +87,11 @@ const DisplayNews = props => {
             <div className="advertising">
               ADVERTISING
               </div>
+          </div>
+          <div className="item-j">
+            <div className="headlines-main">
+              <Headlines />
+            </div>
           </div>
         </div>
       </div>
@@ -99,7 +112,9 @@ const DisplayNews = props => {
               <div className="free-read">
                 <h1>{freeContent[0].title}</h1>
                 <p>{freeContent[0].body}</p>
-                <p id="cat" >{freeContent[0].category}</p>
+                <p id="cat-date" >
+                  <span id="red">{freeContent[0].category}</span> {freeContent[0].created_at.substring(0, freeContent[0].created_at.lastIndexOf("T"))}
+                </p>
               </div>
             )}
           </div>
