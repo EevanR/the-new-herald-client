@@ -101,7 +101,7 @@ const DisplayNews = props => {
           </div>
           <div className="item-j">
             <div className="headlines-main">
-              <Headlines />
+              {/* <Headlines /> */}
             </div>
           </div>
         </div>

@@ -28,10 +28,10 @@ const Footer = () => {
     }
   };
 
-  // useEffect(() => {
-  //   loadOnThisDayEvent();
-  //   loadForexData();
-  // }, []);
+  useEffect(() => {
+    loadOnThisDayEvent();
+    loadForexData();
+  }, []);
 
   return (
     <div className="footer-container">
@@ -47,7 +47,7 @@ const Footer = () => {
               {t('footer.info3')}
             </div>
           </Grid.Column>
-          <Grid.Column width={5}>
+          <Grid.Column width={6}>
             <div id="footer-onthisday">
               {thisDayEvent ? (
                 <>
