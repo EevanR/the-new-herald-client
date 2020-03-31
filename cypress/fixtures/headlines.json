@@ -1,6 +1,6 @@
 {
   "status": "ok",
-  "totalResults": 10,
+  "totalResults": 9,
   "articles": [
       {
           "source": {
@@ -118,19 +118,6 @@
           "urlToImage": "https://ichef.bbci.co.uk/news/1024/branded_news/14D8B/production/_111478358_8195ab74-dc3b-4261-8eb4-2b1a59a8227d.jpg",
           "publishedAt": "2020-03-30T18:22:51Z",
           "content": "Image copyrightAFPImage caption\r\n Senator Richard Burr has denied basing his sales on privileged information\r\nThe US justice department is investigating alleged insider trading by lawmakers who sold stocks just before the coronavirus pandemic sparked a major … [+2843 chars]"
-      },
-      {
-          "source": {
-              "id": "bbc-news",
-              "name": "BBC News"
-          },
-          "author": "BBC News",
-          "title": "Amazon workers threaten strikes over virus gear",
-          "description": "Some US workers at Amazon and Instacart are threatening to strike over inadequate coronavirus protections.",
-          "url": "http://www.bbc.co.uk/news/business-52096273",
-          "urlToImage": "https://ichef.bbci.co.uk/news/1024/branded_news/8306/production/_111324533__102564447_img_2534.jpg",
-          "publishedAt": "2020-03-30T16:52:51Z",
-          "content": "Image caption\r\n Amazon has seen a spike in demand for health and personal care products amid the coronavirus pandemic\r\nPressure is building on Amazon and other delivery firms to improve protections for workers worried about getting infected with coronavirus.\r… [+3206 chars]"
       }
   ]
 }

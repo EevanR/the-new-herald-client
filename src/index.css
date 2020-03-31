@@ -225,8 +225,6 @@ a#back-button.signup-back {
 }
 
 .item-f {
-  padding-left: 5%;
-  padding-bottom: 5%;
   grid-column-start: 4;
   grid-column-end: span 1;
   grid-row-start: 3;
@@ -261,6 +259,9 @@ a#back-button.signup-back {
   grid-column-end: span 3;
   grid-row-start: 3;
   grid-row-end: span 1;
+  background-color: grey;
+  width: 110%;
+  margin-left: -100px;
 }
 
 .advertising {
@@ -347,7 +348,7 @@ h2#article-title {
   font-size: 14px;
   color: #706f6f;
   font-family: "ChomskyRegular";
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 #border-top p {
@@ -381,4 +382,65 @@ h2#article-title {
 
 #red {
   color: red;
+}
+
+.headlines-main {
+  background-color: grey;
+}
+
+.carousel {
+  padding-left: 100px;
+  padding-right: 1px;
+}
+
+.carousel-item h3 {
+  font-family: "ChomskyRegular";
+}
+
+.carousel-item {
+  font-family: "ChomskyRegular";
+  height: 230px;
+  background-color: #EEE;
+  overflow: hidden;
+}
+
+.carousel-item img {
+  height: 100%;
+  width: 100%;
+}
+
+.overlay  {
+  position: absolute;
+  top: 40%;
+  background-color: rgba(219, 223, 219, 0.811);
+  width: 300px;
+  padding: 1%;
+  min-height: 35%;
+  max-height: 30%;
+  padding-left: 3%;
+}
+
+.car-head {
+  color: white;
+  padding-top: 10px;
+  padding-left: 100px;
+  font-family: "Helvetica Narrow","Arial Narrow",Tahoma,Arial,Helvetica,sans-serif;
+  font-weight: 100;
+}
+
+button {
+  background: transparent;
+}
+
+.car-icon {
+  font-size: 36px;
+}
+
+.ui.circular.button {
+  color: black;
+  border-radius: 10em;
+  height: 40px;
+  font-size: 25px;
+  padding: 5px;
+  background-color: white;
 }

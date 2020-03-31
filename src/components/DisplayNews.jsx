@@ -19,7 +19,7 @@ const DisplayNews = props => {
   useEffect(() => {
     loadFreeArticle();
   }, []);
-
+  
   return (
     <>
       <Navbar />
@@ -99,7 +99,7 @@ const DisplayNews = props => {
         <div className="main2">
           <div className="item-h">
             <div id="border-top">
-              {props.sideArticles !== null && (
+              {freeContent !== null && (
                 <>
                   <h2>FREE READ</h2>
                   <img className="free-read-img" src={freeContent[1]} />
@@ -108,7 +108,7 @@ const DisplayNews = props => {
             </div>
           </div>
           <div className="item-i">
-            {props.sideArticles !== null && (
+            {freeContent !== null && (
               <div className="free-read">
                 <h1>{freeContent[0].title}</h1>
                 <p>{freeContent[0].body}</p>

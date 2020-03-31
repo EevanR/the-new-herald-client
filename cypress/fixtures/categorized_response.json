@@ -2,27 +2,44 @@
   "articles": [
     {
       "id": 1,
-      "title": "Title cat 4:1",
-      "body": "TestBody1",
-      "category": "4"
+      "title": "Super Yacht Stuff",
+      "body": "There are many variations of passages of Lorem Ipsum available, but the ...",
+      "image": "https://reactive-herald-development.s3.eu-north-1.amazonaws.com/gqm3v0oiwxuug9u4j653s3q038ev?response-content-disposition=inline%3B%20filename%3D%22base.octet-stream%22%3B%20filename%2A%3DUTF-8%27%27base.octet-stream&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIKNDI6ICZXWA675Q%2F20200331%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Date=20200331T074947Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=cfb2c92ed2e9c2b32ed415b37951d6aa5f709013e410935071f6b0935ebe23dc",
+      "category": "culture",
+      "location": "All",
+      "journalist": "user@mail.com",
+      "free": false,
+      "created_at": "2020-03-28T19:48:46.178Z"
     },
     {
       "id": 2,
       "title": "Title cat 4:2",
       "body": "TestBody2",
-      "category": "4"
+      "category": "4",
+      "location": "All",
+      "journalist": "user@mail.com",
+      "free": false,
+      "created_at": "2020-03-28T19:48:46.178Z"
     },
     {
       "id": 3,
       "title": "Title cat 4:3",
       "body": "TestBody3",
-      "category": "4"
+      "category": "4",
+      "location": "All",
+      "journalist": "user@mail.com",
+      "free": false,
+      "created_at": "2020-03-28T19:48:46.178Z"
     },
     {
       "id": 4,
       "title": "Title cat 4:4",
       "body": "TestBody4",
-      "category": "4"
+      "category": "4",
+      "location": "All",
+      "journalist": "user@mail.com",
+      "free": false,
+      "created_at": "2020-03-28T19:48:46.178Z"
     }
   ],
   "meta": {
@@ -30,6 +47,6 @@
     "next_page": 2,
     "prev_page": null,
     "total_pages": 2,
-    "total_count": 5
+    "total_count": 4
   }
 }
