@@ -23,7 +23,13 @@ const AdminDashboard = props => {
       renderDashboard = null;
   }
 
-  return <>{renderDashboard}</>;
+  return (
+    <div className="backgroundgrey">
+      <div className="admin">
+        {renderDashboard}
+      </div>
+    </div>
+  );
 };
 
 const mapStateToProps = state => {

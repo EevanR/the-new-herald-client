@@ -23,6 +23,7 @@ body {
   line-height: 140px;
   width: 50%;
   float: left;
+  color: black;
 }
 
 .footer-container {
@@ -284,6 +285,55 @@ a#back-button.signup-back {
 
 .main-article-div {
   font-family: "ChomskyRegular";
+  display: grid;
+  grid-template-columns: 630px 1fr;
+  grid-template-rows: 400px;
+}
+
+.main-article-auth {
+  font-family: "ChomskyRegular";
+  height: 800px;
+  overflow: scroll;
+  overflow-x: hidden;
+  padding-right: 5px;
+}
+
+.main-article-auth img {
+  height: 350px;
+  width: 620px;
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.current-text {
+  height: 100%;
+  grid-column-start: 2;
+  grid-column-end: span 1;
+  grid-row-start: 1;
+  grid-row-end: span 1;
+}
+
+.text {
+  height: 300px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+#selector {
+  height: 15px;
+}
+
+.ui.form .four.wide.field {
+  height: 60px;
+}
+
+.ui[class*="right labeled"].icon.button {
+  height: 40px;
+}
+
+#article-title {
+  margin-bottom: 20px!important;
 }
 
 #article-title {
@@ -456,4 +506,60 @@ button {
   font-size: 25px;
   padding: 5px;
   background-color: white;
+}
+
+.profile {
+  width: 1245px;
+  margin: 0 auto;
+  padding-bottom: 100px;
+  font-family: "Helvetica Narrow","Arial Narrow",Tahoma,Arial,Helvetica,sans-serif;
+}
+
+.profile h1, h4{
+  font-family: "ChomskyRegular";
+}
+
+.admin {
+  width: 1245px;
+  margin: 0 auto;
+  padding-bottom: 100px;
+}
+
+#publish-header {
+  font-family: "ChomskyRegular";
+  text-align: left;
+  height: 50px;
+}
+
+#message {
+  margin-top: 0;
+  height: 50px;
+}
+
+.comments-div h2 {
+  font-family: "Helvetica Narrow","Arial Narrow",Tahoma,Arial,Helvetica,sans-serif;
+  font-weight: 200;
+}
+
+.comment-text {
+  width: 800px;
+}
+
+.comment {
+  /* border-bottom: 1px solid grey; */
+  padding-bottom: 10px;
+  margin-bottom: 25px;
+}
+
+#comment-role {
+  font-style: italic;
+  font-weight: 100;
+  color: grey;
+  margin-left: 20px;
+}
+
+#comment-date {
+  font-style: italic;
+  font-weight: 100;
+  color: grey;
 }
