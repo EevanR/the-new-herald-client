@@ -9,6 +9,7 @@ const Comments = props => {
   const [comments, setComments] = useState(null)
   const [showMenu, setShowMenu] = useState(false)
   const [commentMenuId, setCommentMenuId] = useState(false)
+  const [user, setUser] = useState("")
 
   const submitCommentHandler = async e => {
     e.preventDefault();
@@ -18,15 +19,17 @@ const Comments = props => {
       setBody("")
       loadComments(props.currentArticleId)
     } else {
-      setMessage(response.data.error[0])
+      setMessage(response.data.error)
     }
   }
 
   const loadComments = async id => {
     let response = await getComments(id);
-    if (response.status === 200) {
+    if (response.status === 200 && response.data.length > 0 ) {
       let array = response.data
       setComments(array.reverse())
+    } else if (response.status === 200) {
+      setComments(response.data)
     }
   }
 
@@ -42,12 +45,19 @@ const Comments = props => {
       setShowMenu(false)
       loadComments(props.currentArticleId)
     } else {
-      alert("Comment could not be deleted at this moment")
+      alert(response.data.error)
     }
   }
 
   const editComment = () => {
 
+  }
+
+  const userInfo = () => {
+    if (localStorage.getItem("J-tockAuth-Storage")) {
+      let headers = JSON.parse(localStorage.getItem("J-tockAuth-Storage"));
+      setUser(headers.uid)
+    }
   }
 
   let commentsList;
@@ -59,7 +69,9 @@ const Comments = props => {
         <div key={comment.id} className="comment">
           <h5>{comment.email}
             <span id="comment-role">{comment.role}</span>
-            <div onClick={() => openCommentMenu(comment.id) } className="elipse"><Icon name='ellipsis vertical' /></div>
+            { user === comment.email && (
+              <div onClick={() => openCommentMenu(comment.id) } className="elipse"><Icon name='ellipsis vertical' /></div>
+            )}
           </h5>
           <p>{comment.body}
             { showMenu === true && commentMenuId === comment.id && (
@@ -77,6 +89,7 @@ const Comments = props => {
 
   useEffect(() => {
     loadComments(props.currentArticleId)
+    userInfo()
   }, []);
 
   return (

@@ -549,6 +549,8 @@ button {
   /* border-bottom: 1px solid grey; */
   padding-bottom: 10px;
   margin-bottom: 25px;
+  padding-right: 10px;
+  position: relative;
 }
 
 #comment-role {
@@ -577,8 +579,10 @@ button {
 }
 
 .comment-menu {
+  position: absolute;
   display: inline-block;
-  float: right;
+  top: 25px;
+  right: 5px;
   font-family: "Helvetica Narrow","Arial Narrow",Tahoma,Arial,Helvetica,sans-serif;
   line-height: 20px;
   margin-right: 10px;
