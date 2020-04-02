@@ -33,5 +33,19 @@ const getComments = async (id) => {
   }
 }
 
+const commentDelete = async (id) => {
+  let headers = JSON.parse(localStorage.getItem("J-tockAuth-Storage"));
+  try {
+    const response = await axios({
+      url: `/admin/comments/${id}`,
+      headers: headers,
+      method: "DELETE",
+    })
+    return response;
+  } catch (error) {
+    return error.response;
+  }
+}
 
-export {createComment, getComments};
+
+export {createComment, getComments, commentDelete};

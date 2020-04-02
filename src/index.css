@@ -563,3 +563,40 @@ button {
   font-weight: 100;
   color: grey;
 }
+
+.elipse {
+  display: none;
+  right: 50px;
+  float: right;
+  color: grey;
+  cursor: pointer;
+}
+
+.comment:hover .elipse {
+  display: block;
+}
+
+.comment-menu {
+  display: inline-block;
+  float: right;
+  font-family: "Helvetica Narrow","Arial Narrow",Tahoma,Arial,Helvetica,sans-serif;
+  line-height: 20px;
+  margin-right: 10px;
+  border: 1px solid grey;
+  padding: 5px 15px;
+  width: 200px;
+  text-align: left;
+  border-radius: 4px;
+  background-color: rgb(247, 246, 246);
+  box-shadow: 3px 3px 5px #888888;
+}
+
+#comment-edit {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+#comment-delete {
+  margin-left: 30px;
+  cursor: pointer;
+}

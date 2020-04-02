@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { Form, TextArea } from "semantic-ui-react";
-import { createComment, getComments } from "../modules/comment"
+import { Form, TextArea, Icon } from "semantic-ui-react";
+import { createComment, getComments, commentDelete } from "../modules/comment"
 
 const Comments = props => {
   const [body, setBody] = useState("")
   const [message, setMessage] = useState("")
   const [comments, setComments] = useState(null)
+  const [showMenu, setShowMenu] = useState(false)
+  const [commentMenuId, setCommentMenuId] = useState(false)
 
   const submitCommentHandler = async e => {
     e.preventDefault();
@@ -20,23 +22,54 @@ const Comments = props => {
     }
   }
 
-  const loadComments = async (id) => {
+  const loadComments = async id => {
     let response = await getComments(id);
     if (response.status === 200) {
-      setComments(response.data)
+      let array = response.data
+      setComments(array.reverse())
     }
+  }
+
+  const openCommentMenu = id => {
+    showMenu == false ? setShowMenu(true) : setShowMenu(false);
+    setCommentMenuId(id)
+  }
+
+  const deleteComment = async id => {
+    let response = await commentDelete(id)
+    if (response.status === 200) {
+      alert(response.data.message)
+      setShowMenu(false)
+      loadComments(props.currentArticleId)
+    } else {
+      alert("Comment could not be deleted at this moment")
+    }
+  }
+
+  const editComment = () => {
+
   }
 
   let commentsList;
 
   if (comments !== null && comments.length > 0) {
-    debugger
     commentsList = comments.map(comment => {
+      let date = comment.created_at.replace('T', ' ').slice(0, -5)
       return (
-        <div className="comment">
-          <h5>{comment.email} <span id="comment-role">{comment.role}</span></h5>
-          <p>{comment.body}</p>
-          <p><span id="comment-date">{comment.created_at}</span></p>
+        <div key={comment.id} className="comment">
+          <h5>{comment.email}
+            <span id="comment-role">{comment.role}</span>
+            <div onClick={() => openCommentMenu(comment.id) } className="elipse"><Icon name='ellipsis vertical' /></div>
+          </h5>
+          <p>{comment.body}
+            { showMenu === true && commentMenuId === comment.id && (
+              <div className="comment-menu">
+                <span id="comment-edit" onClick={() => editComment()}><Icon name='edit' />Edit</span>
+                <span id="comment-delete" onClick={() => deleteComment(comment.id)}><Icon color='red' name='trash alternate outline' />Delete</span>
+              </div>
+            )}
+          </p>
+          <p><span id="comment-date">{date}</span></p>
         </div>
       )
     })
