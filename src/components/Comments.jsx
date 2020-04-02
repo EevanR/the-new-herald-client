@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Form, TextArea, Icon } from "semantic-ui-react";
-import { createComment, getComments, commentDelete } from "../modules/comment"
+import { createComment, getComments, commentDelete, updateComment } from "../modules/comment"
 
 const Comments = props => {
   const [body, setBody] = useState("")
@@ -10,10 +10,25 @@ const Comments = props => {
   const [showMenu, setShowMenu] = useState(false)
   const [commentMenuId, setCommentMenuId] = useState(false)
   const [user, setUser] = useState("")
+  const [edit, setEdit] = useState(false)
+  const [editId, setEditId] = useState(null)
+  const [editBody, setEditBody] = useState(null)
 
   const submitCommentHandler = async e => {
     e.preventDefault();
     let response = await createComment(body, props.currentArticleId);
+    if (response.status === 200) {
+      setMessage("Comment submitted")
+      setBody("")
+      loadComments(props.currentArticleId)
+    } else {
+      setMessage(response.data.error)
+    }
+  }
+
+  const submitEditHandler = async e => {
+    e.preventDefault();
+    let response = await updateComment(editId, body);
     if (response.status === 200) {
       setMessage("Comment submitted")
       setBody("")
@@ -39,7 +54,7 @@ const Comments = props => {
   }
 
   const deleteComment = async id => {
-    let response = await commentDelete(id)
+    let response = await commentDelete(id);
     if (response.status === 200) {
       alert(response.data.message)
       setShowMenu(false)
@@ -49,8 +64,11 @@ const Comments = props => {
     }
   }
 
-  const editComment = () => {
-
+  const editComment = async (id, body) => {
+    debugger
+    setEdit(true)
+    setEditId(id)
+    setBody(body)
   }
 
   const userInfo = () => {
@@ -76,7 +94,7 @@ const Comments = props => {
           <p>{comment.body}
             { showMenu === true && commentMenuId === comment.id && (
               <div className="comment-menu">
-                <span id="comment-edit" onClick={() => editComment()}><Icon name='edit' />Edit</span>
+                <span id="comment-edit" onClick={() => editComment(comment.id, comment.body)}><Icon name='edit' />Edit</span>
                 <span id="comment-delete" onClick={() => deleteComment(comment.id)}><Icon color='red' name='trash alternate outline' />Delete</span>
               </div>
             )}
@@ -95,19 +113,37 @@ const Comments = props => {
   return (
     <div className="comments-div">
       <h2>DISCUSSION</h2>
-      <Form onSubmit={submitCommentHandler}>
-        <Form.Group>
-          <Form.Input
-            className="comment-text"
-            control={TextArea}
-            placeholder='Comment'
-            name='comment'
-            value={body}
-            onChange={e => setBody(e.target.value)}
-          />
-          <Form.Button content='Submit' />
-        </Form.Group>
-      </Form>
+      { edit === false ? (
+        <Form onSubmit={submitCommentHandler}>
+          <Form.Group>
+            <Form.Input
+              required
+              className="comment-text"
+              control={TextArea}
+              placeholder='Comment'
+              name='comment'
+              value={body}
+              onChange={e => setBody(e.target.value)}
+            />
+            <Form.Button content='Submit' />
+          </Form.Group>
+        </Form>
+      ) : (
+        <Form onSubmit={submitEditHandler}>
+          <Form.Group>
+            <Form.Input
+              required
+              className="comment-text"
+              control={TextArea}
+              placeholder='Comment'
+              name='comment'
+              value={body}
+              onChange={e => setBody(e.target.value)}
+            />
+            <Form.Button content='Edit' />
+          </Form.Group>
+        </Form>
+      )}
       {commentsList}
     </div>
   )
