@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { connect } from "react-redux";
 import { Form, TextArea, Icon, Button } from "semantic-ui-react";
 import { createComment, getComments, commentDelete, updateComment } from "../modules/comment"
@@ -12,7 +12,7 @@ const Comments = props => {
   const [user, setUser] = useState("")
   const [edit, setEdit] = useState(false)
   const [editId, setEditId] = useState(null)
-  const [editBody, setEditBody] = useState(null)
+  const node = useRef()
 
   const submitCommentHandler = async e => {
     e.preventDefault();
@@ -65,7 +65,6 @@ const Comments = props => {
   }
 
   const editComment = async (id, body) => {
-    debugger
     setEdit(true)
     setEditId(id)
     setBody(body)
@@ -83,6 +82,12 @@ const Comments = props => {
     setBody("")
   }
 
+  const handleClick = (e) => {
+    if (e.target.id !== "comment-elipse") {
+      setShowMenu(false)
+    }
+  }
+
   let commentsList;
 
   if (comments !== null && comments.length > 0) {
@@ -93,7 +98,7 @@ const Comments = props => {
           <h5>{comment.email}
             <span id="comment-role">{comment.role}</span>
             { user === comment.email && (
-              <div onClick={() => openCommentMenu(comment.id) } className="elipse"><Icon name='ellipsis vertical' /></div>
+              <div onClick={() => openCommentMenu(comment.id) } className="elipse"><Icon id="comment-elipse" name='ellipsis vertical' /></div>
             )}
           </h5>
           <p>{comment.body}
@@ -111,8 +116,13 @@ const Comments = props => {
   }
 
   useEffect(() => {
+    document.addEventListener("click", handleClick);
     loadComments(props.currentArticleId)
     userInfo()
+    return () => {
+      debugger
+      document.removeEventListener("click", handleClick);
+    }
   }, []);
 
   return (
