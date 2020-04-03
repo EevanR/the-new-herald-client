@@ -61,6 +61,10 @@ const DisplaySideArticles = props => {
               {article.title}
             </h3>
             <p>{article.body}</p>
+            <p style={{fontSize: "12px"}} id="cat-date" >
+              <span id="red">{article.category} </span> 
+              {article.created_at.substring(0, article.created_at.lastIndexOf("T"))}
+            </p>
           </div>
         );
       }
@@ -83,19 +87,19 @@ const DisplaySideArticles = props => {
             <Button basic color="black"
             id="prev-button"
             onClick={() => pageButtonHandler(props.currentPage - 1)}
-          >
-            <i aria-hidden="true" className="left chevron icon"></i>
-            {t("dsa.prevPageButton")}
-          </Button>
-          ) : null}
-          {(props.sideArticles && props.sideArticles.meta.next_page != null) ? (
-          <Button basic color="black"
-            id="next-button"
-            onClick={() => pageButtonHandler(props.currentPage + 1)}
-          >
-            {t("dsa.nextPageButton")}
-            <i aria-hidden="true" className="right chevron icon"></i>
-          </Button>
+            >
+              <i aria-hidden="true" className="left chevron icon"></i>
+              {t("dsa.prevPageButton")}
+            </Button>
+            ) : null}
+            {(props.sideArticles && props.sideArticles.meta.next_page != null) ? (
+            <Button basic color="black"
+              id="next-button"
+              onClick={() => pageButtonHandler(props.currentPage + 1)}
+            >
+              {t("dsa.nextPageButton")}
+              <i aria-hidden="true" className="right chevron icon"></i>
+            </Button>
           ) : null }
         </div>
       </div>

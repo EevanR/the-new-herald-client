@@ -47,7 +47,7 @@ const Footer = () => {
               {t('footer.info3')}
             </div>
           </Grid.Column>
-          <Grid.Column width={5}>
+          <Grid.Column width={7}>
             <div id="footer-onthisday">
               {thisDayEvent ? (
                 <>
@@ -59,7 +59,7 @@ const Footer = () => {
               )}
             </div>
           </Grid.Column>
-          <Grid.Column width={5}>
+          <Grid.Column width={4}>
             <div id="footer-financials">
               {forexDisplay ? (
                 <>

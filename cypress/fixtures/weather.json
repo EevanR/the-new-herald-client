@@ -1,11 +1,41 @@
 {
-  "name": "Kista",
-  "main": {
-    "temp": 275
+  "coord": {
+    "lon": 17.97, 
+    "lat": 59.36
   },
   "weather": [
     {
-      "description": "clouds"
+      "id": 802,
+      "main": "Clouds",
+      "description": "scattered clouds",
+      "icon": "03d"
     }
-  ]
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 272.56, 
+    "feels_like": 266.85, 
+    "temp_min": 272.04, 
+    "temp_max": 273.71, 
+    "pressure": 1025
+  },
+  "visibility": 10000,
+  "wind": {
+    "speed": 3.6, 
+    "deg": 230
+  },
+  "clouds": {
+    "all": 35
+  },
+  "dt": 1585639308,
+  "sys": {
+    "type": 1, 
+    "id": 1788, 
+    "country": "SE", 
+    "sunrise": 1585628170, 
+    "sunset": 1585675674},
+  "timezone": 7200,
+  "id": 2670879,
+  "name": "Sundbyberg",
+  "cod": 200
 }

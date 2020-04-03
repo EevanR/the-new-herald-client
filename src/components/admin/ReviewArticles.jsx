@@ -124,9 +124,6 @@ const ReviewArticles = props => {
   return (
     <>
       <Header>
-        <Header as="h1" id="publish-header">
-          {t("admin.reviewArticles")}
-        </Header>
         <div id="message">
           {publishMessage}
           <p style={{ color: "red" }}>{deleteMessage}</p>
@@ -136,6 +133,9 @@ const ReviewArticles = props => {
             </button>
           )}
         </div>
+        <Header as="h1" id="publish-header">
+          {t("admin.reviewArticles")}
+        </Header>
       </Header>
       <div id="unpublished-articles">
         <Table>

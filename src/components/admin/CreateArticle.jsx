@@ -106,6 +106,8 @@ const CreateArticle = () => {
         <Tab.Pane>
           <Form.Field
             key="title_en"
+            maxLength="60"
+            placeholder="60 character max length"
             control={Input}
             label="Title"
             id="title_en"
@@ -138,6 +140,8 @@ const CreateArticle = () => {
         <Tab.Pane>
           <Form.Field
             key="title_sv"
+            maxLength="60"
+            placeholder="60 character max length"
             control={Input}
             label="Titel"
             id="title_sv"

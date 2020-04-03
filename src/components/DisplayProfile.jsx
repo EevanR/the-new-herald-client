@@ -24,6 +24,13 @@ const DisplayProfile = props => {
     }
   };
 
+  const date = () => {
+    let newDate = props.userShowData.created_at
+    if (newDate) {
+      return newDate.substring(0, newDate.indexOf("T"))
+    }
+  }
+
   const [showSubscriptionForm, setShowSubscriptionForm] = useState(false);
 
   useEffect(() => {
@@ -63,26 +70,29 @@ const DisplayProfile = props => {
   };
 
   return (
-    <div id="profile">
-      {props.userShowData ? (
-        props.userShowData.email ? (
-          <>
-            <h1>{t("dp.yourProfile")}:</h1>
-            <h4>{t("dp.email")}:</h4> <p>{props.userShowData.email}</p>
-            <h4>{t("dp.role")}:</h4> <p>{props.userShowData.role}</p>
-            <h4>{t("dp.subscription")}:</h4> <div>{renderSubscription()}</div>
-          </>
+    <div className="backgroundgrey">
+      <div className="profile">
+        {props.userShowData ? (
+          props.userShowData.email ? (
+            <>
+              <h1>{t("dp.yourProfile")}:</h1>
+              <h4>{t("dp.email")}:</h4> <p>{props.userShowData.email}</p>
+              <h4>{t("dp.role")}:</h4> <p>{props.userShowData.role}</p>
+              <h4>{t("dp.subscription")}:</h4> <div>{renderSubscription()}</div>
+              <h4>Member Since</h4> <div>{date()}</div>
+            </>
+          ) : (
+            <>
+              <h1>{t("dp.yourProfile")}:</h1>
+              <h4>{props.userShowData}</h4>
+            </>
+          )
         ) : (
           <>
-            <h1>{t("dp.yourProfile")}:</h1>
-            <h4>{props.userShowData}</h4>
+            <p>{t("dp.loginProfile")}</p>
           </>
-        )
-      ) : (
-        <>
-          <p>{t("dp.loginProfile")}</p>
-        </>
-      )}
+        )}
+      </div>
     </div>
   );
 };

@@ -33,7 +33,8 @@ const Signup = props => {
       signupFunction = (
         <Link
           id="signup-button"
-          onClick={() => props.changeSignupButton(false)}
+          onClick={() => props.changeSignupButton(false)
+          }
         >
           {t('login.signup')}
         </Link>
@@ -41,7 +42,7 @@ const Signup = props => {
       break;
     case !props.displaySignupButton && !props.authenticated:
       signupFunction = (
-        <>
+        <div className="sign-form">
           <p>{t('login.signup')}</p>
           <form id="signup-form" onSubmit={onSignup}>
             <label>{t('login.email')}</label>
@@ -51,16 +52,16 @@ const Signup = props => {
             <input name="password" type="password" id="password"></input>
 
             <button id="submit">{t('login.signup')}</button>
+            <Link
+              className="signup-back"
+              id="back-button"
+              onClick={() => props.changeSignupButton(true)}
+            >
+              <button>{t('login.cancel')}</button>
+            </Link>
           </form>
-          <Link
-            className="signup-back"
-            id="back-button"
-            onClick={() => props.changeSignupButton(true)}
-          >
-            <button>{t('login.cancel')}</button>
-          </Link>
           {props.authMessage}
-        </>
+        </div>
       );
       break;
     default:

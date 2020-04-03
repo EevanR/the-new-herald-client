@@ -50,16 +50,18 @@ const ArticleRow = ({ article, publishHandler, deleteHandler, pubStatus, freeSta
           {article.location ? `${article.location}` : "Global"}
         </Table.Cell>
         <Table.Cell>{article.journalist}</Table.Cell>
-        <Table.Cell
-          id={`${article.id}`}
-          textAlign="left"
-        >
-          <Checkbox
-            toggle
-            checked={freeStatus}
-            onClick={() => freeHandler(article.id, freeStatus)}
-          />
-        </Table.Cell>
+        {pubStatus === true && (
+          <Table.Cell
+            id={`${article.id}`}
+            textAlign="left"
+          >
+            <Checkbox
+              toggle
+              checked={freeStatus}
+              onClick={() => freeHandler(article.id, freeStatus)}
+            />
+          </Table.Cell>
+        )}
         <Table.Cell
           id={`publish-article-toggle-${article.id}`}
           textAlign="left"

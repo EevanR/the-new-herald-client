@@ -1,4 +1,30 @@
 describe("Visitor succesfully", () => {
+  beforeEach(() => {
+    cy.route({
+      method: "GET",
+      url: "https://api.openweathermap.org/data/**",
+      response: "fixture:weather.json"
+    });
+    cy.route({
+      method: "GET",
+      url: "http://localhost:3000/api/v1/articles?**category=culture**",
+      response: "fixture:categorized_response.json",
+      status: 200
+    });
+    cy.route({
+      method: "GET",
+      url: "http://localhost:3000/api/v1/articles**",
+      response: "fixture:side_articles_shown.json",
+      status: 200
+    });
+    cy.route({
+      method: "GET",
+      url: "http://localhost:3000/api/v1/articles?free=true",
+      response: "fixture:free_article",
+      status: 200
+    });
+  });
+
   it("shown big canvas categorized", () => {
     cy.route({
       method: "GET",
@@ -16,12 +42,12 @@ describe("Visitor succesfully", () => {
   });
 
   it("shown side articles categorized", () => {
-    cy.route({
-      method: "GET",
-      url: "http://localhost:3000/api/v1/articles?**category=culture**",
-      response: "fixture:categorized_response.json",
-      status: 200
-    });
+    // cy.route({
+    //   method: "GET",
+    //   url: "http://localhost:3000/api/v1/articles?**category=culture**",
+    //   response: "fixture:categorized_response.json",
+    //   status: 200
+    // });
 
     cy.visit("/");
     cy.get("#culture.item")
@@ -57,12 +83,12 @@ describe("Visitor succesfully", () => {
   });
 
   it("can click and get new categorized show page", () => {
-    cy.route({
-      method: "GET",
-      url: "http://localhost:3000/api/v1/articles**",
-      response: "fixture:side_articles_shown.json",
-      status: 200
-    });
+    // cy.route({
+    //   method: "GET",
+    //   url: "http://localhost:3000/api/v1/articles**",
+    //   response: "fixture:side_articles_shown.json",
+    //   status: 200
+    // });
     cy.route({
       method: "GET",
       url: "http://localhost:3000/api/v1/articles/1**",

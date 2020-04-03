@@ -40,6 +40,13 @@ const Login = props => {
   let loginFunction;
 
   switch (true) {
+    case !props.authenticated && !props.displaySignupButton:
+      loginFunction = (
+        <>
+          <Signup />
+        </>
+      );
+      break;
     case props.displayLoginButton &&
       !props.authenticated:
       loginFunction = (
@@ -56,7 +63,7 @@ const Login = props => {
       break;
     case !props.displayLoginButton && !props.authenticated:
       loginFunction = (
-        <>
+        <div className="login-form">
           <p>{t('login.login')}</p>
           <form id="login-form" onSubmit={onLogin}>
             <label>{t('login.email')} </label>
@@ -65,16 +72,17 @@ const Login = props => {
             <label>{t('login.password')} </label>
             <input name="password" type="password" id="password"></input>&nbsp;
             <button id="submit">{t('login.submit')}</button>
+            <Link
+              id="back-button"
+              onClick={() => props.changeLoginButton(true)}
+            >
+              <button id="cancel">
+                {t('login.cancel')}
+              </button>
+            </Link>
           </form>
-          <Link
-            id="back-button"
-            onClick={() => props.changeLoginButton(true)}
-          >
-            <button>
-              {t('login.cancel')}
-            </button>
-          </Link>
-        </>
+          
+        </div>
       );
       break;
     case props.authenticated:
