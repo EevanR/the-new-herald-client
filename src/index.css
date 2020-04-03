@@ -298,6 +298,11 @@ a#back-button.signup-back {
   padding-right: 5px;
 }
 
+.main-article-upper{
+  height: auto;
+  min-height: 380px;
+}
+
 .main-article-auth img {
   height: 350px;
   width: 620px;
@@ -607,4 +612,31 @@ button {
 
 .cancle {
   height: 36px;
+}
+
+.inline {
+  width: 50%;
+  display: inline-block;
+}
+
+.inline h2 {
+  float: left;
+}
+
+#heart {
+  color: grey;
+  margin-left: 40px;
+  margin-top: 2px;
+  font-size: 20px;
+}
+
+#plus {
+  color: blue;
+  font-size: 14px;
+  transition: transform .2s;
+}
+
+.upvote:hover #plus {
+  transform: scale(1.8); 
+  cursor: pointer;
 }

@@ -173,6 +173,14 @@ const getHeadlines = async () => {
   }
 }
 
+const sendVote = async id => {
+  try {
+    
+  } catch (error) {
+    
+  }
+}
+
 export {
   getCurrentArticle,
   getArticles,
@@ -183,5 +191,6 @@ export {
   deleteArticle,
   setFreeStatus,
   getFreeArticle,
-  getHeadlines
+  getHeadlines,
+  sendVote
 };

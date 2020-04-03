@@ -103,15 +103,17 @@ const DisplayCurrentArticle = props => {
           {props.currentArticle ? (
             <>
               <div className="main-article-auth" key={props.currentArticle.id}>
-                {props.currentArticle.image &&
-                  <img src={props.currentArticle.image} />
-                }
-                <h2 id="article-title">{props.currentArticle.title}</h2>
-                <p id="article-body">{props.currentArticle.body}</p>
-                <p id="cat-date" >
-                  <span id="red">{props.currentArticle.category} </span> 
-                  {props.currentArticle.created_at.substring(0, props.currentArticle.created_at.lastIndexOf("T"))}
-                </p>
+                <div className="main-article-upper">
+                  {props.currentArticle.image &&
+                    <img src={props.currentArticle.image} />
+                  }
+                  <h2 id="article-title">{props.currentArticle.title}</h2>
+                  <p id="article-body">{props.currentArticle.body}</p>
+                  <p id="cat-date" >
+                    <span id="red">{props.currentArticle.category} </span> 
+                    {props.currentArticle.created_at.substring(0, props.currentArticle.created_at.lastIndexOf("T"))}
+                  </p>
+                </div>
                 <Comments />
               </div>
             </>

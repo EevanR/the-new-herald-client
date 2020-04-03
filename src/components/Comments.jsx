@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { connect } from "react-redux";
 import { Form, TextArea, Icon, Button } from "semantic-ui-react";
 import { createComment, getComments, commentDelete, updateComment } from "../modules/comment"
+import { sendVote } from "../modules/article"
 
 const Comments = props => {
   const [body, setBody] = useState("")
@@ -88,6 +89,13 @@ const Comments = props => {
     }
   }
 
+  const upvote = async () => {
+    let response = await sendVote(props.currentArticleId);
+    if (response) {
+      
+    }
+  }
+
   let commentsList;
 
   if (comments !== null && comments.length > 0) {
@@ -127,7 +135,13 @@ const Comments = props => {
 
   return (
     <div className="comments-div">
-      <h2>DISCUSSION</h2>
+      <div className="inline">
+        <h2>DISCUSSION</h2> 
+        <Icon.Group onClick={() => upvote()} className="upvote">
+          <Icon id="heart" name='like'/>
+          <Icon id="plus" corner name='add' />
+        </Icon.Group>
+      </div>
       { edit === false ? (
         <Form onSubmit={submitCommentHandler}>
           <Form.Group>
