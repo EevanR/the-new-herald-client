@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { Form, TextArea, Icon } from "semantic-ui-react";
+import { Form, TextArea, Icon, Button } from "semantic-ui-react";
 import { createComment, getComments, commentDelete, updateComment } from "../modules/comment"
 
 const Comments = props => {
@@ -78,6 +78,11 @@ const Comments = props => {
     }
   }
 
+  const cancel = () => {
+    setEdit(false)
+    setBody("")
+  }
+
   let commentsList;
 
   if (comments !== null && comments.length > 0) {
@@ -141,6 +146,7 @@ const Comments = props => {
               onChange={e => setBody(e.target.value)}
             />
             <Form.Button content='Edit' />
+            <Button className="cancle" onClick={() =>  cancel()} > Cancel</Button>
           </Form.Group>
         </Form>
       )}

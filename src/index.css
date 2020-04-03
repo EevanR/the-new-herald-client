@@ -604,3 +604,7 @@ button {
   margin-left: 30px;
   cursor: pointer;
 }
+
+.cancle {
+  height: 36px;
+}
