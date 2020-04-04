@@ -114,7 +114,11 @@ const DisplayCurrentArticle = props => {
                     {props.currentArticle.created_at.substring(0, props.currentArticle.created_at.lastIndexOf("T"))}
                   </p>
                 </div>
-                <Comments />
+                <Comments 
+                  articleData={getArticleShowData}
+                  articleId={props.currentArticleId}
+                  article={props.currentArticle}
+                />
               </div>
             </>
           ) : (

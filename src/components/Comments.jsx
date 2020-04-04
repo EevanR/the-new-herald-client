@@ -1,10 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
-import { connect } from "react-redux";
+import React, { useState, useEffect } from "react";
 import { Form, TextArea, Icon, Button } from "semantic-ui-react";
 import { createComment, getComments, commentDelete, updateComment } from "../modules/comment"
 import { sendVote } from "../modules/article"
 
-const Comments = props => {
+const Comments = ({articleId, articleData, article}) => {
   const [body, setBody] = useState("")
   const [message, setMessage] = useState("")
   const [comments, setComments] = useState(null)
@@ -13,15 +12,16 @@ const Comments = props => {
   const [user, setUser] = useState("")
   const [edit, setEdit] = useState(false)
   const [editId, setEditId] = useState(null)
-  const node = useRef()
+  const [likes, setLikes] = useState(null)
+  const [voted, setVoted] = useState(false)
 
   const submitCommentHandler = async e => {
     e.preventDefault();
-    let response = await createComment(body, props.currentArticleId);
+    let response = await createComment(body, articleId);
     if (response.status === 200) {
       setMessage("Comment submitted")
       setBody("")
-      loadComments(props.currentArticleId)
+      loadComments(articleId)
     } else {
       setMessage(response.data.error)
     }
@@ -33,7 +33,7 @@ const Comments = props => {
     if (response.status === 200) {
       setMessage("Comment submitted")
       setBody("")
-      loadComments(props.currentArticleId)
+      loadComments(articleId)
     } else {
       setMessage(response.data.error)
     }
@@ -59,7 +59,7 @@ const Comments = props => {
     if (response.status === 200) {
       alert(response.data.message)
       setShowMenu(false)
-      loadComments(props.currentArticleId)
+      loadComments(articleId)
     } else {
       alert(response.data.error)
     }
@@ -75,6 +75,9 @@ const Comments = props => {
     if (localStorage.getItem("J-tockAuth-Storage")) {
       let headers = JSON.parse(localStorage.getItem("J-tockAuth-Storage"));
       setUser(headers.uid)
+      if (article.likes.includes(headers.uid)) {
+        setVoted(true)
+      }
     }
   }
 
@@ -90,9 +93,11 @@ const Comments = props => {
   }
 
   const upvote = async () => {
-    let response = await sendVote(props.currentArticleId);
-    if (response) {
-      
+    let response = await sendVote(articleId, user);
+    if (response.status === 200) {
+      articleData(articleId)
+      setLikes(response.data.likes.length)
+      response.data.likes.includes(user) ? setVoted(true) : setVoted(false)
     }
   }
 
@@ -125,22 +130,33 @@ const Comments = props => {
 
   useEffect(() => {
     document.addEventListener("click", handleClick);
-    loadComments(props.currentArticleId)
+    loadComments(articleId)
+    setLikes(article.likes.length)
     userInfo()
     return () => {
-      debugger
       document.removeEventListener("click", handleClick);
     }
   }, []);
+
+  useEffect(() => {
+    
+  }, [articleId])
 
   return (
     <div className="comments-div">
       <div className="inline">
         <h2>DISCUSSION</h2> 
         <Icon.Group onClick={() => upvote()} className="upvote">
-          <Icon id="heart" name='like'/>
+        {voted === true ? (
+          <Icon color='blue' id="heart-active" name='like'/>
+          ) : (
+            <Icon color='grey' id="heart" name='like'/>
+          )} 
           <Icon id="plus" corner name='add' />
         </Icon.Group>
+        {likes !== null && (
+          likes > 1 ? <p>{likes} Likes</p> : <p>{likes} Like</p> 
+        )}
       </div>
       { edit === false ? (
         <Form onSubmit={submitCommentHandler}>
@@ -179,25 +195,4 @@ const Comments = props => {
   )
 }
 
-const mapStateToProps = state => {
-  return {
-    currentArticle: state.currentArticle,
-    currentArticleId: state.currentArticleId,
-    authenticated: state.authenticated,
-    userAttrs: state.userAttrs,
-    language: state.language,
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    changeMessage: message => {
-      dispatch({ type: "CHANGE_MESSAGE", payload: message });
-    }
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Comments);
+export default Comments;

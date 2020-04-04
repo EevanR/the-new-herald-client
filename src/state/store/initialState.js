@@ -5,7 +5,7 @@ const initialState = {
   currentPage: null,
   message: "Loading...",
   sideMessage: "Loading...",
-  authenticated: true,
+  authenticated: false,
   authMessage: null,
   displayLoginButton: true,
   displaySignupButton: true,
