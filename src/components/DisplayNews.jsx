@@ -23,7 +23,6 @@ const DisplayNews = props => {
       1,
       "sports"
     );
-    debugger
     setFeatured(response)
   }
 
