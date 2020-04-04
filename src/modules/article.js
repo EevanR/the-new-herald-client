@@ -173,6 +173,23 @@ const getHeadlines = async () => {
   }
 }
 
+const sendVote = async (id, user) => {
+  let headers = JSON.parse(localStorage.getItem("J-tockAuth-Storage"));
+  try {
+    const response = await axios({
+      url: `/admin/articles/${id}`,
+      headers: headers,
+      method: "PUT",
+      params: { 
+        likes: user
+      }
+    });
+    return response;
+  } catch (error) {
+    return error.response;
+  }
+}
+
 export {
   getCurrentArticle,
   getArticles,
@@ -183,5 +200,6 @@ export {
   deleteArticle,
   setFreeStatus,
   getFreeArticle,
-  getHeadlines
+  getHeadlines,
+  sendVote
 };

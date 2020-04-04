@@ -298,6 +298,11 @@ a#back-button.signup-back {
   padding-right: 5px;
 }
 
+.main-article-upper{
+  height: auto;
+  min-height: 380px;
+}
+
 .main-article-auth img {
   height: 350px;
   width: 620px;
@@ -400,6 +405,11 @@ h2#article-title {
   width: 100%;
   height: 170px;
   margin-bottom: 20px;
+}
+
+#featured-body{
+  margin-top: 10px;
+  height: 30px;
 }
 
 #border-top h5 {
@@ -536,6 +546,10 @@ button {
   height: 50px;
 }
 
+.comments-div {
+  padding-top: 1rem;;
+}
+
 .comments-div h2 {
   font-family: "Helvetica Narrow","Arial Narrow",Tahoma,Arial,Helvetica,sans-serif;
   font-weight: 200;
@@ -607,4 +621,40 @@ button {
 
 .cancle {
   height: 36px;
+}
+
+.inline {
+  width: 30%;
+}
+
+.inline h2, .inline p {
+  display: inline-block;
+}
+
+.inline p {
+  margin-left: 5px;
+}
+
+#heart {
+  margin-left: 40px;
+  margin-top: -8px;
+  font-size: 20px;
+}
+
+#heart-active {
+  margin-left: 40px;
+  margin-top: -8px;
+  font-size: 20px;
+  box-shadow: 3px 3px 5px #888888;
+}
+
+#plus {
+  color: blue;
+  font-size: 14px;
+  transition: transform .2s;
+}
+
+.upvote:hover #plus {
+  transform: scale(1.8); 
+  cursor: pointer;
 }
