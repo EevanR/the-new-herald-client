@@ -5,6 +5,7 @@ import DisplaySideArticles from "./DisplaySideArticles"
 import Footer from "./Footer";
 import Weather from "./Weather"
 import Headlines from "./Headlines"
+import Trending from "./Trending"
 import { connect } from "react-redux";
 import { getFreeArticle, getArticles } from "../modules/article";
 
@@ -98,14 +99,14 @@ const DisplayNews = props => {
               </>
             </div>
           </div>
-          <div className="item-g">
-            <div className="advertising">
-              ADVERTISING
-              </div>
-          </div>
           <div className="item-j">
             <div className="headlines-main">
               <Headlines />
+            </div>
+          </div>
+          <div className="item-k">
+            <div id="border-top">
+              <Trending />
             </div>
           </div>
         </div>
@@ -134,6 +135,11 @@ const DisplayNews = props => {
                 </div>
               )}
             </div>
+            <div className="item-g">
+              <div className="advertising">
+                ADVERTISING
+              </div>
+          </div>
           </div>
         </div>
       )}
