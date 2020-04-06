@@ -775,7 +775,7 @@ button {
 	content: '';
 	position: absolute;
 	bottom: 0;
-	left: 80%;
+	left: 50%;
 	width: 0;
 	height: 0;
 	border: 28px solid transparent;
