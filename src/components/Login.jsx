@@ -33,6 +33,12 @@ const Login = props => {
         props.changeAuthMessage("");
       })
       .catch(error => {
+        if (error.message === "Request failed with status code 404") {
+          props.changeAuth(false);
+          props.changeLoginButton(true);
+          props.changeSignupButton(true);
+          props.changeAuthMessage("");
+        }
         props.changeAuthMessage(error);
       });
   };

@@ -65,7 +65,7 @@ const Comments = ({articleId, articleData, article}) => {
     }
   }
 
-  const editComment = async (id, body) => {
+  const editComment = (id, body) => {
     setEdit(true)
     setEditId(id)
     setBody(body)
@@ -145,7 +145,7 @@ const Comments = ({articleId, articleData, article}) => {
   return (
     <div className="comments-div">
       <div className="inline">
-        <h2>DISCUSSION</h2> 
+        <h2 id="title-slim">DISCUSSION</h2> 
         <Icon.Group onClick={() => upvote()} className="upvote">
         {voted === true ? (
           <Icon color='blue' id="heart-active" name='like'/>

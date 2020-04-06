@@ -4,6 +4,14 @@ body {
   font-family: "ChomskyRegular";
 }
 
+@font-face {
+  font-family: "chomsky";
+  src: url("./fonts/chomsky-webfont.woff2") format("woff2"),
+    url("./fonts/chomsky-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
 #selector {
   margin-bottom: 10px;
 }
@@ -16,7 +24,7 @@ body {
 }
 
 #header {
-  font-family: "ChomskyRegular";
+  font-family: "Chomsky";
   font-weight: 550;
   font-style: normal;
   font-size: 55px;
@@ -108,7 +116,8 @@ a {
 }
 
 #subscribe {
-  background-color: rgb(191, 176, 159);
+  background-color: #dfc38b;
+  color: rgb(40, 39, 39);
 }
 
 a#admin-button {
@@ -241,10 +250,11 @@ a#back-button.signup-back {
 }
 
 .item-g {
+  margin-top: -22px;
   padding-left: 5%;
   grid-column-start: 4;
   grid-column-end: span 1;
-  grid-row-start: 4;
+  grid-row-start: 1;
   grid-row-end: span 1;
 }
 
@@ -273,9 +283,17 @@ a#back-button.signup-back {
   margin-left: -100px;
 }
 
+.item-k {
+  margin-top: 2em;
+  grid-column-start: 1;
+  grid-column-end: span 4;
+  grid-row-start: 4;
+  grid-row-end: span 1;
+}
+
 .advertising {
-  background-color: white;
-  height: 90%;
+  background-color: rgb(249, 245, 236);
+  height: 100%;
   width: 100%;
   padding: 2%;
   font-family: "Helvetica Narrow","Arial Narrow",Tahoma,Arial,Helvetica,sans-serif;
@@ -450,6 +468,7 @@ h2#article-title {
 
 #red {
   color: red;
+  text-transform: uppercase;
 }
 
 .headlines-main {
@@ -550,7 +569,7 @@ button {
   padding-top: 1rem;;
 }
 
-.comments-div h2 {
+#title-slim {
   font-family: "Helvetica Narrow","Arial Narrow",Tahoma,Arial,Helvetica,sans-serif;
   font-weight: 200;
 }
@@ -657,4 +676,122 @@ button {
 .upvote:hover #plus {
   transform: scale(1.8); 
   cursor: pointer;
+}
+
+.trending #article-title {
+  font-family: "ChomskyRegular";
+  font-weight: 600;
+}
+
+#article-title:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.trending {
+  padding-top: 1em;
+  font-family: "ChomskyRegular";
+  text-transform: normal!important;
+  display: grid;
+  grid-template-columns: 150px 550px 1fr 1fr;
+  grid-template-rows: 220px;
+}
+
+#rank {
+  font-family: "Helvetica Narrow","Arial Narrow",Tahoma,Arial,Helvetica,sans-serif;
+  font-size: 10em;
+  grid-column-start: 1;
+  grid-row-start: 1;
+  margin-top: -30px;
+  text-align: center;
+  color: darkgoldenrod;
+}
+
+.info {
+  grid-column-start: 2;
+  grid-row-start: 1;
+  width: 100%;
+}
+
+.bubble1 {
+  grid-column-start: 3;
+  grid-row-start: 1;
+  width: 85%;
+  text-align: center;
+}
+
+.speech-bubble {
+  margin-top: -20px;
+  margin-bottom: 60px;
+	position: relative;
+	background: #dfc38b;
+  border-radius: .4em;
+  height: 100px;
+  padding:10% 5%;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: left;
+  color: rgb(96, 95, 95);
+}
+
+.speech-bubble:after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 80%;
+	width: 0;
+	height: 0;
+	border: 28px solid transparent;
+	border-top-color: #dfc38b;
+	border-bottom: 0;
+	border-left: 0;
+	margin-left: -14px;
+	margin-bottom: -28px;
+}
+
+.bubble2 {
+  grid-column-start: 4;
+  grid-row-start: 1;
+  text-align: center;
+  width: 85%;
+  margin-left: 10px;
+}
+
+.speech-bubble2 {
+  margin-top: -20px;
+  margin-bottom: 60px;
+	position: relative;
+	background: #dfc38b;
+  border-radius: .4em;
+  height: 100px;
+  padding:10% 5%;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: left;
+  color: rgb(96, 95, 95);
+}
+
+.speech-bubble2:after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	width: 0;
+	height: 0;
+	border: 28px solid transparent;
+	border-top-color: #dfc38b;
+	border-bottom: 0;
+	border-left: 0;
+	margin-left: -14px;
+	margin-bottom: -28px;
+}
+
+.bubble1 #red {
+  padding: 15px 0;
+  border-top: 1px solid grey;
+}
+
+.bubble2 #red {
+  padding: 15px 0;
+  border-top: 1px solid grey;
 }
