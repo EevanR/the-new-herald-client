@@ -2,6 +2,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: "ChomskyRegular";
+  overflow-x: scroll;
 }
 
 @font-face {
@@ -391,7 +392,7 @@ h2#article-title {
 
 .side-article {
   padding-top: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
   border-bottom: 1px solid lightgray;
 }
 
@@ -531,10 +532,10 @@ button {
 .ui.circular.button {
   color: black;
   border-radius: 10em;
-  height: 40px;
+  height: 35px;
   font-size: 25px;
   padding: 5px;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 .profile {
