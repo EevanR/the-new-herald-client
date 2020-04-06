@@ -4,6 +4,14 @@ body {
   font-family: "ChomskyRegular";
 }
 
+@font-face {
+  font-family: "chomsky";
+  src: url("./fonts/chomsky-webfont.woff2") format("woff2"),
+    url("./fonts/chomsky-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
 #selector {
   margin-bottom: 10px;
 }
@@ -16,7 +24,7 @@ body {
 }
 
 #header {
-  font-family: "ChomskyRegular";
+  font-family: "Chomsky";
   font-weight: 550;
   font-style: normal;
   font-size: 55px;
