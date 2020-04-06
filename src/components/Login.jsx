@@ -40,7 +40,7 @@ const Login = props => {
           props.changeSignupButton(true);
           props.changeAuthMessage("");
         }
-        props.changeAuthMessage(error);
+        props.changeAuthMessage(error.message);
       });
   };
 

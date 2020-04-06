@@ -18,6 +18,24 @@ const getCurrentArticle = async (id, language) => {
   }
 };
 
+const getCurrentArticleAuth = async (id, language) => {
+  let headers = JSON.parse(localStorage.getItem("J-tockAuth-Storage"));
+  try {
+    const response = await axios({
+      url: `/admin/articles/${id}`,
+      params: { locale: language },
+      headers: headers
+    });
+    return response.data.article;
+  } catch (error) {
+    if (error.message === "Network Error") {
+      return { error: error.message };
+    } else {
+      return error.response.data;
+    }
+  }
+};
+
 const getArticles = async (language, page, category) => {
   const response = await axios({
     url: "/articles",
@@ -201,5 +219,6 @@ export {
   setFreeStatus,
   getFreeArticle,
   getHeadlines,
-  sendVote
+  sendVote,
+  getCurrentArticleAuth
 };

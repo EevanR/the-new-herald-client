@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { getArticles } from "../modules/article";
-import { getComments } from "../modules/comment";
+import { getComments } from "../modules/comment"
+import { Button } from "semantic-ui-react";
+import { useTranslation } from 'react-i18next'
+import { connect } from "react-redux"
 
-const Trending = () => {
+const Trending = props => {
+  const { t } = useTranslation('common')
+
   const [trending, setTrending] = useState([])
   const [trendingLikes, setTrendingLikes] = useState(null)
   const [comments, setComments] = useState([])
@@ -26,6 +31,11 @@ const Trending = () => {
     }
   }
 
+  const changeMainArticle = (id) => {
+    props.changeCurrentArticleId(id)
+    window.scrollTo(0, 0)
+  }
+
   useEffect(() => {
     getArticlesData()
   }, [])
@@ -36,11 +46,19 @@ const Trending = () => {
       <div className="trending">
         <h1 id="rank">1</h1>
         <div className="info">
-          <h2 id="article-title">{trending.title}</h2>
+          <h2 onClick={() => changeMainArticle(trending.id)} id="article-title">{trending.title}</h2>
           <p id="cat-date" >
             <span id="red">{trending.category} </span>
             {trendingLikes} Upvotes
           </p>
+          <Button
+            id="subscribe"
+            // onClick={() => {
+            //   setShowSubscriptionForm(true);
+            // }}
+          >
+            {t('dp.subscribe')}
+          </Button>
         </div>
         {comments.length > 1 && (
           <>
@@ -65,4 +83,22 @@ const Trending = () => {
   )
 }
 
-export default Trending;
+const mapStateToProps = state => {
+  return {
+    currentArticleId: state.currentArticleId
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    changeCurrentArticleId: id => {
+      dispatch({ type: "CHANGE_ARTICLE_ID", payload: id });
+    }
+  };
+};
+
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Trending);

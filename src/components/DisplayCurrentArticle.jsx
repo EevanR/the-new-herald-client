@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { getCurrentArticle } from "../modules/article";
+import { getCurrentArticle, getCurrentArticleAuth } from "../modules/article";
 import StripeForm from "./StripeForm";
 import { Elements } from "react-stripe-elements";
 import { Button } from "semantic-ui-react";
@@ -11,11 +11,20 @@ const DisplayCurrentArticle = props => {
   const { t } = useTranslation('common')
 
   const getArticleShowData = async id => {
-    const article = await getCurrentArticle(id, props.language);
-    if (article.error) {
-      props.changeMessage(article.error);
+    if (localStorage.getItem("J-tockAuth-Storage") && props.authenticated === true) {
+      const article = await getCurrentArticleAuth(id, props.language);
+      if (article.error) {
+        props.changeMessage(article.error);
+      } else {
+        props.changeCurrentArticle(article);
+      }
     } else {
-      props.changeCurrentArticle(article);
+      const article = await getCurrentArticle(id, props.language);
+      if (article.error) {
+        props.changeMessage(article.error);
+      } else {
+        props.changeCurrentArticle(article);
+      }
     }
   };
 
@@ -43,18 +52,6 @@ const DisplayCurrentArticle = props => {
           </Button>
         );
       }
-      // case props.userAttrs && props.userAttrs.role === null && !showSubscriptionForm: {
-      //   return (
-      //     <Button
-      //       id="subscribe"
-      //       onClick={() => {
-      //         setShowSubscriptionForm(true);
-      //       }}
-      //     >
-      //       {t('dp.subscribe')}
-      //     </Button>
-      //   );
-      // }
       case showSubscriptionForm: {
         return (
           <div id="stripe-form">
