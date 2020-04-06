@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import auth from "../modules/auth";
 import { Link } from "react-router-dom";
@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import Signup from './Signup';
 
 const Login = props => {
+  const [active, setActive] = useState(false)
 
   const { t } = useTranslation()
 
@@ -43,6 +44,13 @@ const Login = props => {
       });
   };
 
+  const fadeIn = () => {
+    setActive(true)
+    setTimeout(() => {
+      setActive(false)
+    }, 5000);
+  }
+
   let loginFunction;
 
   switch (true) {
@@ -74,10 +82,9 @@ const Login = props => {
           <form id="login-form" onSubmit={onLogin}>
             <label>{t('login.email')} </label>
             <input name="email" type="email" id="email"></input>
-
             <label>{t('login.password')} </label>
             <input name="password" type="password" id="password"></input>&nbsp;
-            <button id="submit">{t('login.submit')}</button>
+            <button onClick={() => fadeIn()} id="submit">{t('login.submit')}</button>
             <Link
               id="back-button"
               onClick={() => props.changeLoginButton(true)}
@@ -116,6 +123,8 @@ const Login = props => {
   return (
     <div className="login" >
       {loginFunction}
+      <br/>
+      <div id="fade-in" className={active ? "fade-in-active" : "fade-out"}>{props.authMessage}</div>
     </div>
   );
 };

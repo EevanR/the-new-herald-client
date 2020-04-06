@@ -796,3 +796,44 @@ button {
   padding: 15px 0;
   border-top: 1px solid grey;
 }
+
+#fade-in {
+  position: fixed;
+  top: -40px;
+  right: 55px;
+  width: 300px;
+  height: 40px;
+  color: rgb(81, 80, 80);
+  background-color: #dfc38b;
+  padding: 1%;
+  z-index: 100;
+  text-align: center;
+}
+
+.fade-in-active {
+  -webkit-animation: slide 0.5s forwards;
+  -webkit-animation-delay: 1.5s;
+  animation: slide 0.5s forwards;
+  animation-delay: 1.5s;
+}
+
+.fade-out {
+  -webkit-animation: slideOut 0.3s forwards;
+  animation: slideOut 0.3s forwards;
+}
+  
+@-webkit-keyframes slide {
+  100% { top: 0; }
+}
+
+@keyframes slide {
+  100% { top: 0; }
+}
+
+@-webkit-keyframes slideOut {
+  0% { top: 0; }
+}
+
+@keyframes slideOut {
+  0% { top: 0; }
+}
