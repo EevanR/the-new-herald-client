@@ -727,7 +727,7 @@ button {
 	background: #dfc38b;
   border-radius: .4em;
   height: 100px;
-  padding:10%;
+  padding:10% 5%;
   font-size: 18px;
   font-weight: 600;
   text-align: left;
@@ -764,7 +764,7 @@ button {
 	background: #dfc38b;
   border-radius: .4em;
   height: 100px;
-  padding:10%;
+  padding:10% 5%;
   font-size: 18px;
   font-weight: 600;
   text-align: left;

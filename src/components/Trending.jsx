@@ -46,17 +46,17 @@ const Trending = () => {
           <>
             <div className="bubble1">
               <div className="speech-bubble">
-                {comments[0].body}
+                { comments[0].body.length > 70 ? `${comments[0].body.substring(0, 70)}...` : comments[0].body }
               </div>
               <span id="red">{comments[0].email}</span>
-              <p>{comments[0].role}</p>
+              <p><span id="comment-role">{comments[0].role}</span></p>
             </div>
             <div className="bubble2">
               <div className="speech-bubble2">
-                {comments[1].body}
+                { comments[1].body.length > 70 ? `${comments[1].body.substring(0, 70)}...` : comments[1].body }
               </div>
-              <span id="red">{comments[0].email}</span>
-              <p>{comments[0].role}</p>
+              <span id="red">{comments[1].email}</span>
+              <p><span id="comment-role">{comments[1].role}</span></p>
             </div>
           </>
         )}
