@@ -5,6 +5,10 @@ body {
   overflow-x: scroll;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 @font-face {
   font-family: "chomsky";
   src: url("./fonts/chomsky-webfont.woff2") format("woff2"),
@@ -414,13 +418,13 @@ h2#article-title {
 }
 
 #next-button {
-  bottom: 30px;
+  bottom: 10px;
   right: 10px;
   position: absolute;
 }
 
 #prev-button {
-  bottom: 30px;
+  bottom: 10px;
   position: absolute;
 }
 
@@ -468,7 +472,7 @@ h2#article-title {
   display: none;
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 50%; 
   width: 93%;
   text-align: center;
   transform: translate(-50%, -50%);
@@ -480,6 +484,7 @@ h2#article-title {
 
 .feature:hover #featured-img {
   filter: blur(2px);
+  transition: filter 0.5s ease;
 }
 
 #border-top h5 {
@@ -590,7 +595,8 @@ button {
 }
 
 .ui.circular.button:hover {
-  background-color: rgba(213, 213, 213, 0.9);
+  background-color: rgba(60, 60, 60, 0.9);
+  color: white;
 }
 
 .profile {

@@ -49,7 +49,12 @@ const DisplayNews = props => {
                 <div id="border-top" className="feature">
                   {featured !== null && featured.articles.length > 0 && (
                     <>
-                      <h4 id="featured-title" >{featured.articles[0].title}</h4>
+                      <h4 
+                        onClick={() => props.changeCurrentArticleId(featured.articles[0].id)} 
+                        id="featured-title" 
+                      >
+                        {featured.articles[0].title}
+                      </h4>
                       <img id="featured-img" src={featured.articles[0].image} />
                       <h5 id="featured-body">{featured.articles[0].body}</h5>
                       <p id="cat-date" >
@@ -65,7 +70,12 @@ const DisplayNews = props => {
                 <div id="border-top" className="feature">
                   {featured !== null && featured.articles.length > 1 && (
                     <>
-                      <h4 id="featured-title" >{featured.articles[1].title}</h4>
+                      <h4 
+                        onClick={() => props.changeCurrentArticleId(featured.articles[1].id)} 
+                        id="featured-title" 
+                      >
+                        {featured.articles[1].title}
+                      </h4>
                       <img id="featured-img" src={featured.articles[1].image} />
                       <h5 id="featured-body">{featured.articles[1].body}</h5>
                       <p id="cat-date" >
@@ -81,7 +91,12 @@ const DisplayNews = props => {
                 <div id="border-top" className="feature">
                   {featured !== null && featured.articles.length > 2 && (
                     <>
-                      <h4 id="featured-title" >{featured.articles[2].title}</h4>
+                      <h4 
+                        onClick={() => props.changeCurrentArticleId(featured.articles[2].id)} 
+                        id="featured-title" 
+                      >
+                        {featured.articles[2].title}
+                      </h4>
                       <img id="featured-img" src={featured.articles[2].image} />
                       <h5 id="featured-body">{featured.articles[2].body}</h5>
                       <p id="cat-date" >
@@ -158,6 +173,15 @@ const mapStateToProps = state => {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    changeCurrentArticleId: id => {
+      dispatch({ type: "CHANGE_ARTICLE_ID", payload: id });
+    }
+  };
+};
+
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(DisplayNews);
