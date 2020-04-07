@@ -46,46 +46,49 @@ const DisplayNews = props => {
           {props.authenticated === false && (
             <>
               <div id="seperator" className="item-c">
-                <div id="border-top">
+                <div id="border-top" className="feature">
                   {featured !== null && featured.articles.length > 0 && (
                     <>
-                      <h4>{featured.articles[0].title}</h4>
+                      <h4 id="featured-title" >{featured.articles[0].title}</h4>
                       <img id="featured-img" src={featured.articles[0].image} />
                       <h5 id="featured-body">{featured.articles[0].body}</h5>
                       <p id="cat-date" >
                         <span id="red">{featured.articles[0].category} </span> 
                         {featured.articles[0].created_at.substring(0, featured.articles[0].created_at.lastIndexOf("T"))}
                       </p>
+                      <p id="feature-hover">FEATURED</p>
                     </>
                   )}
                 </div>
               </div>
               <div id="seperator" className="item-d">
-                <div id="border-top">
+                <div id="border-top" className="feature">
                   {featured !== null && featured.articles.length > 1 && (
                     <>
-                      <h4>{featured.articles[1].title}</h4>
+                      <h4 id="featured-title" >{featured.articles[1].title}</h4>
                       <img id="featured-img" src={featured.articles[1].image} />
                       <h5 id="featured-body">{featured.articles[1].body}</h5>
                       <p id="cat-date" >
                         <span id="red">{featured.articles[1].category} </span> 
                         {featured.articles[1].created_at.substring(0, featured.articles[1].created_at.lastIndexOf("T"))}
                       </p>
+                      <p id="feature-hover">FEATURED</p>
                     </>
                   )}
                 </div>
               </div>
               <div className="item-e">
-                <div id="border-top">
+                <div id="border-top" className="feature">
                   {featured !== null && featured.articles.length > 2 && (
                     <>
-                      <h4>{featured.articles[2].title}</h4>
+                      <h4 id="featured-title" >{featured.articles[2].title}</h4>
                       <img id="featured-img" src={featured.articles[2].image} />
                       <h5 id="featured-body">{featured.articles[2].body}</h5>
                       <p id="cat-date" >
                         <span id="red">{featured.articles[2].category} </span> 
                         {featured.articles[2].created_at.substring(0, featured.articles[2].created_at.lastIndexOf("T"))}
                       </p>
+                      <p id="feature-hover">FEATURED</p>
                     </>
                   )}
                 </div>

@@ -98,6 +98,10 @@ a {
   letter-spacing: 1px;
 }
 
+.item-button:hover {
+  background-color:  rgb(245, 245, 245)!important;
+}
+
 #create-article-message {
   font-size: larger;
   font-weight: bold;
@@ -119,6 +123,10 @@ a {
 #subscribe {
   background-color: #dfc38b;
   color: rgb(40, 39, 39);
+}
+
+#subscribe:hover {
+  background-color: #c7a96d;
 }
 
 a#admin-button {
@@ -218,7 +226,7 @@ a#back-button.signup-back {
 }
 
 .item-c {
-  padding-right: 10px;
+  padding-right: 5px;
   grid-column-start: 1;
   grid-column-end: span 1;
   grid-row-start: 2;
@@ -226,8 +234,8 @@ a#back-button.signup-back {
 }
 
 .item-d {
-  padding-right: 10px;
-  padding-left: 10px;
+  padding-right: 5px;
+  padding-left: 5px;
   grid-column-start: 2;
   grid-column-end: span 1;
   grid-row-start: 2;
@@ -236,7 +244,7 @@ a#back-button.signup-back {
 
 .item-e {
   margin-top: 5%;
-  padding-left: 10px;
+  padding-left: 5px;
   grid-column-start: 3;
   grid-column-end: span 1;
   grid-row-start: 2;
@@ -401,6 +409,10 @@ h2#article-title {
   font-family: "ChomskyRegular";
 }
 
+#side-article-title:hover {
+  text-decoration: underline;
+}
+
 #next-button {
   bottom: 30px;
   right: 10px;
@@ -426,9 +438,48 @@ h2#article-title {
   margin-bottom: 20px;
 }
 
+#featured-title:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 #featured-body{
   margin-top: 10px;
   height: 30px;
+}
+
+.feature {
+  padding: 5px 10px;
+  position: relative;
+}
+
+.feature:hover {
+  background-color: rgb(228, 227, 227);
+  height: 410px;
+  transform: scale(1.04);
+  transition: transform .5s ease;
+}
+
+.feature:hover #feature-hover {
+  display: block;
+}
+
+#feature-hover {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 93%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  font-size: 28px;
+  color: rgb(234, 234, 234);
+  padding: 1% 5%;
+  background-color: rgba(86, 86, 86, 0.859);
+}
+
+.feature:hover #featured-img {
+  filter: blur(2px);
 }
 
 #border-top h5 {
@@ -536,6 +587,10 @@ button {
   font-size: 25px;
   padding: 5px;
   background-color: rgba(255, 255, 255, 0.9);
+}
+
+.ui.circular.button:hover {
+  background-color: rgba(213, 213, 213, 0.9);
 }
 
 .profile {
