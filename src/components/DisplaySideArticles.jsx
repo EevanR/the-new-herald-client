@@ -72,7 +72,6 @@ const DisplaySideArticles = props => {
     if (articlesList.includes(undefined) === false) {
       articlesList = articlesList.slice(0, 4)
     }
-    debugger
   }
 
   return (

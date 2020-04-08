@@ -48,7 +48,7 @@ const Login = props => {
     setActive(true)
     setTimeout(() => {
       setActive(false)
-    }, 5000);
+    }, 6000);
   }
 
   let loginFunction;

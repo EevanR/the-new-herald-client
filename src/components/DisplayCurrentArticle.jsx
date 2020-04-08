@@ -11,7 +11,8 @@ const DisplayCurrentArticle = props => {
   const { t } = useTranslation('common')
 
   const getArticleShowData = async id => {
-    if (localStorage.getItem("J-tockAuth-Storage") && props.authenticated === true) {
+    if (localStorage.getItem("J-tockAuth-Storage") && props.authenticated === true 
+    && props.userAttrs !== null && props.userAttrs.role !== null) {
       const article = await getCurrentArticleAuth(id, props.language);
       if (article.error) {
         props.changeMessage(article.error);
@@ -115,6 +116,7 @@ const DisplayCurrentArticle = props => {
                   articleData={getArticleShowData}
                   articleId={props.currentArticleId}
                   article={props.currentArticle}
+                  userAttr={props.userAttrs}
                 />
               </div>
             </>
