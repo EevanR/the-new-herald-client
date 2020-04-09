@@ -29,8 +29,6 @@ const DisplayCurrentArticle = props => {
     }
   };
 
-  const [showSubscriptionForm, setShowSubscriptionForm] = useState(false);
-
   useEffect(() => {
     getArticleShowData(props.currentArticleId);
   }, [props.currentArticleId, props.language]);

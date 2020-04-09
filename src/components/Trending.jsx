@@ -14,10 +14,8 @@ const Trending = props => {
 
   const getArticlesData = async () => {
     let category = "all"
-    let response = await getArticles(null, null, category);
-    debugger
+    let response = await getArticles(props.language, null, category);
     if (response && response.length > 0) {
-      debugger
       let highestRankId = Math.max.apply(Math, response.map((object) => { return object.likes.length; }))
       let array = response.filter((item) => item.likes.length === highestRankId)
       setTrending(array[0])
@@ -41,6 +39,10 @@ const Trending = props => {
   useEffect(() => {
     getArticlesData()
   }, [])
+
+  useEffect(() => {
+    getArticlesData()
+  }, [props.language])
 
   return (
     <>
@@ -88,7 +90,8 @@ const Trending = props => {
 const mapStateToProps = state => {
   return {
     currentArticleId: state.currentArticleId,
-    showSubscriptionForm: state.showSubscriptionForm
+    showSubscriptionForm: state.showSubscriptionForm,
+    language: state.language
   };
 };
 

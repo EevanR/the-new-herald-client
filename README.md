@@ -1,9 +1,9 @@
-# The Reactive Herald Client
+# The New Herald Client
 
-The Reactive Herald is a web applitcation made to function as a online news room. Users can browse short snippets of articles for free or can pay for a subscription to see full articles. Journalists can log on to create their articles and attach an image, which is stored on amazon web services. An article is not publically displayed until it is published by a publisher. Articles are grouped by category and the application's displayed language can be switched between swedish and english if the visitor/user desires.
+The New Herald is a second iteration of a previous project 'The Reactive Herald', made to function as a online news room. Users can browse short snippets of articles for free or can pay for a subscription to see full articles. Journalists can log on to create their articles and attach an image, which is stored on amazon web services. An article is not publically displayed until it is published by a publisher. Articles are grouped by category and the application's displayed language can be switched between swedish and english if the visitor/user desires.
 
 ## Deployed Site
-https://the-reactive-herald-ca.netlify.com/
+
 
 ## Dependencies
 - React 16.12.0
@@ -17,8 +17,8 @@ https://the-reactive-herald-ca.netlify.com/
 ## To run setup
 #### Clone repository
 ```
-$ git clone https://github.com/CraftAcademy/the_reactive_herald_client.git
-$ cd the_reactive_herald_client
+$ git clone https://github.com/EevanR/the-new-herald-client.git
+$ cd the_new_herald_client
 ```
 
 #### Install dependencies
@@ -45,15 +45,14 @@ Head to the deployed address listed above and have a look around.
 
 Log in as various roles to check functionality;
 
-#### To publish articles
-Publisher:  
+#### To review and publish articles
 visit: https://the-reactive-herald-ca.netlify.com/admin  
-email: publ@mail.com  
+Publisher:  
+email: pub@mail.com  
 pass: password
 
 #### To view full articles as subscriber
 Subscriber:  
-Log in:  
 email: sub@mail.com  
 pass: password
 
@@ -65,8 +64,10 @@ pass: password
 Or create your own account.
 
 ## Updates/Improvement plans
-Further styling and functionality.
-Fix Backend Devise authentication timeout bug.
+- Make serverless through AWS Lambda
+- Give Publisher ability to set featured articles
+- Update stripe payment, style, functionality
+- Automatic language translation
 
 ## License
 Created under the <a href="https://en.wikipedia.org/wiki/MIT_License">MIT License</a>.

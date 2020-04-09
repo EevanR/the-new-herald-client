@@ -107,12 +107,21 @@ const Login = props => {
           <Link id="logout-link" to="/" onClick={onLogout}>
             {t('login.logout')}
           </Link>
-          <Link
-            id="admin-button"
-            to="/admin"
-          >
-            Admin
-          </Link>
+          {props.userAttrs && (props.userAttrs.role === "journalist" || props.userAttrs.role ===  "publisher") ? (
+            <Link
+              id="admin-button"
+              to="/admin"
+            >
+              Admin
+            </Link>
+          ) : (
+            <Link
+              id="subscribe-link"
+              to="/profile"
+            >
+              Subscribe
+            </Link>
+          )}
         </>
       );
       break;
@@ -153,6 +162,9 @@ const mapDispatchToProps = dispatch => {
     },
     setUserAttrs: userAttrs => {
       dispatch({ type: "CHANGE_USER_ATTRIBUTES", payload: userAttrs });
+    },
+    showSubForm: value => {
+      dispatch({ type: "SET_SUBFORM", payload: value });
     }
   };
 };

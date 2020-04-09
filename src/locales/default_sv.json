@@ -8,7 +8,8 @@
       "loginProfile": "Var vänlig logga in för att se din profil",
       "subscription": "Prenumeration",
       "nosub": "Ingen prenumeration",
-      "subscribe": "Prenumerera!"
+      "subscribe": "Prenumerera!",
+      "freeRead": "GRATIS INNEHÅLL"
     },
     "dsa": {
       "Loading": "Laddar...",
@@ -63,6 +64,12 @@
       "submit": "Skicka",
       "paySuccessMess": "Tack för att du prenumererar på The Reactive Herald!",
       "cancel": "Annullera"
+    },
+    "weather": {
+      "header": "Väder in",
+      "feelsLike": "KÄNNS SOM",
+      "sunrise": "SOLUPPGÅNG",
+      "sunset": "SOLNEDGÅNG"
     }
   }
 }

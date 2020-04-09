@@ -164,13 +164,13 @@ const deleteArticle = async id => {
   }
 };
 
-const getFreeArticle = async () => {
+const getFreeArticle = async (language) => {
   try {
     let response = await axios({
       url: "/articles",
       method: "GET",
       params: {
-        free: true
+        free: true, locale: language,
       }
     });
     return response

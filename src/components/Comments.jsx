@@ -161,7 +161,7 @@ const Comments = ({ articleId, articleData, article, userAttr }) => {
         )}
       </div>
       {userAttr !== null && userAttr.role === null ? (
-        <p id="user-comments" >Please subscribe to comment and like.</p>
+        <p id="user-comments" >Please subscribe for full article and to comment and like.</p>
       ) : (
           edit === false ? (
             <Form onSubmit={submitCommentHandler}>

@@ -136,6 +136,11 @@ a {
   color: rgb(40, 39, 39);
 }
 
+#subscribe-link {
+  color: #d8b97b;
+  font-size: larger;
+}
+
 #subscribe:hover {
   background-color: #c7a96d;
 }

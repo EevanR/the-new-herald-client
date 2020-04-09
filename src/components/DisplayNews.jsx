@@ -9,12 +9,14 @@ import Trending from "./Trending"
 import Featured from "./Featured"
 import { connect } from "react-redux";
 import { getFreeArticle } from "../modules/article";
+import { useTranslation } from 'react-i18next'
 
 const DisplayNews = props => {
+  const { t } = useTranslation('common')
   const [freeContent, setFreeContent] = useState(null)
 
   const loadFreeArticle = async () => {
-    let response = await getFreeArticle();
+    let response = await getFreeArticle(props.language);
     if (response.status === 200 ) {
       setFreeContent(response.data)
     }
@@ -23,6 +25,10 @@ const DisplayNews = props => {
   useEffect(() => {
     loadFreeArticle();
   }, []);
+
+  useEffect(() => {
+    loadFreeArticle();
+  }, [props.language]);
   
   return (
     <>
@@ -69,7 +75,7 @@ const DisplayNews = props => {
                   <div id="border-top">
                     {freeContent !== null && (
                       <>
-                        <h2>FREE READ</h2>
+                        <h2>{t('dp.freeRead')}</h2>
                         <img className="free-read-img" src={freeContent[1]} />
                       </>
                     )}
@@ -114,7 +120,8 @@ const DisplayNews = props => {
 const mapStateToProps = state => {
   return {
     authenticated: state.authenticated,
-    sideArticles: state.sideArticles
+    sideArticles: state.sideArticles,
+    language: state.language
   }
 }
 
