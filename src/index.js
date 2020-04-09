@@ -4,7 +4,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import axios from "axios"
 import { Provider } from "react-redux"
-// import { StripeProvider } from 'react-stripe-elements'
+import { StripeProvider } from 'react-stripe-elements'
 import configureStore from './state/store/configureStore'
 import 'semantic-ui-css/semantic.min.css'
 import './index.css';
@@ -17,9 +17,9 @@ const store = configureStore()
 
 ReactDOM.render(
   <Provider store={store}>
-    {/* <StripeProvider apiKey={process.env.REACT_APP_STRIPE_KEY}> */}
+    <StripeProvider apiKey={process.env.REACT_APP_STRIPE_KEY}>
       <App />
-    {/* </StripeProvider> */}
+    </StripeProvider>
   </Provider>, document.getElementById('root'));
 
 serviceWorker.unregister();
