@@ -36,10 +36,10 @@ const DisplayNews = props => {
       <div className="backgroundgrey">
         <div className="main">
           <div className="item-a">
-            <DisplayCurrentArticle />
+            {/* <DisplayCurrentArticle /> */}
           </div>
           <div className="item-b">
-            <DisplaySideArticles />
+            {/* <DisplaySideArticles /> */}
           </div>
           {props.authenticated === false && (
             <>
@@ -62,7 +62,7 @@ const DisplayNews = props => {
           </div>
           <div className="item-k">
             <div id="border-top">
-              <Trending />
+              {/* <Trending /> */}
             </div>
           </div>
         </div>
