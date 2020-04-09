@@ -44,14 +44,14 @@ const DisplayNews = props => {
           {props.authenticated === false && (
             <>
               <div className="item-c">
-                <Featured />
+                {/* <Featured /> */}
               </div>
             </>
           )}
           <div className="item-f">
             <div id="weather">
               <>
-                <Weather />
+                {/* <Weather /> */}
               </>
             </div>
           </div>
@@ -101,7 +101,7 @@ const DisplayNews = props => {
           ) : (
             <>
               <div className="item-d">
-                <Featured />
+                {/* <Featured /> */}
               </div>
               <div className="item-e">
                 <div className="advertising">
