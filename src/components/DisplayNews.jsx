@@ -62,7 +62,7 @@ const DisplayNews = props => {
           </div>
           <div className="item-k">
             <div id="border-top">
-              {/* <Trending /> */}
+              <Trending />
             </div>
           </div>
         </div>
