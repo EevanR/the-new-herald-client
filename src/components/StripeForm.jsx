@@ -16,20 +16,20 @@ const StripeForm = props => {
   const payWithStripe = async (event, props) => {
     event.preventDefault();
     let headers = JSON.parse(localStorage.getItem("J-tockAuth-Storage"));
-    await props.stripe.createToken().then(async response => {
-      try {
-        let paymentResponse = await axios.post(
-          "http://localhost:3000/api/v1/subscriptions",
-          { stripeToken: response.token.id },
-          { headers: headers }
-        );
-        if (paymentResponse.status === 200) {
-          props.changePaymentMessage(`${t("stripe.paySuccessMess")}`);
-        }
-      } catch (error) {
-        props.changePaymentMessage(response.error.message);
-      }
-    });
+    // await props.stripe.createToken().then(async response => {
+    //   try {
+    //     let paymentResponse = await axios.post(
+    //       "http://localhost:3000/api/v1/subscriptions",
+    //       { stripeToken: response.token.id },
+    //       { headers: headers }
+    //     );
+    //     if (paymentResponse.status === 200) {
+    //       props.changePaymentMessage(`${t("stripe.paySuccessMess")}`);
+    //     }
+    //   } catch (error) {
+    //     props.changePaymentMessage(response.error.message);
+    //   }
+    // });
   };
   return (
     <>
