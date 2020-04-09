@@ -11,7 +11,7 @@ import './index.css';
 import './weather.css';
 import "./i18n"
 
-axios.defaults.baseURL = process.env.REACT_APP_BASEURL
+axios.defaults.baseURL = "https://the-new-herald.herokuapp.com/api/v1"
 
 const store = configureStore()
 
