@@ -67,7 +67,7 @@ const DisplayNews = props => {
           </div>
         </div>
       </div>
-      <div className="whitebackground">
+      {/* <div className="whitebackground">
         <div className="main2">
           {props.authenticated === false ? (
             <>
@@ -101,7 +101,7 @@ const DisplayNews = props => {
           ) : (
             <>
               <div className="item-d">
-                {/* <Featured /> */}
+                <Featured />
               </div>
               <div className="item-e">
                 <div className="advertising">
@@ -111,7 +111,7 @@ const DisplayNews = props => {
             </>
           )}
         </div>
-      </div>
+      </div> */}
       <Footer />
     </>
   );
