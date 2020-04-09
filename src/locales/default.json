@@ -8,7 +8,8 @@
       "loginProfile": "Please log in to view your profile",
       "subscription": "Subscription",
       "nosub": "No subscription",
-      "subscribe": "Subscribe to read!"
+      "subscribe": "Subscribe to read!",
+      "freeRead": "FREE CONTENT"
     },
     "dsa": {
       "loading": "Loading...",
@@ -63,6 +64,12 @@
       "submit": "Submit",
       "paySuccessMess": "Thank you for subscribing to The Reactive Herald!",
       "cancel": "Cancel"
+    },
+    "weather": {
+      "header": "Weather in",
+      "feelsLike": "FEELS LIKE",
+      "sunrise": "SUNRISE",
+      "sunset": "SUNSET"
     }
   }
 }

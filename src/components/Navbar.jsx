@@ -31,13 +31,14 @@ const Navbar = props => {
   }, []);
 
   const toggleCategory = event => {
-    if (event.target.id === "return") {
-      props.changeCategory(null);
-    } else {
-      let itemButtons = document.getElementsByClassName("item-button");
+    let itemButtons = document.getElementsByClassName("item-button");
       Array.from(itemButtons).forEach(
         button => (document.getElementById(button.id).style.fontWeight = "300")
       );
+    if (event.target.id === "return") {
+      props.changeCategory(null);
+      document.getElementById(event.target.id).style.fontWeight = "900";
+    } else {
       props.changeCategory(event.target.id);
       document.getElementById(event.target.id).style.fontWeight = "900";
     }
@@ -61,6 +62,12 @@ const Navbar = props => {
             onClick={changeLanguage} 
             active={activeItem === 'sv'}
             />
+          <Menu.Item
+            name={t("nav.all")}
+            className="item-button"
+            id="return"
+            onClick={toggleCategory}
+          />
           <Menu.Item
             name={t("nav.news")}
             className="item-button"

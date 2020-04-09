@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import auth from "../modules/auth";
 import { Link } from "react-router-dom";
@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import Signup from './Signup';
 
 const Login = props => {
+  const [active, setActive] = useState(false)
 
   const { t } = useTranslation()
 
@@ -39,9 +40,16 @@ const Login = props => {
           props.changeSignupButton(true);
           props.changeAuthMessage("");
         }
-        props.changeAuthMessage(error);
+        props.changeAuthMessage(error.message);
       });
   };
+
+  const fadeIn = () => {
+    setActive(true)
+    setTimeout(() => {
+      setActive(false)
+    }, 6000);
+  }
 
   let loginFunction;
 
@@ -74,10 +82,9 @@ const Login = props => {
           <form id="login-form" onSubmit={onLogin}>
             <label>{t('login.email')} </label>
             <input name="email" type="email" id="email"></input>
-
             <label>{t('login.password')} </label>
             <input name="password" type="password" id="password"></input>&nbsp;
-            <button id="submit">{t('login.submit')}</button>
+            <button onClick={() => fadeIn()} id="submit">{t('login.submit')}</button>
             <Link
               id="back-button"
               onClick={() => props.changeLoginButton(true)}
@@ -100,12 +107,21 @@ const Login = props => {
           <Link id="logout-link" to="/" onClick={onLogout}>
             {t('login.logout')}
           </Link>
-          <Link
-            id="admin-button"
-            to="/admin"
-          >
-            Admin
-          </Link>
+          {props.userAttrs && (props.userAttrs.role === "journalist" || props.userAttrs.role ===  "publisher") ? (
+            <Link
+              id="admin-button"
+              to="/admin"
+            >
+              Admin
+            </Link>
+          ) : (
+            <Link
+              id="subscribe-link"
+              to="/profile"
+            >
+              Subscribe
+            </Link>
+          )}
         </>
       );
       break;
@@ -116,6 +132,8 @@ const Login = props => {
   return (
     <div className="login" >
       {loginFunction}
+      <br/>
+      <div id="fade-in" className={active ? "fade-in-active" : "fade-out"}>{props.authMessage}</div>
     </div>
   );
 };
@@ -144,6 +162,9 @@ const mapDispatchToProps = dispatch => {
     },
     setUserAttrs: userAttrs => {
       dispatch({ type: "CHANGE_USER_ATTRIBUTES", payload: userAttrs });
+    },
+    showSubForm: value => {
+      dispatch({ type: "SET_SUBFORM", payload: value });
     }
   };
 };

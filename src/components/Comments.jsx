@@ -3,7 +3,7 @@ import { Form, TextArea, Icon, Button } from "semantic-ui-react";
 import { createComment, getComments, commentDelete, updateComment } from "../modules/comment"
 import { sendVote } from "../modules/article"
 
-const Comments = ({articleId, articleData, article}) => {
+const Comments = ({ articleId, articleData, article, userAttr }) => {
   const [body, setBody] = useState("")
   const [message, setMessage] = useState("")
   const [comments, setComments] = useState(null)
@@ -41,7 +41,7 @@ const Comments = ({articleId, articleData, article}) => {
 
   const loadComments = async id => {
     let response = await getComments(id);
-    if (response.status === 200 && response.data.length > 0 ) {
+    if (response.status === 200 && response.data.length > 0) {
       let array = response.data
       setComments(array.reverse())
     } else if (response.status === 200) {
@@ -110,12 +110,12 @@ const Comments = ({articleId, articleData, article}) => {
         <div key={comment.id} className="comment">
           <h5>{comment.email}
             <span id="comment-role">{comment.role}</span>
-            { user === comment.email && (
-              <div onClick={() => openCommentMenu(comment.id) } className="elipse"><Icon id="comment-elipse" name='ellipsis vertical' /></div>
+            {user === comment.email && (
+              <div onClick={() => openCommentMenu(comment.id)} className="elipse"><Icon id="comment-elipse" name='ellipsis vertical' /></div>
             )}
           </h5>
           <p>{comment.body}
-            { showMenu === true && commentMenuId === comment.id && (
+            {showMenu === true && commentMenuId === comment.id && (
               <div className="comment-menu">
                 <span id="comment-edit" onClick={() => editComment(comment.id, comment.body)}><Icon name='edit' />Edit</span>
                 <span id="comment-delete" onClick={() => deleteComment(comment.id)}><Icon color='red' name='trash alternate outline' />Delete</span>
@@ -139,57 +139,63 @@ const Comments = ({articleId, articleData, article}) => {
   }, []);
 
   useEffect(() => {
-    
+
   }, [articleId])
 
   return (
     <div className="comments-div">
       <div className="inline">
-        <h2 id="title-slim">DISCUSSION</h2> 
+        <h2 id="title-slim">DISCUSSION</h2>
         <Icon.Group onClick={() => upvote()} className="upvote">
-        {voted === true ? (
-          <Icon color='blue' id="heart-active" name='like'/>
+          {voted === true ? (
+            <Icon color='blue' id="heart-active" name='like' />
           ) : (
-            <Icon color='grey' id="heart" name='like'/>
-          )} 
-          <Icon id="plus" corner name='add' />
+              <Icon color='grey' id="heart" name='like' />
+            )}
+          { userAttr !== null && userAttr.role !== null && (
+            <Icon id="plus" corner name='add' />
+          )}
         </Icon.Group>
         {likes !== null && (
-          likes > 1 ? <p>{likes} Likes</p> : <p>{likes} Like</p> 
+          likes > 1 ? <p>{likes} Likes</p> : <p>{likes} Like</p>
         )}
       </div>
-      { edit === false ? (
-        <Form onSubmit={submitCommentHandler}>
-          <Form.Group>
-            <Form.Input
-              required
-              className="comment-text"
-              control={TextArea}
-              placeholder='Comment'
-              name='comment'
-              value={body}
-              onChange={e => setBody(e.target.value)}
-            />
-            <Form.Button content='Submit' />
-          </Form.Group>
-        </Form>
+      {userAttr !== null && userAttr.role === null ? (
+        <p id="user-comments" >Please subscribe for full article and to comment and like.</p>
       ) : (
-        <Form onSubmit={submitEditHandler}>
-          <Form.Group>
-            <Form.Input
-              required
-              className="comment-text"
-              control={TextArea}
-              placeholder='Comment'
-              name='comment'
-              value={body}
-              onChange={e => setBody(e.target.value)}
-            />
-            <Form.Button content='Edit' />
-            <Button className="cancle" onClick={() =>  cancel()} > Cancel</Button>
-          </Form.Group>
-        </Form>
-      )}
+          edit === false ? (
+            <Form onSubmit={submitCommentHandler}>
+              <Form.Group>
+                <Form.Input
+                  required
+                  className="comment-text"
+                  control={TextArea}
+                  placeholder='Comment'
+                  name='comment'
+                  value={body}
+                  onChange={e => setBody(e.target.value)}
+                />
+                <Form.Button content='Submit' />
+              </Form.Group>
+            </Form>
+          ) : (
+              <Form onSubmit={submitEditHandler}>
+                <Form.Group>
+                  <Form.Input
+                    required
+                    className="comment-text"
+                    control={TextArea}
+                    placeholder='Comment'
+                    name='comment'
+                    value={body}
+                    onChange={e => setBody(e.target.value)}
+                  />
+                  <Form.Button content='Edit' />
+                  <Button className="cancle" onClick={() => cancel()} > Cancel</Button>
+                </Form.Group>
+              </Form>
+            )
+        )}
       {commentsList}
     </div>
   )

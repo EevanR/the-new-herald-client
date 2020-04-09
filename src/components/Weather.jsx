@@ -97,17 +97,17 @@ const Weather = () => {
         <div className="weather-main">
           {gotWeather ? (
             <>
-              <h2>Weather in {place}, {country}</h2>
+              <h2>{t("weather.header")} {place}, {country}</h2>
               {weatherDisplay()}
               <p id="temp">{temp}&#8451;</p>
               <p>
                 {description}
                 <br/>
-                <span style={{fontWeight: "900"}}>FEELS LIKE:</span> {(feelsLike-273.15).toFixed(1)}&#8451;
+                <span style={{fontWeight: "900"}}>{t("weather.feelsLike")}:</span> {(feelsLike-273.15).toFixed(1)}&#8451;
                 <br/>
-                <span style={{fontWeight: "900"}}>SUNRISE:</span> {sunrise.substring(0, sunrise.lastIndexOf("G"))}
+                <span style={{fontWeight: "900"}}>{t("weather.sunrise")}:</span> {sunrise.substring(0, sunrise.lastIndexOf("G"))}
                 <br/>
-                <span style={{fontWeight: "900"}}>SUNSET:</span> {sunset.substring(0, sunset.lastIndexOf("G"))}
+                <span style={{fontWeight: "900"}}>{t("weather.sunset")}:</span> {sunset.substring(0, sunset.lastIndexOf("G"))}
               </p>
             </>
           ) : (

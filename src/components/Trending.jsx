@@ -1,16 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { getArticles } from "../modules/article";
-import { getComments } from "../modules/comment";
+import { getComments } from "../modules/comment"
+import { Button } from "semantic-ui-react";
+import { useTranslation } from 'react-i18next'
+import { connect } from "react-redux"
 
-const Trending = () => {
+const Trending = props => {
+  const { t } = useTranslation('common')
+
   const [trending, setTrending] = useState([])
   const [trendingLikes, setTrendingLikes] = useState(null)
   const [comments, setComments] = useState([])
 
   const getArticlesData = async () => {
     let category = "all"
-    let response = await getArticles(null, null, category);
-    if (response) {
+    let response = await getArticles(props.language, null, category);
+    if (response && response.length > 0) {
       let highestRankId = Math.max.apply(Math, response.map((object) => { return object.likes.length; }))
       let array = response.filter((item) => item.likes.length === highestRankId)
       setTrending(array[0])
@@ -26,9 +31,18 @@ const Trending = () => {
     }
   }
 
+  const changeMainArticle = (id) => {
+    props.changeCurrentArticleId(id)
+    window.scrollTo(0, 0)
+  }
+
   useEffect(() => {
     getArticlesData()
   }, [])
+
+  useEffect(() => {
+    getArticlesData()
+  }, [props.language])
 
   return (
     <>
@@ -36,11 +50,19 @@ const Trending = () => {
       <div className="trending">
         <h1 id="rank">1</h1>
         <div className="info">
-          <h2 id="article-title">{trending.title}</h2>
+          <h2 onClick={() => changeMainArticle(trending.id)} id="article-title">{trending.title}</h2>
           <p id="cat-date" >
             <span id="red">{trending.category} </span>
             {trendingLikes} Upvotes
           </p>
+          <Button
+            id="subscribe"
+            onClick={() => {
+              props.showSubForm(true);
+            }}
+          >
+            {t('dp.subscribe')}
+          </Button>
         </div>
         {comments.length > 1 && (
           <>
@@ -65,4 +87,27 @@ const Trending = () => {
   )
 }
 
-export default Trending;
+const mapStateToProps = state => {
+  return {
+    currentArticleId: state.currentArticleId,
+    showSubscriptionForm: state.showSubscriptionForm,
+    language: state.language
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    changeCurrentArticleId: id => {
+      dispatch({ type: "CHANGE_ARTICLE_ID", payload: id });
+    },
+    showSubForm: value => {
+      dispatch({ type: "SET_SUBFORM", payload: value });
+    }
+  };
+};
+
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Trending);

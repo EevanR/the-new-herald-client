@@ -163,10 +163,7 @@ const CreateArticle = () => {
 
   return (
     <>
-      <Grid padded>
-        <Grid.Column style={{ background: "white" }}>
-          <Header as="h1">{t("admin.createArticle")}</Header>
-          {submitMessage}
+          <Header className="create-header" as="h1">{t("admin.createArticle")}</Header>
           <Form id="article-form" onSubmit={submitArticleHandler}>
             <Tab panes={panes} style={{ paddingBottom: "10px" }} />
             <Form.Field
@@ -203,12 +200,11 @@ const CreateArticle = () => {
               style={{ display: "none" }}
               onChange={e => imageUploadHandler(e)}
             />
+            {submitMessage}
             <Form.Button positive type="submit" id="submit">
               {t("login.submit")}
             </Form.Button>
           </Form>
-        </Grid.Column>
-      </Grid>
     </>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { getCurrentArticle } from "../modules/article";
+import { getCurrentArticle, getCurrentArticleAuth } from "../modules/article";
 import StripeForm from "./StripeForm";
 import { Elements } from "react-stripe-elements";
 import { Button } from "semantic-ui-react";
@@ -11,15 +11,23 @@ const DisplayCurrentArticle = props => {
   const { t } = useTranslation('common')
 
   const getArticleShowData = async id => {
-    const article = await getCurrentArticle(id, props.language);
-    if (article.error) {
-      props.changeMessage(article.error);
+    if (localStorage.getItem("J-tockAuth-Storage") && props.authenticated === true 
+    && props.userAttrs !== null && props.userAttrs.role !== null) {
+      const article = await getCurrentArticleAuth(id, props.language);
+      if (article.error) {
+        props.changeMessage(article.error);
+      } else {
+        props.changeCurrentArticle(article);
+      }
     } else {
-      props.changeCurrentArticle(article);
+      const article = await getCurrentArticle(id, props.language);
+      if (article.error) {
+        props.changeMessage(article.error);
+      } else {
+        props.changeCurrentArticle(article);
+      }
     }
   };
-
-  const [showSubscriptionForm, setShowSubscriptionForm] = useState(false);
 
   useEffect(() => {
     getArticleShowData(props.currentArticleId);
@@ -31,38 +39,26 @@ const DisplayCurrentArticle = props => {
 
   const limitedDisplayUI = () => {
     switch (true) {
-      case !props.authenticated && !showSubscriptionForm: {
+      case !props.authenticated && !props.showSubscriptionForm: {
         return (
           <Button
             id="subscribe"
             onClick={() => {
-              setShowSubscriptionForm(true);
+              props.showSubForm(true);
             }}
           >
             {t('dp.subscribe')}
           </Button>
         );
       }
-      // case props.userAttrs && props.userAttrs.role === null && !showSubscriptionForm: {
-      //   return (
-      //     <Button
-      //       id="subscribe"
-      //       onClick={() => {
-      //         setShowSubscriptionForm(true);
-      //       }}
-      //     >
-      //       {t('dp.subscribe')}
-      //     </Button>
-      //   );
-      // }
-      case showSubscriptionForm: {
+      case props.showSubscriptionForm: {
         return (
           <div id="stripe-form">
             <Elements>
               <StripeForm />
             </Elements>
             <Button onClick={() => {
-              setShowSubscriptionForm(false);
+              props.showSubForm(false);
               props.changePaymentMessage(null)
             }}>
               {t("stripe.cancel")}
@@ -118,6 +114,7 @@ const DisplayCurrentArticle = props => {
                   articleData={getArticleShowData}
                   articleId={props.currentArticleId}
                   article={props.currentArticle}
+                  userAttr={props.userAttrs}
                 />
               </div>
             </>
@@ -144,7 +141,8 @@ const mapStateToProps = state => {
     authenticated: state.authenticated,
     userAttrs: state.userAttrs,
     language: state.language,
-    paymentMessage: state.paymentMessage
+    paymentMessage: state.paymentMessage,
+    showSubscriptionForm: state.showSubscriptionForm
   };
 };
 
@@ -158,6 +156,9 @@ const mapDispatchToProps = dispatch => {
     },
     changePaymentMessage: message => {
       dispatch({ type: "CHANGE_PAYMENTMESSAGE", payload: message });
+    },
+    showSubForm: value => {
+      dispatch({ type: "SET_SUBFORM", payload: value });
     }
   };
 };
