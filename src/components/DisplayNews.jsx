@@ -36,22 +36,22 @@ const DisplayNews = props => {
       <div className="backgroundgrey">
         <div className="main">
           <div className="item-a">
-            {/* <DisplayCurrentArticle /> */}
+            <DisplayCurrentArticle />
           </div>
           <div className="item-b">
-            {/* <DisplaySideArticles /> */}
+            <DisplaySideArticles />
           </div>
           {props.authenticated === false && (
             <>
               <div className="item-c">
-                {/* <Featured /> */}
+                <Featured />
               </div>
             </>
           )}
           <div className="item-f">
             <div id="weather">
               <>
-                {/* <Weather /> */}
+                <Weather />
               </>
             </div>
           </div>
@@ -67,7 +67,7 @@ const DisplayNews = props => {
           </div>
         </div>
       </div>
-      {/* <div className="whitebackground">
+      <div className="whitebackground">
         <div className="main2">
           {props.authenticated === false ? (
             <>
@@ -111,7 +111,7 @@ const DisplayNews = props => {
             </>
           )}
         </div>
-      </div> */}
+      </div>
       <Footer />
     </>
   );
