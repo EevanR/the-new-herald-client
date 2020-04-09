@@ -28,10 +28,10 @@ const Footer = () => {
     }
   };
 
-  // useEffect(() => {
-  //   loadOnThisDayEvent();
-  //   loadForexData();
-  // }, []);
+  useEffect(() => {
+    loadOnThisDayEvent();
+    loadForexData();
+  }, []);
 
   return (
     <div className="footer-container">

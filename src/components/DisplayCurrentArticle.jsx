@@ -41,26 +41,26 @@ const DisplayCurrentArticle = props => {
 
   const limitedDisplayUI = () => {
     switch (true) {
-      case !props.authenticated && !showSubscriptionForm: {
+      case !props.authenticated && !props.showSubscriptionForm: {
         return (
           <Button
             id="subscribe"
             onClick={() => {
-              setShowSubscriptionForm(true);
+              props.showSubForm(true);
             }}
           >
             {t('dp.subscribe')}
           </Button>
         );
       }
-      case showSubscriptionForm: {
+      case props.showSubscriptionForm: {
         return (
           <div id="stripe-form">
             <Elements>
               <StripeForm />
             </Elements>
             <Button onClick={() => {
-              setShowSubscriptionForm(false);
+              props.showSubForm(false);
               props.changePaymentMessage(null)
             }}>
               {t("stripe.cancel")}
@@ -143,7 +143,8 @@ const mapStateToProps = state => {
     authenticated: state.authenticated,
     userAttrs: state.userAttrs,
     language: state.language,
-    paymentMessage: state.paymentMessage
+    paymentMessage: state.paymentMessage,
+    showSubscriptionForm: state.showSubscriptionForm
   };
 };
 
@@ -157,6 +158,9 @@ const mapDispatchToProps = dispatch => {
     },
     changePaymentMessage: message => {
       dispatch({ type: "CHANGE_PAYMENTMESSAGE", payload: message });
+    },
+    showSubForm: value => {
+      dispatch({ type: "SET_SUBFORM", payload: value });
     }
   };
 };

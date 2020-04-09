@@ -15,7 +15,9 @@ const Trending = props => {
   const getArticlesData = async () => {
     let category = "all"
     let response = await getArticles(null, null, category);
-    if (response) {
+    debugger
+    if (response && response.length > 0) {
+      debugger
       let highestRankId = Math.max.apply(Math, response.map((object) => { return object.likes.length; }))
       let array = response.filter((item) => item.likes.length === highestRankId)
       setTrending(array[0])
@@ -53,9 +55,9 @@ const Trending = props => {
           </p>
           <Button
             id="subscribe"
-            // onClick={() => {
-            //   setShowSubscriptionForm(true);
-            // }}
+            onClick={() => {
+              props.showSubForm(true);
+            }}
           >
             {t('dp.subscribe')}
           </Button>
@@ -85,7 +87,8 @@ const Trending = props => {
 
 const mapStateToProps = state => {
   return {
-    currentArticleId: state.currentArticleId
+    currentArticleId: state.currentArticleId,
+    showSubscriptionForm: state.showSubscriptionForm
   };
 };
 
@@ -93,6 +96,9 @@ const mapDispatchToProps = dispatch => {
   return {
     changeCurrentArticleId: id => {
       dispatch({ type: "CHANGE_ARTICLE_ID", payload: id });
+    },
+    showSubForm: value => {
+      dispatch({ type: "SET_SUBFORM", payload: value });
     }
   };
 };

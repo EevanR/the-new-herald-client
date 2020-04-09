@@ -77,6 +77,11 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         category: action.payload
       };
+    case "SET_SUBFORM":
+      return {
+        ...state,
+        showSubscriptionForm: action.payload
+      };
     default:
       return {
         ...state

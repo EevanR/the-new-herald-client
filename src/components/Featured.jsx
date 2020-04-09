@@ -14,6 +14,14 @@ const Featured = props => {
     setFeatured(response)
   }
 
+  const loadNew = (id) => {
+    props.changeCurrentArticleId(id)
+    if (props.authenticated === true ) {
+      window.scrollTo(0, 0)
+    }
+  }
+
+
   useEffect(() => {
     loadFeatured()
   }, []);
@@ -25,7 +33,7 @@ const Featured = props => {
           {featured !== null && featured.articles.length > 0 && (
             <>
               <h4
-                onClick={() => props.changeCurrentArticleId(featured.articles[0].id)}
+                onClick={() => loadNew(featured.articles[0].id)}
                 id="featured-title"
               >
                 {featured.articles[0].title}
@@ -47,7 +55,7 @@ const Featured = props => {
           {featured !== null && featured.articles.length > 1 && (
             <>
               <h4
-                onClick={() => props.changeCurrentArticleId(featured.articles[1].id)}
+                onClick={() => loadNew(featured.articles[1].id)}
                 id="featured-title"
               >
                 {featured.articles[1].title}
@@ -69,7 +77,7 @@ const Featured = props => {
           {featured !== null && featured.articles.length > 2 && (
             <>
               <h4
-                onClick={() => props.changeCurrentArticleId(featured.articles[2].id)}
+                onClick={() => loadNew(featured.articles[2].id)}
                 id="featured-title"
               >
                 {featured.articles[2].title}

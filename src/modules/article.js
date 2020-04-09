@@ -173,7 +173,7 @@ const getFreeArticle = async () => {
         free: true
       }
     });
-    return response.data
+    return response
   } catch (error) {
     return error.message;
   }

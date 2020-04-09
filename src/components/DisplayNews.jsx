@@ -15,7 +15,9 @@ const DisplayNews = props => {
 
   const loadFreeArticle = async () => {
     let response = await getFreeArticle();
-    setFreeContent(response)
+    if (response.status === 200 ) {
+      setFreeContent(response.data)
+    }
   }
 
   useEffect(() => {
