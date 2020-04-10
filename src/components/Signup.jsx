@@ -1,29 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import auth from "../modules/auth";
 import { useTranslation } from 'react-i18next'
 import { Link } from "react-router-dom";
 
 const Signup = props => {
+  const [registerOk, setRegisterOk] = useState(false)
 
   const { t } = useTranslation()
 
   const onSignup = event => {
     event.preventDefault();
+    event.persist()
     auth
       .signUp({
         email: event.target.email.value,
         password: event.target.password.value
       })
       .then(userDatas => {
-        props.changeAuth(true);
-        props.changeAuthMessage(`Welcome! ${userDatas.data.data.email}`);
+        userDatas.status === 200 && login() 
       })
       .catch(error => {
         props.changeAuthMessage(error.response.data.errors.full_messages);
       });
-  };
 
+      const login = (event) => {
+        auth
+        .signIn(event.target.email.value, event.target.password.value)
+        .then(userDatas => {
+          props.changeAuth(true);
+          props.setUserAttrs(userDatas.data);
+          props.changeAuthMessage(`Welcome!${t('login.loggedInMess')} ${userDatas.data.email}`);
+        })
+        .catch(error => {
+          props.changeAuthMessage(error.response.data.errors);
+        });
+      }   
+  }; 
+  
   let signupFunction;
 
   switch (true) {
@@ -91,6 +105,12 @@ const mapDispatchToProps = dispatch => {
     },
     changeLoginButton: value => {
       dispatch({ type: "CHANGE_LOGINBUTTON", payload: value });
+    },
+    setUserAttrs: userAttrs => {
+      dispatch({ type: "CHANGE_USER_ATTRIBUTES", payload: userAttrs });
+    },
+    setActive: value => {
+      dispatch({ type: "SET_LOGINACTIVE", payload: value });
     }
   };
 };

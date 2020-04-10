@@ -955,3 +955,10 @@ button {
   margin-bottom: 40px;
   background: rgb(250, 250, 250);
 }
+
+#register-msg {
+  position: absolute;
+  top: 90px;
+  right: 95px;
+  color: grey;
+}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import auth from "../modules/auth";
 import { Link } from "react-router-dom";
@@ -45,11 +45,17 @@ const Login = props => {
   };
 
   const fadeIn = () => {
-    setActive(true)
+    props.setActive(true)
     setTimeout(() => {
-      setActive(false)
+      props.setActive(false)
     }, 6000);
-  }
+  };
+
+  useEffect(() => {
+    {props.authenticated === true && (
+      fadeIn()
+    )}
+  }, [props.authenticated]);
 
   let loginFunction;
 
@@ -134,7 +140,7 @@ const Login = props => {
     <div className="login" >
       {loginFunction}
       <br/>
-      <div id="fade-in" className={active ? "fade-in-active" : "fade-out"}>{props.authMessage}</div>
+      <div id="fade-in" className={props.loginActive ? "fade-in-active" : "fade-out"}>{props.authMessage}</div>
     </div>
   );
 };
@@ -144,7 +150,8 @@ const mapStateToProps = state => ({
   userAttrs: state.userAttrs,
   authMessage: state.authMessage,
   displaySignupButton: state.displaySignupButton,
-  displayLoginButton: state.displayLoginButton
+  displayLoginButton: state.displayLoginButton,
+  loginActive: state.loginActive
 });
 
 const mapDispatchToProps = dispatch => {
@@ -166,6 +173,9 @@ const mapDispatchToProps = dispatch => {
     },
     showSubForm: value => {
       dispatch({ type: "SET_SUBFORM", payload: value });
+    },
+    setActive: value => {
+      dispatch({ type: "SET_LOGINACTIVE", payload: value });
     }
   };
 };
