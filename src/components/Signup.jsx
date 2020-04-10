@@ -1,31 +1,30 @@
-import React, { useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import auth from "../modules/auth";
 import { useTranslation } from 'react-i18next'
 import { Link } from "react-router-dom";
 
 const Signup = props => {
-  const [registerOk, setRegisterOk] = useState(false)
 
   const { t } = useTranslation()
 
-  const onSignup = event => {
+  const onSignup = async event => {
     event.preventDefault();
     event.persist()
-    auth
+    let register;
+    await auth
       .signUp({
         email: event.target.email.value,
         password: event.target.password.value
       })
       .then(userDatas => {
-        userDatas.status === 200 && login() 
+        register = userDatas.status
       })
       .catch(error => {
         props.changeAuthMessage(error.response.data.errors.full_messages);
       });
-
-      const login = (event) => {
-        auth
+      if (register === 200) {
+      auth
         .signIn(event.target.email.value, event.target.password.value)
         .then(userDatas => {
           props.changeAuth(true);
@@ -35,7 +34,7 @@ const Signup = props => {
         .catch(error => {
           props.changeAuthMessage(error.response.data.errors);
         });
-      }   
+      }
   }; 
   
   let signupFunction;

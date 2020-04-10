@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import auth from "../modules/auth";
 import { Link } from "react-router-dom";
@@ -6,8 +6,6 @@ import { useTranslation } from 'react-i18next';
 import Signup from './Signup';
 
 const Login = props => {
-  const [active, setActive] = useState(false)
-
   const { t } = useTranslation()
 
   const onLogin = event => {
