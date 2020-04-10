@@ -107,14 +107,15 @@ const Login = props => {
           <Link id="logout-link" to="/" onClick={onLogout}>
             {t('login.logout')}
           </Link>
-          {props.userAttrs && (props.userAttrs.role === "journalist" || props.userAttrs.role ===  "publisher") ? (
+          {props.userAttrs && (props.userAttrs.role === "journalist" || props.userAttrs.role ===  "publisher") && (
             <Link
               id="admin-button"
               to="/admin"
             >
               Admin
             </Link>
-          ) : (
+          )}
+          {props.userAttrs && props.userAttrs.role === null && (
             <Link
               id="subscribe-link"
               to="/profile"
