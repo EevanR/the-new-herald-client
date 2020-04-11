@@ -10,7 +10,9 @@ import {
   Tab,
   Menu,
   Icon,
-  Image
+  Image, 
+  Dimmer, 
+  Loader
 } from "semantic-ui-react";
 import { useTranslation } from "react-i18next";
 
@@ -24,11 +26,13 @@ const CreateArticle = () => {
   const [bodySv, setBodySv] = useState("");
   const [engFormFilled, setEngFormFilled] = useState(false);
   const [sweFormFilled, setSweFormFilled] = useState(false);
+  const [loader, setLoader] = useState(false);
 
   const { t } = useTranslation();
   let submitMessage;
 
   const submitArticleHandler = async e => {
+    setLoader(true)
     e.preventDefault();
     const response = await createArticle(
       titleEn,
@@ -38,10 +42,11 @@ const CreateArticle = () => {
       category,
       imageBase64
     );
-
     if (response.status === 200) {
+      setLoader(false)
       setSubmitSuccess(true);
     } else if (response.status === 422) {
+      setLoader(false)
       setSubmitSuccess(false);
     }
   };
@@ -163,48 +168,53 @@ const CreateArticle = () => {
 
   return (
     <>
-          <Header className="create-header" as="h1">{t("admin.createArticle")}</Header>
-          <Form id="article-form" onSubmit={submitArticleHandler}>
-            <Tab panes={panes} style={{ paddingBottom: "10px" }} />
-            <Form.Field
-              required
-              control={Select}
-              id="selector"
-              label="Category"
-              placeholder="Select category"
-              onChange={(e, data) => setCategory(data.value)}
-              options={categories}
-              width={4}
-            />
-            <div id="image-preview">
-              {imageBase64 ? (
-                <Image
-                  bordered
-                  src={imageBase64}
-                  style={{ maxWidth: "384px" }}
-                  alt="preview"
-                ></Image>
-              ) : null}
-            </div>
-            <Form.Field
-              className="ui icon right labeled button"
-              as="label"
-              htmlFor="image-upload"
-            >
-              {t("admin.addImage")}&nbsp;
-              <Icon name="image outline" />
-            </Form.Field>
-            <input
-              type="file"
-              id="image-upload"
-              style={{ display: "none" }}
-              onChange={e => imageUploadHandler(e)}
-            />
-            {submitMessage}
-            <Form.Button positive type="submit" id="submit">
-              {t("login.submit")}
-            </Form.Button>
-          </Form>
+      <Header className="create-header" as="h1">{t("admin.createArticle")}</Header>
+      <Form id="article-form" onSubmit={submitArticleHandler}>
+        <Tab panes={panes} style={{ paddingBottom: "10px" }} />
+        <Form.Field
+          required
+          control={Select}
+          id="selector"
+          label="Category"
+          placeholder="Select category"
+          onChange={(e, data) => setCategory(data.value)}
+          options={categories}
+          width={4}
+        />
+        <div id="image-preview">
+          {imageBase64 ? (
+            <Image
+              bordered
+              src={imageBase64}
+              style={{ maxWidth: "384px" }}
+              alt="preview"
+            ></Image>
+          ) : null}
+        </div>
+        <Form.Field
+          className="ui icon right labeled button"
+          as="label"
+          htmlFor="image-upload"
+        >
+          {t("admin.addImage")}&nbsp;
+          <Icon name="image outline" />
+        </Form.Field>
+        <input
+          type="file"
+          id="image-upload"
+          style={{ display: "none" }}
+          onChange={e => imageUploadHandler(e)}
+        />
+        {submitMessage}
+        <Form.Button positive type="submit" id="submit">
+          {t("login.submit")}
+        </Form.Button>
+        {loader === true && (
+          <Dimmer active inverted>
+            <Loader size='large'>Writing...</Loader>
+          </Dimmer>
+        )}
+      </Form>
     </>
   );
 };

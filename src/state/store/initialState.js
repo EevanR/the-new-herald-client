@@ -14,6 +14,7 @@ const initialState = {
   paymentMessage: null,
   language: "en",
   category: null,
-  showSubscriptionForm: false
+  showSubscriptionForm: false,
+  loginActive: false
 }
 export default initialState

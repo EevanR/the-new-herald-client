@@ -11,7 +11,7 @@ import './index.css';
 import './weather.css';
 import "./i18n"
 
-axios.defaults.baseURL = process.env.REACT_APP_BASEURL
+axios.defaults.baseURL = "http://localhost:3000/api/v1"
 
 const store = configureStore()
 

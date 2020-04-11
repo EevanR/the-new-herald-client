@@ -82,6 +82,11 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         showSubscriptionForm: action.payload
       };
+    case "SET_LOGINACTIVE":
+      return {
+        ...state,
+        loginActive: action.payload
+      };
     default:
       return {
         ...state

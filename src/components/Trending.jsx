@@ -38,10 +38,6 @@ const Trending = props => {
 
   useEffect(() => {
     getArticlesData()
-  }, [])
-
-  useEffect(() => {
-    getArticlesData()
   }, [props.language])
 
   return (

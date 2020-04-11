@@ -21,10 +21,9 @@ const Featured = props => {
     }
   }
 
-
   useEffect(() => {
     loadFeatured()
-  }, []);
+  }, [props.language]);
 
   return (
     <div className="featured-div">
@@ -101,6 +100,7 @@ const Featured = props => {
 const mapStateToProps = state => {
   return {
     authenticated: state.authenticated,
+    language: state.language
   }
 }
 

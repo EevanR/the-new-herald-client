@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import auth from "../modules/auth";
 import { Link } from "react-router-dom";
@@ -6,8 +6,6 @@ import { useTranslation } from 'react-i18next';
 import Signup from './Signup';
 
 const Login = props => {
-  const [active, setActive] = useState(false)
-
   const { t } = useTranslation()
 
   const onLogin = event => {
@@ -45,11 +43,17 @@ const Login = props => {
   };
 
   const fadeIn = () => {
-    setActive(true)
+    props.setActive(true)
     setTimeout(() => {
-      setActive(false)
+      props.setActive(false)
     }, 6000);
-  }
+  };
+
+  useEffect(() => {
+    {props.authenticated === true && (
+      fadeIn()
+    )}
+  }, [props.authenticated]);
 
   let loginFunction;
 
@@ -107,14 +111,15 @@ const Login = props => {
           <Link id="logout-link" to="/" onClick={onLogout}>
             {t('login.logout')}
           </Link>
-          {props.userAttrs && (props.userAttrs.role === "journalist" || props.userAttrs.role ===  "publisher") ? (
+          {props.userAttrs && (props.userAttrs.role === "journalist" || props.userAttrs.role ===  "publisher") && (
             <Link
               id="admin-button"
               to="/admin"
             >
               Admin
             </Link>
-          ) : (
+          )}
+          {props.userAttrs && props.userAttrs.role === null && (
             <Link
               id="subscribe-link"
               to="/profile"
@@ -133,7 +138,7 @@ const Login = props => {
     <div className="login" >
       {loginFunction}
       <br/>
-      <div id="fade-in" className={active ? "fade-in-active" : "fade-out"}>{props.authMessage}</div>
+      <div id="fade-in" className={props.loginActive ? "fade-in-active" : "fade-out"}>{props.authMessage}</div>
     </div>
   );
 };
@@ -143,7 +148,8 @@ const mapStateToProps = state => ({
   userAttrs: state.userAttrs,
   authMessage: state.authMessage,
   displaySignupButton: state.displaySignupButton,
-  displayLoginButton: state.displayLoginButton
+  displayLoginButton: state.displayLoginButton,
+  loginActive: state.loginActive
 });
 
 const mapDispatchToProps = dispatch => {
@@ -165,6 +171,9 @@ const mapDispatchToProps = dispatch => {
     },
     showSubForm: value => {
       dispatch({ type: "SET_SUBFORM", payload: value });
+    },
+    setActive: value => {
+      dispatch({ type: "SET_LOGINACTIVE", payload: value });
     }
   };
 };

@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 const Weather = () => {
   let [weatherError, setWeatherError] = useState("")
   let [gotWeather, setGotWeather] = useState(false)
-  let [coords, setCoords] = useState("")
+  let [coords, setCoords] = useState([59.334591, 18.063240])
   let [temp, setTemp] = useState("")
   let [place, setPlace] = useState("")
   let [description, setDescription] = useState("")
@@ -13,7 +13,6 @@ const Weather = () => {
   let [sunrise, setSunrise] = useState("")
   let [sunset, setSunset] = useState("")
   let [feelsLike, setFeelsLike] = useState("")
-  let [clouds, setClouds] = useState("")
   const { t } = useTranslation('common')
 
   const loadWeatherData = async () => {
@@ -25,7 +24,6 @@ const Weather = () => {
       setGotWeather(true)
       setCountry(weatherData.sys.country)
       setFeelsLike(weatherData.main.feels_like)
-      setClouds(weatherData.clouds.all)
       convertSunrise(weatherData.sys.sunrise)
       convertSunset(weatherData.sys.sunset)
     } else {
