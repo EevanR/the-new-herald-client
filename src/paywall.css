@@ -19,8 +19,8 @@
 }
 
 .paywall-out {
-  -webkit-animation: slide-right 0.3s forwards;
-  animation: slide-right 0.3s forwards;
+  -webkit-animation: slide-right 0.5s forwards;
+  animation: slide-right 0.5s forwards;
   background-color: transparent;
 }
 
@@ -86,7 +86,7 @@
 
 .paywall-info {
   text-align: left;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 }
 
 .stripe-icon {
@@ -114,4 +114,8 @@
 #paywall-button {
   padding-top: 14px;
   background: transparent;
+}
+
+#line-two {
+  margin: 0 0 0 0;
 }

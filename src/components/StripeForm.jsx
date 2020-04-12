@@ -35,7 +35,8 @@ const StripeForm = props => {
   return (
     <div className="paywall">
       <h2>Subscribe today to continue reading</h2>
-      <h5 id="paywall-subheading">Yearly access for 99&#128;</h5>
+      <h5 id="line-two">or register to view discussions and remain with free content</h5>
+      <h4 id="paywall-subheading">Yearly access for 99&#128;</h4>
       <div className="paywall-info">
         <h5><Icon color='red' name='check' /> Unlimitted website access as subscriber</h5>
         <h5><Icon color='red' name='check' /> Full articles</h5>
