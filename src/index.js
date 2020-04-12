@@ -9,6 +9,7 @@ import configureStore from './state/store/configureStore'
 import 'semantic-ui-css/semantic.min.css'
 import './index.css';
 import './weather.css';
+import './paywall.css';
 import "./i18n"
 
 axios.defaults.baseURL = "http://localhost:3000/api/v1"

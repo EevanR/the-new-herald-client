@@ -19,7 +19,7 @@ const StripeForm = props => {
     await props.stripe.createToken().then(async response => {
       try {
         let paymentResponse = await axios.post(
-          "http://localhost:3000/api/v1/subscriptions",
+          "https://the-new-herald.herokuapp.com/api/v1/subscriptions",
           { stripeToken: response.token.id },
           { headers: headers }
         );

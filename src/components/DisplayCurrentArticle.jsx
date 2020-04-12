@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { getCurrentArticle, getCurrentArticleAuth } from "../modules/article";
-import StripeForm from "./StripeForm";
-import { Elements } from "react-stripe-elements";
 import { Button } from "semantic-ui-react";
 import { useTranslation } from 'react-i18next'
 import Comments from "./Comments"
@@ -29,6 +27,10 @@ const DisplayCurrentArticle = props => {
     }
   };
 
+  const payWall = () => {
+    props.showSubForm(true);
+  }
+
   useEffect(() => {
     getArticleShowData(props.currentArticleId);
   }, [props.currentArticleId, props.language]);
@@ -36,38 +38,6 @@ const DisplayCurrentArticle = props => {
   useEffect(() => {
     getArticleShowData(props.currentArticleId);
   }, [props.authenticated]);
-
-  const limitedDisplayUI = () => {
-    switch (true) {
-      case !props.authenticated && !props.showSubscriptionForm: {
-        return (
-          <Button
-            id="subscribe"
-            onClick={() => {
-              props.showSubForm(true);
-            }}
-          >
-            {t('dp.subscribe')}
-          </Button>
-        );
-      }
-      case props.showSubscriptionForm: {
-        return (
-          <div id="stripe-form">
-            <Elements>
-              <StripeForm />
-            </Elements>
-            <Button onClick={() => {
-              props.showSubForm(false);
-              props.changePaymentMessage(null)
-            }}>
-              {t("stripe.cancel")}
-            </Button>
-          </div>
-        );
-      }
-    }
-  };
 
   let mainDisplay;
   switch (true) {
@@ -84,7 +54,13 @@ const DisplayCurrentArticle = props => {
                   <h2 id="article-title">{props.currentArticle.title}</h2>
                   <p id="article-body">{props.currentArticle.body}</p>
                 </div>
-                {limitedDisplayUI()}
+                {!props.authenticated && !props.showSubscriptionForm && (
+                <Button
+                  id="subscribe"
+                  onClick={() => payWall()}>
+                  {t('dp.subscribe')}
+                </Button>
+                )}
               </div>
             </div>
           ) : (
@@ -129,6 +105,7 @@ const DisplayCurrentArticle = props => {
   return (
     <>
       {mainDisplay}
+      
     </>
   );
 };
