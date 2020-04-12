@@ -167,11 +167,15 @@ a#back-button.signup-back {
 
 .stripe-input {
   margin: auto;
-  width: 300px;
-  border: 1px solid grey;
-  padding: 5px;
+  width: 200px;
+  border: 1px solid rgb(196, 196, 196);
+  padding: 9px;
   border-radius: 5px;
-  background-color: white;
+  background-color: rgb(232, 240, 254);
+}
+
+.error.field {
+  margin: 0!important;
 }
 
 .nav {

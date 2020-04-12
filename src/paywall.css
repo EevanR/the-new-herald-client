@@ -72,7 +72,7 @@
   right: 0;
   height: 100vh;
   width: 575px;
-  padding: 60px 5%;
+  padding: 50px 5%;
 }
 
 .paywall h2, h5, h3 {
@@ -86,7 +86,7 @@
 
 .paywall-info {
   text-align: left;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
 }
 
 .stripe-icon {
@@ -118,4 +118,30 @@
 
 #line-two {
   margin: 0 0 0 0;
+}
+
+.paywall-reg {
+  width: 100%;
+  margin: auto;
+  margin-bottom: 5px;
+  margin-top: 0;
+  line-height: 22px;
+}
+
+.payment-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 200px;
+  grid-column-gap: 10px;
+}
+
+.paywall-reg label {
+  color: rgb(147, 39, 39);
+  font-weight: 600;
+  font-size: 13px;
+}
+
+#sub-msg {
+  margin-top: 50px;
 }

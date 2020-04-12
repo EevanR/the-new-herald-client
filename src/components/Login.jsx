@@ -44,7 +44,6 @@ const Login = props => {
 
   const fadeIn = () => {
     props.setActive(true)
-    debugger
     setTimeout(() => {
       props.setActive(false)
     }, 6000);
