@@ -44,6 +44,7 @@ const Login = props => {
 
   const fadeIn = () => {
     props.setActive(true)
+    debugger
     setTimeout(() => {
       props.setActive(false)
     }, 6000);
@@ -122,7 +123,9 @@ const Login = props => {
           {props.userAttrs && props.userAttrs.role === null && (
             <Link
               id="subscribe-link"
-              to="/profile"
+              onClick={() => {
+                props.showSubForm(true);
+              }}
             >
               Subscribe
             </Link>

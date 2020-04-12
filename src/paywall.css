@@ -12,38 +12,38 @@
 }
 
 .paywall-in {
-  -webkit-animation: slide 0.5s forwards;
-  animation: slide 0.5s forwards;
+  -webkit-animation: slide-left 0.5s forwards;
+  animation: slide-left 0.5s forwards;
   background-color: #24242492;
   transition: background-color 0.3s 0.4s;
 }
 
 .paywall-out {
-  -webkit-animation: slideOut 0.3s forwards;
-  animation: slideOut 0.3s forwards;
+  -webkit-animation: slide-right 0.3s forwards;
+  animation: slide-right 0.3s forwards;
   background-color: transparent;
 }
 
-@-webkit-keyframes slide {
+@-webkit-keyframes slide-left {
   100% { right: 0; }
 }
 
-@keyframes slide {
+@keyframes slide-left {
   100% { right: 0; }
 }
 
-@-webkit-keyframes slideOut {
+@-webkit-keyframes slide-right {
   0% { right: 0; }
 }
 
-@keyframes slideOut {
+@keyframes slide-right {
   0% { right: 0; }
 }
 
 #panel {
   text-align: right;
-  width: 40%;
-  background-color: rgb(230, 230, 230);
+  width: 575px;
+  background-color: white;
   z-index: 200;
   position: absolute;
   right: 0;
@@ -55,8 +55,8 @@
 
 #panel-in {
   text-align: right;
-  width: 40%;
-  background-color: rgb(230, 230, 230);
+  width: 575px;
+  background-color: white;
   z-index: 200;
   position: absolute;
   right: 0;
@@ -67,10 +67,51 @@
 }
 
 .subscrip {
-  background-color: cornsilk;
+  background-color: rgba(249, 249, 249);
   position: absolute;
   right: 0;
   height: 100vh;
-  width: 40%;
+  width: 575px;
   padding: 60px 5%;
+}
+
+.paywall h2, h5, h3 {
+  font-family: "ChomskyRegular";
+}
+
+#paywall-subheading {
+  margin-top: 0;
+  margin-bottom: 40px;
+}
+
+.paywall-info {
+  text-align: left;
+  margin-bottom: 60px;
+}
+
+.stripe-icon {
+  position: absolute;
+  font-size: 60px;
+  margin-left: 10px;
+}
+
+.stripe-heading{
+  margin-bottom: 40px;
+  margin-right: 60px;
+}
+
+#total {
+  text-align: left;
+  border-bottom: 1px solid grey;
+  padding-bottom: 5px;
+  margin-bottom: 25px;
+}
+
+#right {
+  float: right;
+}
+
+#paywall-button {
+  padding-top: 14px;
+  background: transparent;
 }

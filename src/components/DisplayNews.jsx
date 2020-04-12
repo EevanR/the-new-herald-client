@@ -53,7 +53,7 @@ const DisplayNews = props => {
       {paywall === true && (
         <div id="paywall" className={paywallshow ?  "paywall-in" : "paywall-out"}>
           <div id={paywallHeader}>
-            <Button onClick={() => props.showSubForm(false)}>
+            <Button id="paywall-button" onClick={() => props.showSubForm(false)}>
               {t("stripe.cancel")}
             </Button>
           </div>

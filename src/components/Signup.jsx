@@ -29,7 +29,7 @@ const Signup = props => {
         .then(userDatas => {
           props.changeAuth(true);
           props.setUserAttrs(userDatas.data);
-          props.changeAuthMessage(`Welcome!${t('login.loggedInMess')} ${userDatas.data.email}`);
+          props.changeAuthMessage(`Welcome! ${t('login.loggedInMess')} ${userDatas.data.email}`);
         })
         .catch(error => {
           props.changeAuthMessage(error.response.data.errors);
