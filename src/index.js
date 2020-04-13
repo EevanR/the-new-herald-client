@@ -12,7 +12,7 @@ import './weather.css';
 import './paywall.css';
 import "./i18n"
 
-axios.defaults.baseURL = "http://localhost:3000/api/v1"
+axios.defaults.baseURL = process.env.REACT_APP_BASEURL
 
 const store = configureStore()
 

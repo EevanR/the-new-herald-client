@@ -32,6 +32,7 @@ const DisplayCurrentArticle = props => {
   }
 
   useEffect(() => {
+    debugger
     getArticleShowData(props.currentArticleId);
   }, [props.currentArticleId, props.language]);
 

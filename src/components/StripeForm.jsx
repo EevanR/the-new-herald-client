@@ -54,8 +54,11 @@ const StripeForm = props => {
   };
 
   useEffect(() => {
-    setUser(JSON.parse(localStorage.getItem("J-tockAuth-Storage")).uid)
-  }, [localStorage.getItem("J-tockAuth-Storage")]);
+    debugger
+    if (localStorage.getItem("J-tockAuth-Storage")) {
+      setUser(JSON.parse(localStorage.getItem("J-tockAuth-Storage")).uid)
+    } 
+  }, [props.authenticated]);
 
   return (
     <div className="paywall">
@@ -116,7 +119,8 @@ const StripeForm = props => {
 
 const mapStateToProps = state => {
   return {
-    paymentMessage: state.paymentMessage
+    paymentMessage: state.paymentMessage,
+    authenticated: state.authenticated
   };
 };
 
