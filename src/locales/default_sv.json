@@ -70,6 +70,18 @@
       "feelsLike": "KÄNNS SOM",
       "sunrise": "SOLUPPGÅNG",
       "sunset": "SOLNEDGÅNG"
+    },
+    "paywall": {
+      "l1": "Prenumerera idag för att fortsätta läsa",
+      "l2": "eller registrera dig för att se diskussioner och förbli med gratis innehåll",
+      "l3": "Årlig tillgång för 99",
+      "check1": "Obegränsad webbplatsåtkomst som abonnent",
+      "check2": "Fullständiga artiklar",
+      "check3": "Delta i artikeldiskussioner",
+      "check4": "Rösta på trender",
+      "stripe": "Betalningar drivs av",
+      "thankYou": "Tack för att du tittar på ett prenumeration",
+      "desire": "Önskad"
     }
   }
 }

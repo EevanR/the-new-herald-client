@@ -22,6 +22,8 @@ const Footer = props => {
     if (!forexData.isAxiosError) {
       let forexSpecificData = [
         parseFloat(forexData.data.EUR).toFixed(2),
+        parseFloat(forexData.data.SEK).toFixed(2),
+        parseFloat(forexData.data.CAD).toFixed(2),
         Math.round(1 / forexData.data.BTC)
       ];
       setForexDisplay(forexSpecificData);
@@ -83,7 +85,9 @@ const Footer = props => {
                 <>
                   <h5>{t('footer.financeHeader')}</h5>
                   <p>Dollar / Euro: {forexDisplay[0]}</p>
-                  <p>Bitcoin: {forexDisplay[1]} $</p>
+                  <p>Dollar / SEK: {forexDisplay[1]}</p>
+                  <p>Dollar / Canadian Dollar: {forexDisplay[2]}</p>
+                  <p>Bitcoin: {forexDisplay[3]} $</p>
                 </>
               ) : (
                 <p>{t('dsa.loading')}</p>
