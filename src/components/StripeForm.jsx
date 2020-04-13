@@ -54,7 +54,6 @@ const StripeForm = props => {
   };
 
   useEffect(() => {
-    debugger
     if (localStorage.getItem("J-tockAuth-Storage")) {
       setUser(JSON.parse(localStorage.getItem("J-tockAuth-Storage")).uid)
     } 

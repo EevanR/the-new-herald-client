@@ -8,10 +8,8 @@ const getCurrentArticle = async (id, language) => {
       params: { locale: language },
       headers: headers
     });
-    debugger
     return response.data.article;
   } catch (error) {
-    debugger
     if (error.message === "Network Error") {
       return { error: error.message };
     } else {
