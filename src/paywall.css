@@ -1,0 +1,147 @@
+#paywall {
+  position: fixed;
+  top: 0;
+  right: -100vw;
+  width: 100vw;
+  height: 100%;
+  color: rgb(81, 80, 80);
+  z-index: 100;
+  text-align: center;
+  overflow: hidden;
+  
+}
+
+.paywall-in {
+  -webkit-animation: slide-left 0.5s forwards;
+  animation: slide-left 0.5s forwards;
+  background-color: #24242492;
+  transition: background-color 0.3s 0.4s;
+}
+
+.paywall-out {
+  -webkit-animation: slide-right 0.5s forwards;
+  animation: slide-right 0.5s forwards;
+  background-color: transparent;
+}
+
+@-webkit-keyframes slide-left {
+  100% { right: 0; }
+}
+
+@keyframes slide-left {
+  100% { right: 0; }
+}
+
+@-webkit-keyframes slide-right {
+  0% { right: 0; }
+}
+
+@keyframes slide-right {
+  0% { right: 0; }
+}
+
+#panel {
+  text-align: right;
+  width: 575px;
+  background-color: white;
+  z-index: 200;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 40px;
+  transition: transform 0.3s 0s;
+  transform: translateY(-50px);
+}
+
+#panel-in {
+  text-align: right;
+  width: 575px;
+  background-color: white;
+  z-index: 200;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 40px;
+  transition: transform 0.3s 0s;
+  transform: translateY(0px);
+}
+
+.subscrip {
+  background-color: rgba(249, 249, 249);
+  position: absolute;
+  right: 0;
+  height: 100vh;
+  width: 575px;
+  padding: 50px 5%;
+}
+
+.paywall h2, h5, h3 {
+  font-family: "ChomskyRegular";
+}
+
+#paywall-subheading {
+  margin-top: 0;
+  margin-bottom: 40px;
+}
+
+.paywall-info {
+  text-align: left;
+  margin-bottom: 50px;
+}
+
+.stripe-icon {
+  position: absolute;
+  font-size: 60px;
+  margin-left: 10px;
+}
+
+.stripe-heading{
+  margin-bottom: 40px;
+  margin-right: 60px;
+}
+
+#total {
+  text-align: left;
+  border-bottom: 1px solid grey;
+  padding-bottom: 5px;
+  margin-bottom: 25px;
+}
+
+#right {
+  float: right;
+}
+
+#paywall-button {
+  padding-top: 14px;
+  background: transparent;
+}
+
+#line-two {
+  margin: 0 0 0 0;
+}
+
+.paywall-reg {
+  width: 100%;
+  margin: auto;
+  margin-bottom: 5px;
+  margin-top: 0;
+  line-height: 22px;
+}
+
+.payment-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 200px;
+  grid-column-gap: 10px;
+}
+
+.paywall-reg label {
+  color: rgb(147, 39, 39);
+  font-weight: 600;
+  font-size: 13px;
+}
+
+#sub-msg {
+  margin-top: 50px;
+}

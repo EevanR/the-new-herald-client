@@ -122,7 +122,9 @@ const Login = props => {
           {props.userAttrs && props.userAttrs.role === null && (
             <Link
               id="subscribe-link"
-              to="/profile"
+              onClick={() => {
+                props.showSubForm(true);
+              }}
             >
               Subscribe
             </Link>

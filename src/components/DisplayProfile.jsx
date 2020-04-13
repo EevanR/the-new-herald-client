@@ -30,8 +30,6 @@ const DisplayProfile = props => {
     }
   }
 
-  const [showSubscriptionForm, setShowSubscriptionForm] = useState(false);
-
   useEffect(() => {
     userDataGrab();
   }, [props.userAttrs]);
@@ -41,28 +39,11 @@ const DisplayProfile = props => {
       case props.userAttrs.role !== null: {
         return props.userAttrs.role;
       }
-      case props.userAttrs.role === null && !showSubscriptionForm: {
+      case props.userAttrs.role === null: {
         return (
           <>
             <div>{t("dp.nosub")}</div>
-            <div>
-              <Button
-                id="subscribe"
-                onClick={() => {
-                  setShowSubscriptionForm(true);
-                }}
-              >
-                {t("dp.subscribe")}
-              </Button>
-            </div>
           </>
-        );
-      }
-      case showSubscriptionForm: {
-        return (
-          <Elements>
-            <StripeForm />
-          </Elements>
         );
       }
     }
@@ -102,7 +83,7 @@ const mapStateToProps = state => ({
   authMessage: state.authMessage,
   authenticated: state.authenticated,
   displaySignupButton: state.displaySignupButton,
-  displayLoginButton: state.displayLoginButton
+  displayLoginButton: state.displayLoginButton,
 });
 
 const mapDispatchToProps = dispatch => {

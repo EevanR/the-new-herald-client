@@ -118,19 +118,6 @@ a {
   font-weight: 100!important;
 }
 
-#stripe-form {
-  border: 1px solid grey;
-  width: 300px;
-  padding: 3%;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 10px;
-  background-color: rgba(211, 211, 211);
-  z-index: 100;
-}
-
 #subscribe {
   background-color: #dfc38b;
   color: rgb(40, 39, 39);
@@ -179,10 +166,16 @@ a#back-button.signup-back {
 }
 
 .stripe-input {
-  border: 1px solid grey;
-  padding: 5px;
+  margin: auto;
+  width: 200px;
+  border: 1px solid rgb(196, 196, 196);
+  padding: 9px;
   border-radius: 5px;
-  background-color: rgb(249, 248, 248);
+  background-color: rgb(232, 240, 254);
+}
+
+.error.field {
+  margin: 0!important;
 }
 
 .nav {
@@ -950,7 +943,6 @@ button {
 #user-comments {
   padding: 2% 1%;
   width: 95%;
-  /* padding-bottom: 20px; */
   border-bottom: 1px solid grey;
   margin-bottom: 40px;
   background: rgb(250, 250, 250);

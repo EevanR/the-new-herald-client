@@ -10,10 +10,16 @@ import Featured from "./Featured"
 import { connect } from "react-redux";
 import { getFreeArticle } from "../modules/article";
 import { useTranslation } from 'react-i18next'
+import StripeForm from "./StripeForm";
+import { Elements } from "react-stripe-elements";
+import { Button } from "semantic-ui-react";
 
 const DisplayNews = props => {
   const { t } = useTranslation('common')
   const [freeContent, setFreeContent] = useState(null)
+  const [paywall, setPaywall] = useState(null)
+  const [paywallshow, setPaywallshow] = useState(false)
+  const [paywallHeader, setPaywallHeader] = useState("panel")
 
   const loadFreeArticle = async () => {
     let response = await getFreeArticle(props.language);
@@ -23,8 +29,20 @@ const DisplayNews = props => {
   }
 
   useEffect(() => {
-    loadFreeArticle();
-  }, []);
+    if (props.showSubscriptionForm === true ) {
+      setPaywall(true)
+      setPaywallshow(true)
+      setTimeout(() => {
+        setPaywallHeader("panel-in")
+      }, 400);
+    }
+    if (!props.showSubscriptionForm) {
+      setPaywallHeader("panel")
+      setTimeout(() => {
+        setPaywallshow(false)
+      }, 300);
+    }
+  }, [props.showSubscriptionForm]);
 
   useEffect(() => {
     loadFreeArticle();
@@ -32,6 +50,20 @@ const DisplayNews = props => {
   
   return (
     <>
+      {paywall === true && (
+        <div id="paywall" className={paywallshow ?  "paywall-in" : "paywall-out"}>
+          <div id={paywallHeader}>
+            <Button id="paywall-button" onClick={() => props.showSubForm(false)}>
+              {t("stripe.cancel")}
+            </Button>
+          </div>
+          <div className="subscrip">
+            <Elements>
+              <StripeForm />
+            </Elements>
+          </div>
+        </div>
+      )}
       <Navbar />
       <div className="backgroundgrey">
         <div className="main">
@@ -121,10 +153,20 @@ const mapStateToProps = state => {
   return {
     authenticated: state.authenticated,
     sideArticles: state.sideArticles,
-    language: state.language
+    language: state.language,
+    showSubscriptionForm: state.showSubscriptionForm
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    showSubForm: value => {
+      dispatch({ type: "SET_SUBFORM", payload: value });
+    }
+  };
+};
+
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(DisplayNews);
