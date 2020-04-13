@@ -62,10 +62,10 @@ html {
   font-size: 12px;
   text-transform: uppercase;
   width: 1245px;
-  height: 400px;
+  height: 500px;
   margin: 0 auto;
   padding-top: 30px;
-  padding-bottom: 50px;
+  padding-bottom: 400px;
 }
 
 .login {
@@ -953,4 +953,44 @@ button {
   top: 90px;
   right: 95px;
   color: grey;
+}
+
+#footer-links {
+  margin-top: 30px;
+}
+
+#footer-links .footer-links {
+  color: white!important;
+  line-height: 30px;
+  font-size: larger;
+}
+
+.footer-heading {
+  line-height: normal;
+  text-transform: none;
+  font-family: "Chomsky";
+  font-weight: 550;
+  font-style: normal;
+  font-size: 45px;
+  line-height: 140px;
+  margin: 0 auto;
+  width: 1245px;
+  color: rgb(97, 97, 97);
+}
+
+.sub-footer {
+  min-width: 1245px;
+  background-color: #EDEDED;
+}
+
+#footer-icon {
+  float: right;
+  line-height: 140px;
+  font-size: 34px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+#footer-onthisday {
+  padding-right: 60px;
 }

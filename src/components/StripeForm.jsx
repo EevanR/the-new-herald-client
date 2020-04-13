@@ -61,16 +61,16 @@ const StripeForm = props => {
 
   return (
     <div className="paywall">
-      <h2>Subscribe today to continue reading</h2>
-      <h5 id="line-two">or register to view discussions and remain with free content</h5>
-      <h4 id="paywall-subheading">Yearly access for 99&#128;</h4>
+      <h2>{t("paywall.l1")}</h2>
+      <h5 id="line-two">{t("paywall.l2")}</h5>
+      <h4 id="paywall-subheading">{t("paywall.l3")}&#128;</h4>
       <div className="paywall-info">
-        <h5><Icon color='red' name='check' /> Unlimitted website access as subscriber</h5>
-        <h5><Icon color='red' name='check' /> Full articles</h5>
-        <h5><Icon color='red' name='check' /> Take part in article discussions</h5>
-        <h5><Icon color='red' name='check' /> Vote on trending pieces</h5>
+        <h5><Icon color='red' name='check' /> {t("paywall.check1")}</h5>
+        <h5><Icon color='red' name='check' /> {t("paywall.check2")}</h5>
+        <h5><Icon color='red' name='check' /> {t("paywall.check3")}</h5>
+        <h5><Icon color='red' name='check' /> {t("paywall.check4")}</h5>
       </div>
-      <h3 className="stripe-heading">Payments powered by 
+      <h3 className="stripe-heading">{t("paywall.stripe")} 
         <span className="stripe-icon"><Icon color='blue' name='cc stripe' /></span>
       </h3>
       <h5 id="total">Sub Total <span id="right">99&#128;</span></h5>
@@ -78,12 +78,12 @@ const StripeForm = props => {
         <div className="payment-grid">
           <div className="paywall-reg">
             {localStorage.getItem("J-tockAuth-Storage") ? (
-              <h4 id="sub-msg">Thank you for considering a subscription, {user}.</h4>
+              <h4 id="sub-msg">{t("paywall.thankYou")}, {user}.</h4>
             ) : (
               <>
                 <label>{t('login.email')}</label>
                 <input name="email" type="email" id="email"></input>
-                <label>Desired {t('login.password')}</label>
+                <label>{t("paywall.desire")} {t('login.password')}</label>
                 <input name="password" type="password" id="password"></input>
               </>
             )}

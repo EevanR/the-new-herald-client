@@ -70,6 +70,18 @@
       "feelsLike": "FEELS LIKE",
       "sunrise": "SUNRISE",
       "sunset": "SUNSET"
+    },
+    "paywall": {
+      "l1": "Subscribe today to continue reading",
+      "l2": "or register to view discussions and remain with free content",
+      "l3": "Yearly access for 99",
+      "check1": "Unlimitted website access as subscriber",
+      "check2": "Full articles",
+      "check3": "Take part in article discussions",
+      "check4": "Vote on trending pieces",
+      "stripe": "Payments powered by",
+      "thankYou": "Thank you for considering a subscription",
+      "desire": "Desired"
     }
   }
 }
