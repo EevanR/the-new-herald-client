@@ -50,7 +50,7 @@ const DisplaySideArticles = props => {
   let articlesList;
 
   if (props.sideArticles && props.sideArticles.articles.length > 0) {
-    articlesList = props.sideArticles.articles.map(article => {
+    articlesList = props.sideArticles.articles.reverse().map(article => {
       if (article.id !== props.currentArticleId) {
         return (
           <div className="side-article" id={`side-article-${article.id}`} key={article.id}>
