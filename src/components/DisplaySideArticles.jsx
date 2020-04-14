@@ -27,12 +27,12 @@ const DisplaySideArticles = props => {
   useEffect(() => {
     if (props.sideArticles && props.sideArticles.articles.length > 0) {
       props.changeCurrentArticleId(props.sideArticles.articles[0].id);
-    } else if (props.sideArticles && props.sideArticles.articles.length == 0 && props.category ) {
+    } else if (props.sideArticles && props.sideArticles.articles.length === 0 && props.category ) {
       props.changeSideMessage(`${t("dsa.categoryEmpty")}`);
       props.changeMessage(`${t("dsa.categoryEmpty")}`);
       props.changeCurrentArticle("");
       props.changeCurrentArticleId(null);
-    } else if (props.sideArticles && props.sideArticles.articles.length == 0) {
+    } else if (props.sideArticles && props.sideArticles.articles.length === 0) {
       props.changeSideMessage(`${t("dsa.error")}`);
       props.changeCurrentArticleId("");
       props.changeCurrentArticleId(null);

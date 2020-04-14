@@ -16,7 +16,7 @@ const ArticleRow = ({ article, publishHandler, deleteHandler, pubStatus, freeSta
         <Table.Row>
           <Table.Cell colSpan="6">
             <div id="image" style={{ maxHeight: "384px" }}>
-              <img src={article.image} alt="image" />
+              <img src={article.image} alt="img" />
             </div>
             {article.body}
           </Table.Cell>
@@ -28,7 +28,7 @@ const ArticleRow = ({ article, publishHandler, deleteHandler, pubStatus, freeSta
   };
 
   const toggleBody = () => {
-    showBody == false ? setShowBody(true) : setShowBody(false);
+    showBody === false ? setShowBody(true) : setShowBody(false);
   };
 
   useEffect(() => {

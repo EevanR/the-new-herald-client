@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getHeadlines } from "../modules/article"
 import ItemsCarousel from 'react-items-carousel';
-import { Button, Icon } from "semantic-ui-react";
+import { Button } from "semantic-ui-react";
 
 const Headlines = () => {
   const [headlines, setHeadlines] = useState(null)
@@ -11,7 +11,7 @@ const Headlines = () => {
 
   const loadHeadlines = async () => {
     let response = await getHeadlines();
-    if (response.status == "ok") {
+    if (response.status === "ok") {
       setHeadlines(response)
     } else {
       setMessage("Cannot grab headlines at the moment")
@@ -24,9 +24,9 @@ const Headlines = () => {
     headlinesList = headlines.articles.map(article => {
       return (
         <>
-          <div className="carousel-item">
-            <img src={article.urlToImage} alt="Image"/>
-            <a href={article.url} target="_blank">
+          <div key={article.id} className="carousel-item">
+            <img src={article.urlToImage} alt="Img"/>
+            <a href={article.url} target="_blank" rel="noopener noreferrer">
               <div className="overlay">
                 <h3 className="underline">{article.title}</h3>
               </div>
@@ -67,7 +67,6 @@ const Headlines = () => {
       )}
     </>
   )
-
 }
 
 export default Headlines;

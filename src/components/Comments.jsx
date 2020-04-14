@@ -50,7 +50,7 @@ const Comments = ({ articleId, articleData, article, userAttr }) => {
   }
 
   const openCommentMenu = id => {
-    showMenu == false ? setShowMenu(true) : setShowMenu(false);
+    showMenu === false ? setShowMenu(true) : setShowMenu(false);
     setCommentMenuId(id)
   }
 
@@ -196,6 +196,7 @@ const Comments = ({ articleId, articleData, article, userAttr }) => {
               </Form>
             )
         )}
+        {message}
       {commentsList}
     </div>
   )

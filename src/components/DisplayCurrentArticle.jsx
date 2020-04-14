@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { getCurrentArticle, getCurrentArticleAuth } from "../modules/article";
 import { Button } from "semantic-ui-react";
@@ -47,7 +47,7 @@ const DisplayCurrentArticle = props => {
           {props.currentArticle ? (
             <div className="main-article-div" key={props.currentArticle.id}>
               {props.currentArticle.image &&
-                <img src={props.currentArticle.image} />
+                <img src={props.currentArticle.image} alt="img" />
               }
               <div className="current-text">
                 <div className="text">
@@ -77,7 +77,7 @@ const DisplayCurrentArticle = props => {
               <div className="main-article-auth" key={props.currentArticle.id}>
                 <div className="main-article-upper">
                   {props.currentArticle.image &&
-                    <img src={props.currentArticle.image} />
+                    <img src={props.currentArticle.image} alt="img"/>
                   }
                   <h2 id="article-title">{props.currentArticle.title}</h2>
                   <p id="article-body">{props.currentArticle.body}</p>

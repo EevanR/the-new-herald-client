@@ -27,7 +27,7 @@ const Weather = () => {
       convertSunrise(weatherData.sys.sunrise)
       convertSunset(weatherData.sys.sunset)
     } else {
-      setWeatherError("Loading...")
+      setWeatherError("Weather not available")
     }
   }
 
@@ -109,7 +109,7 @@ const Weather = () => {
               </p>
             </>
           ) : (
-            <p>Weather not available.</p>
+            <p>{weatherError}</p>
           )}
         </div>
       </>

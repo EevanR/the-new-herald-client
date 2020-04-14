@@ -1,11 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { getUserData } from "../modules/getUserData";
 import { connect } from "react-redux";
 import { useTranslation } from "react-i18next";
-import StripeForm from "./StripeForm";
-import { Elements } from "react-stripe-elements";
-import { Button } from "semantic-ui-react";
-
 const DisplayProfile = props => {
   const { t } = useTranslation("common");
 
@@ -35,17 +31,8 @@ const DisplayProfile = props => {
   }, [props.userAttrs]);
 
   const renderSubscription = () => {
-    switch (true) {
-      case props.userAttrs.role !== null: {
-        return props.userAttrs.role;
-      }
-      case props.userAttrs.role === null: {
-        return (
-          <>
-            <div>{t("dp.nosub")}</div>
-          </>
-        );
-      }
+    if (props.userAttrs.role === null) {
+      return (<p>{t("dp.nosub")}</p>)
     }
   };
 

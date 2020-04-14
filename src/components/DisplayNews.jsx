@@ -21,13 +21,6 @@ const DisplayNews = props => {
   const [paywallshow, setPaywallshow] = useState(false)
   const [paywallHeader, setPaywallHeader] = useState("panel")
 
-  const loadFreeArticle = async () => {
-    let response = await getFreeArticle(props.language);
-    if (response.status === 200 ) {
-      setFreeContent(response.data)
-    }
-  }
-
   useEffect(() => {
     if (props.showSubscriptionForm === true ) {
       setPaywall(true)
@@ -45,6 +38,12 @@ const DisplayNews = props => {
   }, [props.showSubscriptionForm]);
 
   useEffect(() => {
+    const loadFreeArticle = async () => {
+      let response = await getFreeArticle(props.language);
+      if (response.status === 200 ) {
+        setFreeContent(response.data)
+      }
+    }
     loadFreeArticle();
   }, [props.language]);
   
@@ -108,7 +107,7 @@ const DisplayNews = props => {
                     {freeContent !== null && (
                       <>
                         <h2>{t('dp.freeRead')}</h2>
-                        <img className="free-read-img" src={freeContent[1]} />
+                        <img className="free-read-img" src={freeContent[1]} alt="img"/>
                       </>
                     )}
                   </div>

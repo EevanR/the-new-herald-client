@@ -37,7 +37,7 @@ const Featured = props => {
               >
                 {featured.articles[0].title}
               </h4>
-              <img id="featured-img" src={featured.articles[0].image} />
+              <img id="featured-img" src={featured.articles[0].image} alt="img"/>
               <h5 id="featured-body">{featured.articles[0].body}</h5>
               <p id="cat-date" >
                 <span id="red">{featured.articles[0].category} </span>
@@ -59,7 +59,7 @@ const Featured = props => {
               >
                 {featured.articles[1].title}
               </h4>
-              <img id="featured-img" src={featured.articles[1].image} />
+              <img id="featured-img" src={featured.articles[1].image} alt="img" />
               <h5 id="featured-body">{featured.articles[1].body}</h5>
               <p id="cat-date" >
                 <span id="red">{featured.articles[1].category} </span>
@@ -81,7 +81,7 @@ const Featured = props => {
               >
                 {featured.articles[2].title}
               </h4>
-              <img id="featured-img" src={featured.articles[2].image} />
+              <img id="featured-img" src={featured.articles[2].image} alt="img" />
               <h5 id="featured-body">{featured.articles[2].body}</h5>
               <p id="cat-date" >
                 <span id="red">{featured.articles[2].category} </span>

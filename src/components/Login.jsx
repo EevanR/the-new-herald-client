@@ -50,10 +50,10 @@ const Login = props => {
   };
 
   useEffect(() => {
-    {props.authenticated === true && (
-      fadeIn()
-    )}
-  }, [props.authenticated]);
+    props.authenticated === true && (
+      fadeIn() 
+    )
+  }, [props.authenticated]);// eslint-disable-line react-hooks/exhaustive-deps
 
   let loginFunction;
 
