@@ -48,7 +48,7 @@ Log in as various roles to check functionality;
 #### To review and publish articles
 visit: https://the-reactive-herald-ca.netlify.com/admin  
 Publisher:  
-email: pub@mail.com  
+email: publisher@mail.com  
 pass: password
 
 #### To view full articles as subscriber

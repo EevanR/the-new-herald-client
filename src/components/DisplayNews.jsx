@@ -13,6 +13,7 @@ import { useTranslation } from 'react-i18next'
 import StripeForm from "./StripeForm";
 import { Elements } from "react-stripe-elements";
 import { Button } from "semantic-ui-react";
+import { getOnThisDay } from "../modules/footer";
 
 const DisplayNews = props => {
   const { t } = useTranslation('common')
@@ -20,6 +21,14 @@ const DisplayNews = props => {
   const [paywall, setPaywall] = useState(null)
   const [paywallshow, setPaywallshow] = useState(false)
   const [paywallHeader, setPaywallHeader] = useState("panel")
+  let [thisDayEvent, setOnThisDayEvent] = useState("");
+
+  let loadOnThisDayEvent = async () => {
+    const onThisDayData = await getOnThisDay();
+    setOnThisDayEvent(
+      onThisDayData[Math.floor(Math.random() * onThisDayData.length)]
+    );
+  };
 
   useEffect(() => {
     if (props.showSubscriptionForm === true ) {
@@ -38,6 +47,7 @@ const DisplayNews = props => {
   }, [props.showSubscriptionForm]);
 
   useEffect(() => {
+    loadOnThisDayEvent()
     const loadFreeArticle = async () => {
       let response = await getFreeArticle(props.language);
       if (response.status === 200 ) {
@@ -123,6 +133,18 @@ const DisplayNews = props => {
                   </div>
                 )}
               </div>
+              <div className="item-l">
+                <div id="onthisday">
+                  {thisDayEvent ? (
+                    <>
+                      <h2>On this day in {thisDayEvent.year}:</h2>
+                      <div> {thisDayEvent.description}</div>
+                    </>
+                  ) : (
+                    <p>{t('dsa.loading')}</p>
+                  )}
+                </div>
+              </div>
               <div className="item-g">
                 <div className="advertising">
                   ADVERTISING
@@ -133,6 +155,18 @@ const DisplayNews = props => {
             <>
               <div className="item-d">
                 <Featured />
+              </div>
+              <div className="item-l">
+                <div id="footer-onthisday">
+                  {thisDayEvent ? (
+                    <>
+                      <h5>On this day in {thisDayEvent.year}:</h5>
+                      <div> {thisDayEvent.description}</div>
+                    </>
+                  ) : (
+                    <p>{t('dsa.loading')}</p>
+                  )}
+                </div>
               </div>
               <div className="item-e">
                 <div className="advertising">
