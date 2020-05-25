@@ -183,7 +183,7 @@ const getHeadlines = async () => {
   try {
     let token = process.env.REACT_APP_NEWSAPI_KEY
     let response = await axios.get(
-      `https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=${token}`
+      `https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=${token}`
     )  
     return response.data
   } catch (error) {
