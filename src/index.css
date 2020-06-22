@@ -81,12 +81,15 @@ a {
 }
 
 .sign-form {
-  margin-top: -40px; 
+  margin-top: -40px;
 }
 
 #signup {
-  margin-left: 20px;
   float: right;
+}
+
+#login-button {
+  padding-right: 10px;
 }
 
 .header {
